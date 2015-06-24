@@ -17,10 +17,13 @@
 #import "JianZhi.h"
 #import "JobDetailVC.h"
 #import "UIColor+ColorFromArray.h"
+#import "AppDelegate.h"
+#import "CompanyInfoViewController.h"
+#import "CompanyInfoViewModel.h"
 
 #import "PublishJobVC.h"
 
-@interface myJobListVC ()<UITableViewDataSource,UITableViewDelegate,resumeDelegate>
+@interface myJobListVC ()<UITableViewDataSource,UITableViewDelegate,resumeDelegate, UIAlertViewDelegate>
 {
     BOOL headerRefreshing;
     BOOL footerRefreshing;
@@ -32,6 +35,7 @@
     
 }
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) CompanyInfoViewModel *companyInfoVM;
 
 @end
 
@@ -45,45 +49,140 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布职位" style:UIBarButtonItemStylePlain target:self action:@selector(addNewJob)];
     self.navigationItem.rightBarButtonItem.tintColor=[UIColor whiteColor];
 
+    [self loadCompanyInfo];
     
-    [self tableViewInit];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self headerRereshing];
+    
 }
 
-- (void)addNewJob{
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
+- (void)loadCompanyInfo
+{
     AVQuery *userQuery=[AVUser query];
     AVUser *usr=[AVUser currentUser];
     [userQuery whereKey:@"objectId" equalTo:usr.objectId];
     
-    AVQuery *innerQuery=[AVQuery queryWithClassName:@"QiYeInfo"];
+    AVQuery *query=[AVQuery queryWithClassName:@"QiYeInfo"];
     
-    [innerQuery whereKey:@"qiYeUser" matchesQuery:userQuery];
-
-    [innerQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        
-        if (!error&&[objects count]>0) {
-            
-            PublishJobVC *addJobVC=[[PublishJobVC alloc]init];
-            
-            addJobVC.curUsr=[objects objectAtIndex:0];
-            
-            UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
-            backItem.title = @"";
-            self.navigationItem.backBarButtonItem = backItem;
-            
-            addJobVC.hidesBottomBarWhenPushed=YES;
-            
-            [self.navigationController pushViewController:addJobVC animated:YES];
+    [query whereKey:@"qiYeUser" matchesQuery:userQuery];
+    
+    query.cachePolicy=kAVCachePolicyNetworkElseCache;
+    query.maxCacheAge=3600*24;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if ([objects count]>0) {
+                self.companyInfoVM = [[CompanyInfoViewModel alloc] initWithData:[objects firstObject]];
+                
+                if ([self.companyInfoVM.isAuthorized isEqualToString:@"已认证"])
+                {
+                    [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"qiyeIsValidate"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    [self tableViewInit];
+                    [self headerRereshing];
+                }
+                else if ([self.companyInfoVM.isAuthorized isEqualToString:@"未认证"])
+                {
+                    [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"qiyeIsValidate"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的企业还未认证" delegate:self cancelButtonTitle:@"稍后认证" otherButtonTitles:@"立即认证", nil];
+                    alertView.tag = 100;
+                    [alertView show];
+                } else if ([self.companyInfoVM.isAuthorized isEqualToString:@"未处理"])
+                {
+                    [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"qiyeIsValidate"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                }
+            }else{
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您还没有创建企业信息" delegate:self cancelButtonTitle:@"稍后创建" otherButtonTitles:@"立即创建", nil];
+                alertView.tag = 100;
+                [alertView show];
+            }
+        }else{
+            NSString *errorString=[NSString stringWithFormat:@"sorry，加载出错。错误原因：%@"  ,error.description];
+            [MBProgressHUD showError:errorString toView:nil];
         }
+        
     }];
+    
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 100)
+    {
+        if (buttonIndex == 0)
+        {
+            
+        }
+        else if (buttonIndex == 1)
+        {
+            AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+            appDelegate.qiyeTabViewController.selectedIndex = 2;
+            if ([AVUser currentUser].objectId!=nil) {
+                CompanyInfoViewController *companyInfoVC=[[CompanyInfoViewController alloc]initWithData:[AVUser currentUser].objectId];
+                companyInfoVC.fromEnterprise=YES;
+                
+                UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+                backItem.title = @"";
+                self.navigationItem.backBarButtonItem = backItem;
+//                pushing=YES;
+                
+                companyInfoVC.hidesBottomBarWhenPushed=YES;
+                companyInfoVC.edgesForExtendedLayout=UIRectEdgeNone;
+                [self.navigationController pushViewController:companyInfoVC animated:YES];
+                
+            }else{
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"您尚未登录哦" message:nil delegate:self cancelButtonTitle:@"再看看" otherButtonTitles:@"现在登录", nil];
+                [alert show];
+            }
+        }
+    }
+    
+}
+
+- (void)addNewJob{
+    
+    int qiyeIsValidate = [[[NSUserDefaults standardUserDefaults] objectForKey:@"qiyeIsValidate"] intValue];
+    if (qiyeIsValidate == 1)
+    {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        AVQuery *userQuery=[AVUser query];
+        AVUser *usr=[AVUser currentUser];
+        [userQuery whereKey:@"objectId" equalTo:usr.objectId];
+        
+        AVQuery *innerQuery=[AVQuery queryWithClassName:@"QiYeInfo"];
+        
+        [innerQuery whereKey:@"qiYeUser" matchesQuery:userQuery];
+        
+        [innerQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            
+            if (!error&&[objects count]>0) {
+                
+                PublishJobVC *addJobVC=[[PublishJobVC alloc]init];
+                
+                addJobVC.curUsr=[objects objectAtIndex:0];
+                
+                UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+                backItem.title = @"";
+                self.navigationItem.backBarButtonItem = backItem;
+                
+                addJobVC.hidesBottomBarWhenPushed=YES;
+                
+                [self.navigationController pushViewController:addJobVC animated:YES];
+            }
+        }];
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的企业还未认证" delegate:self cancelButtonTitle:@"稍后认证" otherButtonTitles:@"立即认证", nil];
+        alertView.tag = 100;
+        [alertView show];
+    }
 }
 
 - (void)tableViewInit{

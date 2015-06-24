@@ -274,7 +274,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     
     
     for (int index = 0; index<21; index++) {
-        selectFreeData[index] = FALSE;
+        selectFreeData[index] = TRUE;
     }
     
     self.selectfreeCollectionOutlet.delegate = self;

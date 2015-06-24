@@ -24,7 +24,7 @@
     
     self.navigationBar.translucent=NO;
     //设置Navi 颜色
-    [self.navigationBar setBarTintColor:NaviBarColor];
+    [self.navigationBar setBarTintColor:COLOR(57, 156, 109)];
     
     self.navigationBar.barStyle = UIStatusBarStyleDefault;
     [self.navigationBar setTintColor:[UIColor whiteColor]];

@@ -11,7 +11,9 @@
 #import "MBProgressHUD+Add.h"
 #import "MBProgressHUD.h"
 #import "FogetPWDViewController.h"
-@interface settingVC ()
+#import "SRLoginBusiness.h"
+#import "AppDelegate.h"
+@interface settingVC ()<UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *cacheLabel;
 
 @end
@@ -111,6 +113,24 @@
 }
 - (IBAction)modifyPassword:(id)sender {
    
+}
+- (IBAction)logoutAction:(UIButton *)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"确定退出账户？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
+    [alert show];
+    
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        BOOL isLogout=[[[SRLoginBusiness alloc]init]logOut];
+        if (isLogout) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

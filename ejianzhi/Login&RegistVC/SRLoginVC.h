@@ -22,6 +22,7 @@
 
 @property (strong,nonatomic) MLLoginViewModel *viewModel;
 
+@property (weak, nonatomic) IBOutlet UIButton *sinaLoginButton;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (strong, nonatomic) IBOutlet UINavigationItem *navItem;
 @property (weak, nonatomic) IBOutlet UITextField *userAccount;

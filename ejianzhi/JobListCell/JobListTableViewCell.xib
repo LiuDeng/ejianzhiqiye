@@ -26,6 +26,36 @@
                                 <color key="textColor" red="0.90196078430000004" green="0.3803921569" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="label_bx.png" translatesAutoresizingMaskIntoConstraints="NO" id="AYY-7c-TuR">
+                                <rect key="frame" x="205" y="51" width="27" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="27" id="IzJ-0J-arw"/>
+                                    <constraint firstAttribute="height" constant="17" id="VxC-mF-fuR"/>
+                                    <constraint firstAttribute="width" constant="27" id="bpQ-ZC-TnQ"/>
+                                    <constraint firstAttribute="height" constant="17" id="ruX-2A-Sx1"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="IzJ-0J-arw"/>
+                                        <exclude reference="ruX-2A-Sx1"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="label_yy.png" translatesAutoresizingMaskIntoConstraints="NO" id="CoG-1R-odP">
+                                <rect key="frame" x="135" y="51" width="27" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="27" id="2Bb-zp-2Jt"/>
+                                    <constraint firstAttribute="height" constant="17" id="BSO-Ma-tnw"/>
+                                    <constraint firstAttribute="width" constant="27" id="CNH-fA-jdq"/>
+                                    <constraint firstAttribute="height" constant="17" id="zeC-7I-624"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2Bb-zp-2Jt"/>
+                                        <exclude reference="BSO-Ma-tnw"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kd8-Xp-ess">
                                 <rect key="frame" x="90" y="73" width="220" height="1"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,7 +94,20 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="CyS-lh-hP2"/>
+                                        <exclude reference="ygQ-Ln-gTU"/>
+                                    </mask>
+                                </variation>
                             </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="label_zm.png" translatesAutoresizingMaskIntoConstraints="NO" id="gcP-KW-beT">
+                                <rect key="frame" x="170" y="51" width="27" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="ED3-LS-OSe"/>
+                                    <constraint firstAttribute="width" constant="27" id="zsR-ia-Dhq"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="ksL-YU-gky">
                                 <rect key="frame" x="109" y="76" width="55" height="20"/>
                                 <constraints>
@@ -117,7 +160,14 @@
                                     <constraint firstAttribute="width" constant="70" id="UXX-fw-oKl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="eh8-RD-am4"/>
+                                        <exclude reference="pNj-1c-rCP"/>
+                                    </mask>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -146,6 +196,33 @@
                             <constraint firstItem="KTK-Rg-4iX" firstAttribute="top" secondItem="caT-9E-V59" secondAttribute="top" constant="35" id="say-1T-sis"/>
                             <constraint firstItem="BrZ-PG-l8W" firstAttribute="top" secondItem="caT-9E-V59" secondAttribute="top" id="yd3-YG-fwo"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="uOF-eX-jGb"/>
+                                <exclude reference="1ku-3q-Qqk"/>
+                                <exclude reference="FHE-9e-Ons"/>
+                                <exclude reference="ziF-tR-Cwb"/>
+                                <exclude reference="jWp-FM-pt3"/>
+                                <exclude reference="36J-4f-RxQ"/>
+                                <exclude reference="Ibg-X3-b9W"/>
+                                <exclude reference="LzG-Dd-9iS"/>
+                                <exclude reference="Vb3-Oj-WK7"/>
+                                <exclude reference="awN-Dc-NNp"/>
+                                <exclude reference="cCG-gp-Q6E"/>
+                                <exclude reference="fxd-p4-8mm"/>
+                                <exclude reference="LdF-79-War"/>
+                                <exclude reference="bTf-EF-jae"/>
+                                <exclude reference="ebq-Ff-rGO"/>
+                                <exclude reference="Kfe-X8-xQs"/>
+                                <exclude reference="SNw-r9-f3M"/>
+                                <exclude reference="GEk-m2-g6R"/>
+                                <exclude reference="cXB-0b-qp8"/>
+                                <exclude reference="drC-3P-yZj"/>
+                                <exclude reference="8xo-o9-RmC"/>
+                                <exclude reference="Vlt-5m-NB5"/>
+                                <exclude reference="WoS-0T-Cim"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <constraints>
@@ -154,6 +231,32 @@
                     <constraint firstAttribute="trailing" secondItem="caT-9E-V59" secondAttribute="trailing" id="Gl7-EA-dK3"/>
                     <constraint firstItem="caT-9E-V59" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="auz-5l-9wS"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Ecb-nM-Jp4"/>
+                        <exclude reference="K6J-3b-wpu"/>
+                        <exclude reference="KBY-II-ZmR"/>
+                        <exclude reference="KVD-9n-9zm"/>
+                        <exclude reference="LFw-lc-Nwm"/>
+                        <exclude reference="OeW-T2-N0h"/>
+                        <exclude reference="PTR-Lq-4aA"/>
+                        <exclude reference="PiN-dt-sie"/>
+                        <exclude reference="R3A-yi-vMH"/>
+                        <exclude reference="TGp-Zy-yV1"/>
+                        <exclude reference="TYr-Z4-v6h"/>
+                        <exclude reference="V7O-sc-nrN"/>
+                        <exclude reference="Z7s-IN-5ql"/>
+                        <exclude reference="aQ8-aX-iVg"/>
+                        <exclude reference="b2a-Bf-EZ2"/>
+                        <exclude reference="bO6-pN-oet"/>
+                        <exclude reference="ek2-kJ-aIU"/>
+                        <exclude reference="fXu-rg-bNH"/>
+                        <exclude reference="fr6-3G-9Wz"/>
+                        <exclude reference="jfU-qh-5Fy"/>
+                        <exclude reference="obV-bD-VM2"/>
+                        <exclude reference="xZn-R3-H22"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
             <connections>

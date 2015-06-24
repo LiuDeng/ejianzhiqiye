@@ -25,6 +25,7 @@
 #import "commonMacro.h"
 //#import "WCAlertView.h"
 #import "TTGlobalUICommon.h"
+#import "ShareInfo.h"
 //#import "UIViewController+HUD.h"
 //#import "UIViewController+DismissKeyboard.h"
 //#import "NSString+Valid.h"
@@ -36,4 +37,8 @@
 
 #import "commonMacro.h"
 #endif
+
+#define COLOR(x,y,z) [UIColor colorWithRed:x/255.0f green:y/255.0f blue:z/255.0f alpha:1.0f]
+#define SCREENWIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
 

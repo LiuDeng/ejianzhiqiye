@@ -36,4 +36,5 @@
 @property (nonatomic,strong) NSString *userEmail;
 @property (nonatomic,strong) NSString *userWorkExperience;
 @property (nonatomic,strong) NSArray *userImageArray;
+@property (nonatomic, strong) NSString *isAuthorized;
 @end

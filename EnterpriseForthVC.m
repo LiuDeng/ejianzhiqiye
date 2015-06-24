@@ -17,6 +17,7 @@
 #import "SRLoginVC.h"
 #import "MLTabbar1.h"
 #import "CompanyInfoViewController.h"
+#import "AuthenticationViewController.h"
 
 
 #define  PIC_WIDTH 80
@@ -35,10 +36,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 @property (strong, nonatomic) IBOutlet UIImageView *userAvatarView;
+@property (weak, nonatomic) IBOutlet UIButton *authenticateButton;
 
 @end
 
 @implementation EnterpriseForthVC
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,7 +63,7 @@
     
     [self.userAvatarView.layer setCornerRadius:40.0f];
     [self.userAvatarView.layer setMasksToBounds:YES];
-    
+
     [self.logoutButton.layer setBorderWidth:1.0f];
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 247/255.0, 79/255.0, 92/255.0, 1.0 });
@@ -78,6 +81,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
     if (pushing) {
         [self.navigationController setNavigationBarHidden:NO animated:animated];
         pushing=NO;
@@ -86,6 +90,26 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    int qiyeIsValidate = [[[NSUserDefaults standardUserDefaults] objectForKey:@"qiyeIsValidate"] intValue];
+    if (qiyeIsValidate == 1)
+    {
+        [self.authenticateButton setTitle:@"已认证" forState:UIControlStateNormal];
+        self.authenticateButton.enabled = NO;
+    }
+    else if (qiyeIsValidate == 0)
+    {
+        [self.authenticateButton setTitle:@"去认证" forState:UIControlStateNormal];
+        self.authenticateButton.enabled = YES;
+    }
+    else if (qiyeIsValidate == 2)
+    {
+        [self.authenticateButton setTitle:@"未处理" forState:UIControlStateNormal];
+        self.authenticateButton.enabled = NO;
+    }
+    if ([AVUser currentUser]==nil) {
+        MLTabbar1 *tabbar = [MLTabbar1 shareInstance];
+        [tabbar.navigationController popViewControllerAnimated:YES];
+    }
     if (!imagePickerPushing) {
         if ([AVUser currentUser]!=nil) {
             [self finishLogin];
@@ -154,35 +178,15 @@
     }
 }
 
-
-- (IBAction)logout:(id)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"确定退出账户？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
-    [alert show];
-    
-}
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
 
-    if (alertView.tag==1001) {
-        if (buttonIndex==1) {
-            NSString *telUrl = @"tel://010-62416324";
-            
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telUrl]]; //拨号
+    if (buttonIndex==1) {
+        NSString *telUrl = @"tel://010-62416324";
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telUrl]]; //拨号
 
-        }
-    }else{
-        if (buttonIndex==1) {
-            
-            BOOL isLogout=[[[SRLoginBusiness alloc]init]logOut];
-            if (isLogout) {
-                
-                MLTabbar1 *tabbar=[MLTabbar1 shareInstance];
-                [tabbar.navigationController popViewControllerAnimated:YES];
-                [self finishLogout];
-            }
-            
-        }
     }
+    
 }
 
 - (void)finishLogout{
@@ -302,6 +306,18 @@
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     picker = Nil;
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+#pragma mark 去认证
+- (IBAction)goAuthentication:(UIButton *)sender
+{
+    AuthenticationViewController *authent = [[AuthenticationViewController alloc] init];
+    authent.title = @"公司认证";
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+    backItem.title = @"";
+    self.navigationItem.backBarButtonItem = backItem;
+    pushing=YES;
+    authent.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:authent animated:YES];
 }
 
 - (IBAction)showEnterpriseInfo:(id)sender {

@@ -14,6 +14,10 @@
 #import "MLTabbarVC.h"
 #import "MLTabbar1.h"
 #import "ResetPwdViewController.h"
+#import "UMSocial.h"
+#import <AVOSCloudSNS/AVOSCloudSNS.h>
+#import <AVOSCloudSNS/AVUser+SNS.h>
+#import "UserDetail.h"
 
 @interface SRLoginVC ()<successRegistered,UIAlertViewDelegate>
 {
@@ -24,6 +28,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *lookAroundBtn;
 @property (weak, nonatomic) IBOutlet UIButton *resetPassword;
 - (IBAction)resetPWDAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *weixinLabel;
+@property (weak, nonatomic) IBOutlet UILabel *weiboLabel;
+@property (weak, nonatomic) IBOutlet UILabel *qqLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
@@ -51,13 +60,42 @@ static  SRLoginVC *thisController=nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
+    if (type == 1)
+    {
+        self.titleLabel.text=@"企业登录";
+        self.userAccount.placeholder=@"请输入企业登录账户";
+        [self.otherLoginBtn setTitle:@"求职者登录" forState:UIControlStateNormal];
+    }
+    else if (type == 2)
+    {
+        self.userAccount.placeholder=@"请输入账户名";
+        self.titleLabel.text=@"求职者登录";
+        [self.otherLoginBtn setTitle:@"企业登录" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"type"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        self.userAccount.placeholder=@"请输入账户名";
+        self.titleLabel.text=@"求职者登录";
+        [self.otherLoginBtn setTitle:@"企业登录" forState:UIControlStateNormal];
+    }
     
+    _weixinLabel.textColor = COLOR(48, 48, 48);
+    _weiboLabel.textColor = COLOR(48, 48, 48);
+    _qqLabel.textColor = COLOR(48, 48, 48);
+    self.view.backgroundColor =COLOR(235, 235, 241);
+    _loginButton.layer.cornerRadius = 5.0f;
+    _loginButton.layer.masksToBounds = YES;
+    
+    self.sinaLoginButton.tag = 1001;
     NSUserDefaults *mySettingData = [NSUserDefaults standardUserDefaults];
 
-    if ([[mySettingData objectForKey:@"userType"]isEqualToString:@"0"]) {
+    if ([[mySettingData objectForKey:@"type"] intValue] == 2 ) {
         MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
         [self.navigationController pushViewController:tabbar animated:NO];
-    }else if ([[mySettingData objectForKey:@"userType"]isEqualToString:@"1"]){
+    }else if ([[mySettingData objectForKey:@"type"] intValue] == 1){
         MLTabbar1 *tabbar=[MLTabbar1 shareInstance];
         [self.navigationController pushViewController:tabbar animated:NO];
     }
@@ -82,13 +120,13 @@ static  SRLoginVC *thisController=nil;
         loginer.pwd=text;
     }];
     
-    [self.otherLoginBtn.layer setBorderWidth:1.0f];
+    //[self.otherLoginBtn.layer setBorderWidth:1.0f];
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 //    CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 33/255.0, 174/255.0, 148/255.0, 1.0 });
     CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 255/255.0, 255/255.0, 255/255.0, 1.0 });
     
-    [self.otherLoginBtn.layer setBorderColor:colorref];
-    [self.otherLoginBtn.layer setCornerRadius:5.0];
+//    [self.otherLoginBtn.layer setBorderColor:colorref];
+//    [self.otherLoginBtn.layer setCornerRadius:5.0];
 
     [self.lookAroundBtn.layer setBorderWidth:1.0f];
     [self.lookAroundBtn.layer setBorderColor:colorref];
@@ -216,32 +254,106 @@ static  SRLoginVC *thisController=nil;
 //        }]
         [loginer loginInbackground:loginer.username Pwd:loginer.pwd loginType:loginType withBlock:^(BOOL succeed, NSNumber *userType)  {
             if (succeed) {
-                if ([userType integerValue]==0) {
-                    if ([userType integerValue]==loginType) {
-                        MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
-                        [self.navigationController pushViewController:tabbar animated:YES];
-                    }else{
+                AVQuery *query = [AVUser query];
+                [query whereKey:@"username" equalTo:loginer.username];
+                [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    if (objects.count > 0)
+                    {
+                        AVUser *user = [objects objectAtIndex:0];
+                        [[NSUserDefaults standardUserDefaults] setObject:user.objectId forKey:@"userObjectId"];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                        
+                        AVQuery *query1 = [AVQuery queryWithClassName:@"UserDetail"];
+                        [query1 whereKey:@"userObjectId" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"userObjectId"]];
+                        [query1 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                            if (objects.count > 0)
+                            {
+                                [self setValidateWithArray:objects];
+                                
+                            }
+                        }];
+                    }
+                }];
+                
+               
+                int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
+                if (type == 1)
+                {
+                    if ([userType integerValue]==loginType)
+                    {
+                        MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
+                        [self.navigationController pushViewController:tabbar1 animated:YES];
+                    }
+                    else
+                    {
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"该账户为普通账户，是否继续登录？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录普通账户",nil];
                         alert.tag=2002;
                         [alert show];
                     }
                     
-                }else{
-                    if ([userType integerValue]==loginType) {
-                        MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
-                        [self.navigationController pushViewController:tabbar1 animated:YES];
-                    }else{
+                }
+                else if (type == 2)
+                {
+                    if ([userType integerValue]==loginType)
+                    {
+                        MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
+                        [self.navigationController pushViewController:tabbar animated:YES];
+                    }
+                    else
+                    {
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"该账户为企业账户，是否继续登录？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录企业账户",nil];
                         alert.tag=3003;
                         [alert show];
                     }
                 }
+//                if ([userType integerValue]==0) {
+//                    if ([userType integerValue]==loginType) {
+//                        MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
+//                        [self.navigationController pushViewController:tabbar animated:YES];
+//                    }else{
+//                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"该账户为普通账户，是否继续登录？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录普通账户",nil];
+//                        alert.tag=2002;
+//                        [alert show];
+//                    }
+//                    
+//                }else{
+//                    if ([userType integerValue]==loginType) {
+//                        MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
+//                        [self.navigationController pushViewController:tabbar1 animated:YES];
+//                    }else{
+//                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"该账户为企业账户，是否继续登录？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录企业账户",nil];
+//                        alert.tag=3003;
+//                        [alert show];
+//                    }
+//                }
 //
             }else{
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:loginer.feedback message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [alert show];
             }
         }];
+    }
+}
+
+- (void)setValidateWithArray:(NSArray *)objects
+{
+    UserDetail *userDetail = [[UserDetail alloc] initWithClassName:@"UserDetail"];
+    AVObject *user = [objects objectAtIndex:0];
+    userDetail = (UserDetail *)user;
+    if ([userDetail.isAuthorized isEqualToString:@"已认证"])
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"userIsValidate"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    else if ([userDetail.isAuthorized isEqualToString:@"未认证"])
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"userIsValidate"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    else if ([userDetail.isAuthorized isEqualToString:@"未处理"])
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"userIsValidate"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
 
@@ -270,28 +382,32 @@ static  SRLoginVC *thisController=nil;
 }
 
 - (IBAction)otherLogin:(id)sender {
-    if ([self.navItem.title isEqualToString:@"求职者登录"]) {
-        self.navItem.title=@"企业登录";
+    if ([self.titleLabel.text isEqualToString:@"求职者登录"]) {
+        [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"type"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        self.titleLabel.text=@"企业登录";
         self.userAccount.placeholder=@"请输入企业登录账户";
-        [self.otherLoginBtn setTitle:@"切换至求职者登录" forState:UIControlStateNormal];
+        [self.otherLoginBtn setTitle:@"求职者登录" forState:UIControlStateNormal];
         loginType=1;
         //    CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 33/255.0, 174/255.0, 148/255.0, 1.0 });
-        UIColor *comColor=[UIColor colorWithRed:232/255.0 green:192/255.0 blue:111/255.0 alpha:1.0];
-        self.view.backgroundColor=comColor;
-        self.floatView2.backgroundColor=comColor;
-//        self.loginButton.titleLabel.textColor=comColor;
-        self.navBar.barTintColor=comColor;
+//        UIColor *comColor=[UIColor colorWithRed:232/255.0 green:192/255.0 blue:111/255.0 alpha:1.0];
+//        self.view.backgroundColor=comColor;
+//        self.floatView2.backgroundColor=comColor;
+////        self.loginButton.titleLabel.textColor=comColor;
+//        self.navBar.barTintColor=comColor;
     }else{
+        [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"type"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         self.userAccount.placeholder=@"请输入账户名";
-        self.navItem.title=@"求职者登录";
-        [self.otherLoginBtn setTitle:@"切换至企业登录" forState:UIControlStateNormal];
+        self.titleLabel.text=@"求职者登录";
+        [self.otherLoginBtn setTitle:@"企业登录" forState:UIControlStateNormal];
         loginType=0;
        
-        UIColor *usrColor=[UIColor colorWithRed:33/255.0 green:174/255.0 blue:148/255.0 alpha:1.0f];
-        self.view.backgroundColor=usrColor;
-        self.floatView2.backgroundColor=usrColor;
-//        self.loginButton.titleLabel.textColor=usrColor;
-        self.navBar.barTintColor=usrColor;
+//        UIColor *usrColor=[UIColor colorWithRed:33/255.0 green:174/255.0 blue:148/255.0 alpha:1.0f];
+//        self.view.backgroundColor=usrColor;
+//        self.floatView2.backgroundColor=usrColor;
+////        self.loginButton.titleLabel.textColor=usrColor;
+//        self.navBar.barTintColor=usrColor;
     }
 }
 
@@ -308,4 +424,268 @@ static  SRLoginVC *thisController=nil;
     }];
     
 }
+
+- (IBAction)weiboLoginAction:(UIButton *)sender
+{
+
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
+    
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        //          获取微博用户名、uid、token等
+        
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToSina];
+            
+            AVUser *user = [AVUser user];
+            user.username =snsAccount.userName;
+            user.password = @"123456";
+            [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                AVFile *imageFile = [AVFile fileWithName:@"AvatarImage" data:[NSData dataWithContentsOfURL:[NSURL URLWithString:snsAccount.iconURL]]];
+
+                [[NSUserDefaults standardUserDefaults] setObject:snsAccount.iconURL forKey:@"userAvatar"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    AVQuery *query=[AVUser query];
+                    [query whereKey:@"username" equalTo:snsAccount.userName];
+                    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                        
+                        
+                        AVUser *currentUser=[objects objectAtIndex:0];
+                        [currentUser setObject:imageFile forKey:@"avatar"];
+                        [currentUser saveEventually];
+                        [[NSUserDefaults standardUserDefaults] setObject:currentUser.objectId forKey:@"userObjectId"];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                        
+                        
+                        AVQuery *userDetailQuery=[AVQuery queryWithClassName:@"UserDetail"];
+                        [userDetailQuery whereKey:@"userObjectId" equalTo:currentUser.objectId];
+                        [userDetailQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                            if (!error) {
+                                if ([objects count]>0) {
+                                    [self setValidateWithArray:objects];
+                                    AVObject *userDetailObject=[objects objectAtIndex:0];
+                                    NSMutableArray *imageArray=[userDetailObject objectForKey:@"userImageArray"];
+                                    [imageArray insertObject:imageFile.url atIndex:0];
+                                    [userDetailObject setObject:imageArray forKey:@"userImageArray"];
+                                    [userDetailObject saveEventually];
+                                }else{
+                                    AVObject *userDetailObject = [AVObject objectWithClassName:@"UserDetail"];
+                                    NSMutableArray *imageArray=[[NSMutableArray alloc] initWithObjects:imageFile.url, nil];
+                                    [userDetailObject setObject:imageArray forKey:@"userImageArray"];
+                                    [userDetailObject saveEventually];
+                                }
+                            }
+                        }];
+                        
+                        
+                        if (loginer == nil)
+                        {
+                            loginer=[[SRLoginBusiness alloc]init];
+                        }
+                        
+                        [loginer loginInbackground:snsAccount.userName Pwd:@"123456" loginType:loginType withBlock:^(BOOL succeed, NSNumber *userType) {
+                            [[NSUserDefaults standardUserDefaults] setObject:snsAccount.userName forKey:@"userName"];
+                            [[NSUserDefaults standardUserDefaults] synchronize];
+                            int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
+                            if (type == 1)
+                            {
+                                
+                                MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
+                                [self.navigationController pushViewController:tabbar1 animated:YES];
+                            }
+                            else if (type == 2)
+                            {
+                                MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
+                                [self.navigationController pushViewController:tabbar animated:YES];
+                            }
+                            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+                        }];
+                        
+                    }];
+                }];
+                
+                
+                
+            }];
+            
+        }});
+}
+
+- (IBAction)weixinLoginAction:(UIButton *)sender
+{
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
+    
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];
+            
+            AVUser *user = [AVUser user];
+            user.username =snsAccount.userName;
+            user.password = @"123456";
+            [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                AVFile *imageFile = [AVFile fileWithName:@"AvatarImage" data:[NSData dataWithContentsOfURL:[NSURL URLWithString:snsAccount.iconURL]]];
+                
+                [[NSUserDefaults standardUserDefaults] setObject:snsAccount.iconURL forKey:@"userAvatar"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    AVQuery *query=[AVUser query];
+                    [query whereKey:@"username" equalTo:snsAccount.userName];
+                    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                        
+                        
+                        AVUser *currentUser=[objects objectAtIndex:0];
+                        [currentUser setObject:imageFile forKey:@"avatar"];
+                        [currentUser saveEventually];
+                        [[NSUserDefaults standardUserDefaults] setObject:currentUser.objectId forKey:@"userObjectId"];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                        
+                        
+                        AVQuery *userDetailQuery=[AVQuery queryWithClassName:@"UserDetail"];
+                        [userDetailQuery whereKey:@"userObjectId" equalTo:currentUser.objectId];
+                        [userDetailQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                            if (!error) {
+                                if ([objects count]>0) {
+                                    [self setValidateWithArray:objects];
+                                    AVObject *userDetailObject=[objects objectAtIndex:0];
+                                    NSMutableArray *imageArray=[userDetailObject objectForKey:@"userImageArray"];
+                                    [imageArray insertObject:imageFile.url atIndex:0];
+                                    [userDetailObject setObject:imageArray forKey:@"userImageArray"];
+                                    [userDetailObject saveEventually];
+                                }else{
+                                    AVObject *userDetailObject = [AVObject objectWithClassName:@"UserDetail"];
+                                    NSMutableArray *imageArray=[[NSMutableArray alloc] initWithObjects:imageFile.url, nil];
+                                    [userDetailObject setObject:imageArray forKey:@"userImageArray"];
+                                    [userDetailObject saveEventually];
+                                }
+                            }
+                        }];
+                        
+                        
+                        if (loginer == nil)
+                        {
+                            loginer=[[SRLoginBusiness alloc]init];
+                        }
+                        
+                        [loginer loginInbackground:snsAccount.userName Pwd:@"123456" loginType:loginType withBlock:^(BOOL succeed, NSNumber *userType) {
+                            [[NSUserDefaults standardUserDefaults] setObject:snsAccount.userName forKey:@"userName"];
+                            [[NSUserDefaults standardUserDefaults] synchronize];
+                            int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
+                            if (type == 1)
+                            {
+                                
+                                MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
+                                [self.navigationController pushViewController:tabbar1 animated:YES];
+                            }
+                            else if (type == 2)
+                            {
+                                MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
+                                [self.navigationController pushViewController:tabbar animated:YES];
+                            }
+                            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+                        }];
+                        
+                    }];
+                }];
+                
+                
+                
+            }];
+            
+        }});
+}
+
+- (IBAction)qqLoginAction:(UIButton *)sender
+{
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
+    
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        //          获取微博用户名、uid、token等
+        
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToQQ];
+            AVUser *user = [AVUser user];
+            user.username =snsAccount.userName;
+            user.password = @"123456";
+            [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                AVFile *imageFile = [AVFile fileWithName:@"AvatarImage" data:[NSData dataWithContentsOfURL:[NSURL URLWithString:snsAccount.iconURL]]];
+                
+                [[NSUserDefaults standardUserDefaults] setObject:snsAccount.iconURL forKey:@"userAvatar"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    AVQuery *query=[AVUser query];
+                    [query whereKey:@"username" equalTo:snsAccount.userName];
+                    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                        
+                        
+                        AVUser *currentUser=[objects objectAtIndex:0];
+                        [currentUser setObject:imageFile forKey:@"avatar"];
+                        [currentUser saveEventually];
+                        [[NSUserDefaults standardUserDefaults] setObject:currentUser.objectId forKey:@"userObjectId"];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                        
+                        
+                        AVQuery *userDetailQuery=[AVQuery queryWithClassName:@"UserDetail"];
+                        [userDetailQuery whereKey:@"userObjectId" equalTo:currentUser.objectId];
+                        [userDetailQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                            if (!error) {
+                                if ([objects count]>0) {
+                                    AVObject *userDetailObject=[objects objectAtIndex:0];
+                                    NSMutableArray *imageArray=[userDetailObject objectForKey:@"userImageArray"];
+                                    [imageArray insertObject:imageFile.url atIndex:0];
+                                    [userDetailObject setObject:imageArray forKey:@"userImageArray"];
+                                    [userDetailObject saveEventually];
+                                }else{
+                                    AVObject *userDetailObject = [AVObject objectWithClassName:@"UserDetail"];
+                                    NSMutableArray *imageArray=[[NSMutableArray alloc] initWithObjects:imageFile.url, nil];
+                                    [userDetailObject setObject:imageArray forKey:@"userImageArray"];
+                                    [userDetailObject saveEventually];
+                                }
+                            }
+                        }];
+                        
+                        
+                        if (loginer == nil)
+                        {
+                            loginer=[[SRLoginBusiness alloc]init];
+                        }
+                        
+                        [loginer loginInbackground:snsAccount.userName Pwd:@"123456" loginType:loginType withBlock:^(BOOL succeed, NSNumber *userType) {
+                            [[NSUserDefaults standardUserDefaults] setObject:snsAccount.userName forKey:@"userName"];
+                            [[NSUserDefaults standardUserDefaults] synchronize];
+                            int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
+                            if (type == 1)
+                            {
+                                
+                                MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
+                                [self.navigationController pushViewController:tabbar1 animated:YES];
+                            }
+                            else if (type == 2)
+                            {
+                                MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
+                                [self.navigationController pushViewController:tabbar animated:YES];
+                            }
+                            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+                        }];
+                        
+                    }];
+                }];
+                
+                
+                
+            }];
+            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            
+        }});
+}
+
 @end

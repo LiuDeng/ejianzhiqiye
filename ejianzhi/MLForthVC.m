@@ -26,6 +26,7 @@
 #import "MLTabbar1.h"
 
 #import "feedbackVC.h"
+#import "StudentCertifyViewController.h"
 
 #define  PIC_WIDTH 80
 #define  PIC_HEIGHT 80
@@ -36,6 +37,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+@property (weak, nonatomic) IBOutlet UIButton *certifyButton;
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
@@ -55,6 +57,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
     self.edgesForExtendedLayout=UIRectEdgeNone;
     
     [self setNeedsStatusBarAppearanceUpdate];
@@ -98,6 +101,23 @@
 
 - (void)viewDidAppear:(BOOL)animated{
    [super viewDidAppear:animated];
+    int validate = [[[NSUserDefaults standardUserDefaults] objectForKey:@"userIsValidate"] intValue];
+    if (validate == 1)
+    {
+        [self.certifyButton setTitle:@"已认证" forState:UIControlStateNormal];
+    }
+    else if (validate == 0)
+    {
+        [self.certifyButton setTitle:@"未认证" forState:UIControlStateNormal];
+    }
+    else if (validate == 2)
+    {
+        [self.certifyButton setTitle:@"未处理" forState:UIControlStateNormal];
+    }
+    if ([AVUser currentUser]==nil) {
+        MLTabbarVC *tabbar = [MLTabbarVC shareInstance];
+        [tabbar.navigationController popViewControllerAnimated:YES];
+    }
     if (!imagePickerPushing) {
         if ([AVUser currentUser]!=nil) {
             [self finishLogin];
@@ -165,6 +185,16 @@
         [tabbar.navigationController popViewControllerAnimated:YES];
     }
 }
+#pragma -mark 学生认证
+- (IBAction)touchCertify:(id)sender {
+    StudentCertifyViewController *studentCertify=[[StudentCertifyViewController alloc]init];
+    studentCertify.title=@"学生认证";
+    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
+    studentCertify.hidesBottomBarWhenPushed=YES;
+    pushing=YES;
+    self.navigationItem.backBarButtonItem=backItem;
+    [self.navigationController pushViewController:studentCertify animated:YES];
+}
 
 
 - (IBAction)logout:(id)sender {
@@ -223,7 +253,7 @@
     if ([AVUser currentUser]) {
         [self checkUserName];
     }
-    
+
     NSUserDefaults *mySettingData = [NSUserDefaults standardUserDefaults];
     if ([mySettingData objectForKey:@"userAvatar"]) {
         [self.userAvatarView sd_setImageWithURL:[NSURL URLWithString:[mySettingData objectForKey:@"userAvatar"]]];

@@ -23,6 +23,11 @@
 @property (nonatomic,strong)NSString *comIndustry;
 @property (nonatomic,strong)NSString *comProperty;
 @property (nonatomic,strong)NSString *comScaleNum;
+@property (nonatomic, assign) BOOL qiYeIsValidate;
+@property (nonatomic, retain) NSString *qiYeLicenseNumber;
+@property (nonatomic, retain) NSString *qiYeLinkName;
+@property (nonatomic, retain) NSString *isAuthorized;
+
 
 
 

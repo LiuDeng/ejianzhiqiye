@@ -12,7 +12,7 @@
 #import "SMS_SDK/SMS_SDK.h"
 
 //#import "MobClick.h"
-#import "MLTabbarVC.h"
+
 #import "MLLoginManger.h"
 #import "PullServerManager.h"
 //子类化
@@ -21,16 +21,21 @@
 #import "UserDetail.h"
 #import "JianZhiShenQing.h"
 #import "QiYeInfo.h"
+#import "UMSocialQQHandler.h"
 
-#import "MLTabbar1.h"
+
 #import "SRLoginVC.h"
+
+#import "UMSocial.h"
+#import "UMSocialSinaHandler.h"
+#import <AVOSCloudSNS/AVOSCloudSNS.h>
+#import "UMSocialWechatHandler.h"
 
 #define SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 
 @interface AppDelegate ()
 
-@property (strong,nonatomic)MLTabbarVC *mainTabViewController;
-@property (strong,nonatomic)MLTabbar1 *qiyeTabViewController;
+
 @property (strong,nonatomic)MLLoginManger *loginManager;
 @end
 
@@ -122,7 +127,11 @@
 
     
    
+    [UMSocialData setAppKey:@"548e386afd98c5345b00033a"];
+    [UMSocialSinaHandler openSSOWithRedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
     
+    [UMSocialWechatHandler setWXAppId:@"wx6303763ca81b7a64" appSecret:@"f8a12d4c3720dec1af74a57da263ffa8" url:@"http://www.umeng.com/social"];
+    [UMSocialQQHandler setQQWithAppId:@"1104655106" appKey:@"hoh1WddjDGZGULxA" url:@"http://www.umeng.com/social"];
     //Enabling keyboard manager
     [[IQKeyboardManager sharedManager] setEnable:YES];
     [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:15];
@@ -162,15 +171,16 @@
     return YES;
 }
 
-
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    return [ShareSDK handleOpenURL:url wxDelegate:nil];
+    return  [UMSocialSnsService handleOpenURL:url];
 }
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
 {
-    return [ShareSDK handleOpenURL:url sourceApplication:sourceApplication annotation:annotation wxDelegate:nil];
+    return  [UMSocialSnsService handleOpenURL:url];
 }
 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
@@ -192,7 +202,9 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-
+    NSLog(@"%@", userInfo);
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]  delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alertView show];
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
