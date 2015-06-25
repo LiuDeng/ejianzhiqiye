@@ -157,9 +157,7 @@
             if (succeeded) {
                 if (imageFile.url != Nil)
                 {
-                    
                         AVQuery *query=[AVQuery queryWithClassName:@"UserDetail"];
-
                             [query whereKey:@"userObjectId" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"userObjectId"]];
 
                             [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
