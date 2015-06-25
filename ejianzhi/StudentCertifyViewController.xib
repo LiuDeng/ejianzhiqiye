@@ -94,7 +94,7 @@
                     <include reference="wv1-9e-DMM"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="112" y="446"/>
+            <point key="canvasLocation" x="231" y="350"/>
         </view>
     </objects>
 </document>
