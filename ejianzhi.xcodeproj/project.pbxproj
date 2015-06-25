@@ -772,6 +772,18 @@
 		605E5AB41B3BB0CC00FD9AB2 /* moreFirstPage.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AAF1B3BB0CC00FD9AB2 /* moreFirstPage.png */; };
 		605E5AB81B3BB2A400FD9AB2 /* JobListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 605E5AB61B3BB2A400FD9AB2 /* JobListTableViewCell.m */; };
 		605E5AB91B3BB2A400FD9AB2 /* JobListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AB71B3BB2A400FD9AB2 /* JobListTableViewCell.xib */; };
+		605E5ACE1B3BFCE400FD9AB2 /* explore.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AC21B3BFCE400FD9AB2 /* explore.png */; };
+		605E5ACF1B3BFCE400FD9AB2 /* explore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AC31B3BFCE400FD9AB2 /* explore@2x.png */; };
+		605E5AD01B3BFCE400FD9AB2 /* explore@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AC41B3BFCE400FD9AB2 /* explore@3x.png */; };
+		605E5AD11B3BFCE400FD9AB2 /* explore1.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AC51B3BFCE400FD9AB2 /* explore1.png */; };
+		605E5AD21B3BFCE400FD9AB2 /* explore1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AC61B3BFCE400FD9AB2 /* explore1@2x.png */; };
+		605E5AD31B3BFCE400FD9AB2 /* explore1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AC71B3BFCE400FD9AB2 /* explore1@3x.png */; };
+		605E5AD41B3BFCE400FD9AB2 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AC81B3BFCE400FD9AB2 /* message.png */; };
+		605E5AD51B3BFCE400FD9AB2 /* message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AC91B3BFCE400FD9AB2 /* message@2x.png */; };
+		605E5AD61B3BFCE400FD9AB2 /* message@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5ACA1B3BFCE400FD9AB2 /* message@3x.png */; };
+		605E5AD71B3BFCE400FD9AB2 /* message1.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5ACB1B3BFCE400FD9AB2 /* message1.png */; };
+		605E5AD81B3BFCE400FD9AB2 /* message1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5ACC1B3BFCE400FD9AB2 /* message1@2x.png */; };
+		605E5AD91B3BFCE400FD9AB2 /* message1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5ACD1B3BFCE400FD9AB2 /* message1@3x.png */; };
 		607997F31B302CA200408A1F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 607997F21B302CA200408A1F /* ImageIO.framework */; };
 		607997F51B302CAF00408A1F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 607997F41B302CAF00408A1F /* libz.dylib */; };
 		607997F71B302CC200408A1F /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 607997F61B302CC200408A1F /* libstdc++.dylib */; };
@@ -1813,6 +1825,18 @@
 		605E5AB51B3BB2A400FD9AB2 /* JobListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobListTableViewCell.h; sourceTree = "<group>"; };
 		605E5AB61B3BB2A400FD9AB2 /* JobListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobListTableViewCell.m; sourceTree = "<group>"; };
 		605E5AB71B3BB2A400FD9AB2 /* JobListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobListTableViewCell.xib; sourceTree = "<group>"; };
+		605E5AC21B3BFCE400FD9AB2 /* explore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explore.png; sourceTree = "<group>"; };
+		605E5AC31B3BFCE400FD9AB2 /* explore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explore@2x.png"; sourceTree = "<group>"; };
+		605E5AC41B3BFCE400FD9AB2 /* explore@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explore@3x.png"; sourceTree = "<group>"; };
+		605E5AC51B3BFCE400FD9AB2 /* explore1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explore1.png; sourceTree = "<group>"; };
+		605E5AC61B3BFCE400FD9AB2 /* explore1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explore1@2x.png"; sourceTree = "<group>"; };
+		605E5AC71B3BFCE400FD9AB2 /* explore1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explore1@3x.png"; sourceTree = "<group>"; };
+		605E5AC81B3BFCE400FD9AB2 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		605E5AC91B3BFCE400FD9AB2 /* message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message@2x.png"; sourceTree = "<group>"; };
+		605E5ACA1B3BFCE400FD9AB2 /* message@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message@3x.png"; sourceTree = "<group>"; };
+		605E5ACB1B3BFCE400FD9AB2 /* message1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message1.png; sourceTree = "<group>"; };
+		605E5ACC1B3BFCE400FD9AB2 /* message1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message1@2x.png"; sourceTree = "<group>"; };
+		605E5ACD1B3BFCE400FD9AB2 /* message1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message1@3x.png"; sourceTree = "<group>"; };
 		607997F21B302CA200408A1F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		607997F41B302CAF00408A1F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		607997F61B302CC200408A1F /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
@@ -2375,6 +2399,18 @@
 		045623D41AD6211D006E159C /* icon */ = {
 			isa = PBXGroup;
 			children = (
+				605E5AC21B3BFCE400FD9AB2 /* explore.png */,
+				605E5AC31B3BFCE400FD9AB2 /* explore@2x.png */,
+				605E5AC41B3BFCE400FD9AB2 /* explore@3x.png */,
+				605E5AC51B3BFCE400FD9AB2 /* explore1.png */,
+				605E5AC61B3BFCE400FD9AB2 /* explore1@2x.png */,
+				605E5AC71B3BFCE400FD9AB2 /* explore1@3x.png */,
+				605E5AC81B3BFCE400FD9AB2 /* message.png */,
+				605E5AC91B3BFCE400FD9AB2 /* message@2x.png */,
+				605E5ACA1B3BFCE400FD9AB2 /* message@3x.png */,
+				605E5ACB1B3BFCE400FD9AB2 /* message1.png */,
+				605E5ACC1B3BFCE400FD9AB2 /* message1@2x.png */,
+				605E5ACD1B3BFCE400FD9AB2 /* message1@3x.png */,
 				605E59131B351BC000FD9AB2 /* 求职者个人中心 */,
 				605E59121B351B9200FD9AB2 /* 商家个人中心 */,
 				3BF28A121B1DB99B00B2CD2D /* box_4.png */,
@@ -3902,6 +3938,7 @@
 				045625611AD6211D006E159C /* btnRight.png in Resources */,
 				3BBF70451AD6D1CB00A33F5A /* RecordingBkg@2x.png in Resources */,
 				045626361AD62129006E159C /* user_qrcode.png in Resources */,
+				605E5AD71B3BFCE400FD9AB2 /* message1.png in Resources */,
 				0456252E1AD6211D006E159C /* explore1.png in Resources */,
 				3BBF70161AD6D1CB00A33F5A /* u1f62d.png in Resources */,
 				6079985C1B32AB8200408A1F /* Icon-76@3x.png in Resources */,
@@ -3926,6 +3963,7 @@
 				045626251AD62129006E159C /* my_comment.png in Resources */,
 				040861E01AFA60190060C76D /* hollowheart40-40.png in Resources */,
 				04B346EC1AEA95FA00A8A180 /* 6@2x.png in Resources */,
+				605E5AD11B3BFCE400FD9AB2 /* explore1.png in Resources */,
 				045625CE1AD6211D006E159C /* protait5@2x.png in Resources */,
 				605E5A8F1B3A8F5900FD9AB2 /* ios-social-sdk-shake.html in Resources */,
 				04B346EA1AEA95FA00A8A180 /* 5@2x.png in Resources */,
@@ -3987,6 +4025,7 @@
 				04B346D41AEA95FA00A8A180 /* 14.png in Resources */,
 				3BBF705D1AD6D1CB00A33F5A /* section0_emotion7@2x.png in Resources */,
 				3BBF701C1AD6D1CB00A33F5A /* AddGroupMemberBtn@2x.png in Resources */,
+				605E5AD41B3BFCE400FD9AB2 /* message.png in Resources */,
 				605E5A911B3A8F5900FD9AB2 /* ios-social-sdk-shake.html in Resources */,
 				045625C41AD6211D006E159C /* protait5-60.png in Resources */,
 				045626101AD62129006E159C /* activity_selected.png in Resources */,
@@ -4010,6 +4049,7 @@
 				045625521AD6211D006E159C /* d7.png in Resources */,
 				04B346E21AEA95FA00A8A180 /* 20.png in Resources */,
 				605E5A861B3A8F5900FD9AB2 /* UMShareEditViewControlleriPad.xib in Resources */,
+				605E5AD51B3BFCE400FD9AB2 /* message@2x.png in Resources */,
 				3BBF703E1AD6D1CB00A33F5A /* placeholderImage@2x.png in Resources */,
 				0456259B1AD6211D006E159C /* protait1-Small.png in Resources */,
 				0456252D1AD6211D006E159C /* explore.png in Resources */,
@@ -4044,6 +4084,7 @@
 				0456261D1AD62129006E159C /* find_selected.png in Resources */,
 				045625531AD6211D006E159C /* eve.png in Resources */,
 				3BBF70761AD6D1CB00A33F5A /* weChatBubble_Sending_Cavern@2x.png in Resources */,
+				605E5AD91B3BFCE400FD9AB2 /* message1@3x.png in Resources */,
 				3BBF70631AD6D1CB00A33F5A /* SenderVoiceNodePlaying003@2x.png in Resources */,
 				0443C1631AD553FE004F29A5 /* citydict.plist in Resources */,
 				04B346DB1AEA95FA00A8A180 /* 17@2x.png in Resources */,
@@ -4067,6 +4108,7 @@
 				3BBF701F1AD6D1CB00A33F5A /* CellBlueSelected@2x.png in Resources */,
 				045626171AD62129006E159C /* checkbox1_checked@3x.png in Resources */,
 				605E5A871B3A8F5900FD9AB2 /* UMSLoginViewController.xib in Resources */,
+				605E5AD61B3BFCE400FD9AB2 /* message@3x.png in Resources */,
 				045626261AD62129006E159C /* placeholder.png in Resources */,
 				040861CF1AF90B5F0060C76D /* map_icon_time.png in Resources */,
 				3BBF70511AD6D1CB00A33F5A /* section0_emotion10@2x.png in Resources */,
@@ -4078,6 +4120,7 @@
 				045625281AD6211D006E159C /* no.png in Resources */,
 				045625101AD6211D006E159C /* Icon-Spotlight-40@2x.png in Resources */,
 				3BBF702D1AD6D1CB00A33F5A /* input-bar-background.png in Resources */,
+				605E5AD21B3BFCE400FD9AB2 /* explore1@2x.png in Resources */,
 				3BBF70171AD6D1CB00A33F5A /* u1f630.png in Resources */,
 				045625491AD6211D006E159C /* btn_ts.jpg in Resources */,
 				3BBF6F651AD6D0F200A33F5A /* area.plist in Resources */,
@@ -4148,6 +4191,7 @@
 				045625771AD6211D006E159C /* huodong.png in Resources */,
 				04F5C99A1AE54D9F00341491 /* SubIconCollectionViewController.xib in Resources */,
 				3BBF70191AD6D1CB00A33F5A /* u1f632.png in Resources */,
+				605E5ACE1B3BFCE400FD9AB2 /* explore.png in Resources */,
 				3BBF70711AD6D1CB00A33F5A /* VoiceBtn_Black@2x.png in Resources */,
 				3BA364161AF0CDBB00D1EF03 /* resumeListVC.xib in Resources */,
 				045625581AD6211D006E159C /* more.png in Resources */,
@@ -4223,6 +4267,7 @@
 				3BBF70651AD6D1CB00A33F5A /* sharemore_friendcard@2x.png in Resources */,
 				3BBF705C1AD6D1CB00A33F5A /* section0_emotion6@2x.png in Resources */,
 				045625061AD6211D006E159C /* team.png in Resources */,
+				605E5AD31B3BFCE400FD9AB2 /* explore1@3x.png in Resources */,
 				3BBF70441AD6D1CB00A33F5A /* RecordCancel@2x.png in Resources */,
 				045625761AD6211D006E159C /* duo.png in Resources */,
 				04B346D11AEA95FA00A8A180 /* 12@2x.png in Resources */,
@@ -4331,7 +4376,9 @@
 				045624EC1AD6211D006E159C /* date.png in Resources */,
 				0456258E1AD6211D006E159C /* Icon-Small@3x.png in Resources */,
 				04B346DD1AEA95FA00A8A180 /* 18@2x.png in Resources */,
+				605E5AD01B3BFCE400FD9AB2 /* explore@3x.png in Resources */,
 				045625A01AD6211D006E159C /* protait1-Spotlight-40@3x.png in Resources */,
+				605E5ACF1B3BFCE400FD9AB2 /* explore@2x.png in Resources */,
 				045625A61AD6211D006E159C /* protait2-Small.png in Resources */,
 				045624E41AD6211D006E159C /* checkbox2.png in Resources */,
 				045624DD1AD6211D006E159C /* add@2x.png in Resources */,
@@ -4405,6 +4452,7 @@
 				605E592B1B35535A00FD9AB2 /* return.png in Resources */,
 				0456252B1AD6211D006E159C /* btnLeft.png in Resources */,
 				3BBF70251AD6D1CB00A33F5A /* contacts_add_photo@2x.png in Resources */,
+				605E5AD81B3BFCE400FD9AB2 /* message1@2x.png in Resources */,
 				045625251AD6211D006E159C /* eve.png in Resources */,
 				0443C1D11AD55572004F29A5 /* SelectPOIViewController.xib in Resources */,
 				605E5A851B3A8F5900FD9AB2 /* UMShareEditViewController.xib in Resources */,
