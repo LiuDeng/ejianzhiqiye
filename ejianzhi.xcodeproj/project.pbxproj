@@ -39,14 +39,10 @@
 		0443C1661AD553FE004F29A5 /* SRCityChooseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0443C1621AD553FE004F29A5 /* SRCityChooseVC.xib */; };
 		0443C16B1AD5541D004F29A5 /* JobListWithDropDownListVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443C1691AD5541D004F29A5 /* JobListWithDropDownListVCViewController.m */; };
 		0443C16C1AD5541D004F29A5 /* JobListWithDropDownListVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0443C16A1AD5541D004F29A5 /* JobListWithDropDownListVCViewController.xib */; };
-		0443C1751AD5542B004F29A5 /* MLFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443C1711AD5542B004F29A5 /* MLFirstVC.m */; };
-		0443C1761AD5542B004F29A5 /* MLFirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0443C1721AD5542B004F29A5 /* MLFirstVC.xib */; };
 		0443C17C1AD55455004F29A5 /* MLCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443C17A1AD55455004F29A5 /* MLCell1.m */; };
 		0443C17D1AD55455004F29A5 /* MLCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0443C17B1AD55455004F29A5 /* MLCell1.xib */; };
 		0443C1821AD55492004F29A5 /* MLSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443C1801AD55492004F29A5 /* MLSecondVC.m */; };
 		0443C1831AD55492004F29A5 /* MLSecondVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0443C1811AD55492004F29A5 /* MLSecondVC.xib */; };
-		0443C1931AD554E8004F29A5 /* JobListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443C18F1AD554E8004F29A5 /* JobListTableViewCell.m */; };
-		0443C1941AD554E8004F29A5 /* JobListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0443C1901AD554E8004F29A5 /* JobListTableViewCell.xib */; };
 		0443C1951AD554E8004F29A5 /* listBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443C1921AD554E8004F29A5 /* listBadgeView.m */; };
 		0443C19A1AD554FF004F29A5 /* MLJobListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443C1981AD554FF004F29A5 /* MLJobListViewController.m */; };
 		0443C19B1AD554FF004F29A5 /* MLJobListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0443C1991AD554FF004F29A5 /* MLJobListViewController.xib */; };
@@ -790,6 +786,16 @@
 		605E5A9E1B3A8F5900FD9AB2 /* ios-social-sdk-share-quick.html in Resources */ = {isa = PBXBuildFile; fileRef = 605E5A7C1B3A8F5900FD9AB2 /* ios-social-sdk-share-quick.html */; };
 		605E5A9F1B3A8F5900FD9AB2 /* ios-social-sdk-socialBar.html in Resources */ = {isa = PBXBuildFile; fileRef = 605E5A7D1B3A8F5900FD9AB2 /* ios-social-sdk-socialBar.html */; };
 		605E5AA01B3A8F5900FD9AB2 /* markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = 605E5A7E1B3A8F5900FD9AB2 /* markdown.css */; };
+		605E5AA61B3BAF6C00FD9AB2 /* MLFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 605E5AA41B3BAF6C00FD9AB2 /* MLFirstVC.m */; };
+		605E5AA71B3BAF6C00FD9AB2 /* MLFirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AA51B3BAF6C00FD9AB2 /* MLFirstVC.xib */; };
+		605E5AAA1B3BB0C300FD9AB2 /* Locationicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AA91B3BB0C300FD9AB2 /* Locationicon.png */; };
+		605E5AB01B3BB0CC00FD9AB2 /* distanceIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AAB1B3BB0CC00FD9AB2 /* distanceIcon.png */; };
+		605E5AB11B3BB0CC00FD9AB2 /* distribterIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AAC1B3BB0CC00FD9AB2 /* distribterIcon.png */; };
+		605E5AB21B3BB0CC00FD9AB2 /* hmTeacherIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AAD1B3BB0CC00FD9AB2 /* hmTeacherIcon.png */; };
+		605E5AB31B3BB0CC00FD9AB2 /* internIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AAE1B3BB0CC00FD9AB2 /* internIcon.png */; };
+		605E5AB41B3BB0CC00FD9AB2 /* moreFirstPage.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AAF1B3BB0CC00FD9AB2 /* moreFirstPage.png */; };
+		605E5AB81B3BB2A400FD9AB2 /* JobListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 605E5AB61B3BB2A400FD9AB2 /* JobListTableViewCell.m */; };
+		605E5AB91B3BB2A400FD9AB2 /* JobListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AB71B3BB2A400FD9AB2 /* JobListTableViewCell.xib */; };
 		607997F31B302CA200408A1F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 607997F21B302CA200408A1F /* ImageIO.framework */; };
 		607997F51B302CAF00408A1F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 607997F41B302CAF00408A1F /* libz.dylib */; };
 		607997F71B302CC200408A1F /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 607997F61B302CC200408A1F /* libstdc++.dylib */; };
@@ -905,18 +911,12 @@
 		0443C1681AD5541D004F29A5 /* JobListWithDropDownListVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobListWithDropDownListVCViewController.h; sourceTree = "<group>"; };
 		0443C1691AD5541D004F29A5 /* JobListWithDropDownListVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobListWithDropDownListVCViewController.m; sourceTree = "<group>"; };
 		0443C16A1AD5541D004F29A5 /* JobListWithDropDownListVCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobListWithDropDownListVCViewController.xib; sourceTree = "<group>"; };
-		0443C1701AD5542B004F29A5 /* MLFirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLFirstVC.h; sourceTree = "<group>"; };
-		0443C1711AD5542B004F29A5 /* MLFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLFirstVC.m; sourceTree = "<group>"; };
-		0443C1721AD5542B004F29A5 /* MLFirstVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MLFirstVC.xib; sourceTree = "<group>"; };
 		0443C1791AD55455004F29A5 /* MLCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLCell1.h; sourceTree = "<group>"; };
 		0443C17A1AD55455004F29A5 /* MLCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLCell1.m; sourceTree = "<group>"; };
 		0443C17B1AD55455004F29A5 /* MLCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MLCell1.xib; sourceTree = "<group>"; };
 		0443C17F1AD55492004F29A5 /* MLSecondVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSecondVC.h; sourceTree = "<group>"; };
 		0443C1801AD55492004F29A5 /* MLSecondVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSecondVC.m; sourceTree = "<group>"; };
 		0443C1811AD55492004F29A5 /* MLSecondVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MLSecondVC.xib; sourceTree = "<group>"; };
-		0443C18E1AD554E8004F29A5 /* JobListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobListTableViewCell.h; sourceTree = "<group>"; };
-		0443C18F1AD554E8004F29A5 /* JobListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobListTableViewCell.m; sourceTree = "<group>"; };
-		0443C1901AD554E8004F29A5 /* JobListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobListTableViewCell.xib; sourceTree = "<group>"; };
 		0443C1911AD554E8004F29A5 /* listBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listBadgeView.h; sourceTree = "<group>"; };
 		0443C1921AD554E8004F29A5 /* listBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listBadgeView.m; sourceTree = "<group>"; };
 		0443C1971AD554FF004F29A5 /* MLJobListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLJobListViewController.h; sourceTree = "<group>"; };
@@ -1849,6 +1849,18 @@
 		605E5A7C1B3A8F5900FD9AB2 /* ios-social-sdk-share-quick.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "ios-social-sdk-share-quick.html"; sourceTree = "<group>"; };
 		605E5A7D1B3A8F5900FD9AB2 /* ios-social-sdk-socialBar.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "ios-social-sdk-socialBar.html"; sourceTree = "<group>"; };
 		605E5A7E1B3A8F5900FD9AB2 /* markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = markdown.css; sourceTree = "<group>"; };
+		605E5AA31B3BAF6C00FD9AB2 /* MLFirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLFirstVC.h; sourceTree = "<group>"; };
+		605E5AA41B3BAF6C00FD9AB2 /* MLFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLFirstVC.m; sourceTree = "<group>"; };
+		605E5AA51B3BAF6C00FD9AB2 /* MLFirstVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MLFirstVC.xib; sourceTree = "<group>"; };
+		605E5AA91B3BB0C300FD9AB2 /* Locationicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Locationicon.png; sourceTree = "<group>"; };
+		605E5AAB1B3BB0CC00FD9AB2 /* distanceIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = distanceIcon.png; sourceTree = "<group>"; };
+		605E5AAC1B3BB0CC00FD9AB2 /* distribterIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = distribterIcon.png; sourceTree = "<group>"; };
+		605E5AAD1B3BB0CC00FD9AB2 /* hmTeacherIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hmTeacherIcon.png; sourceTree = "<group>"; };
+		605E5AAE1B3BB0CC00FD9AB2 /* internIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = internIcon.png; sourceTree = "<group>"; };
+		605E5AAF1B3BB0CC00FD9AB2 /* moreFirstPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moreFirstPage.png; sourceTree = "<group>"; };
+		605E5AB51B3BB2A400FD9AB2 /* JobListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobListTableViewCell.h; sourceTree = "<group>"; };
+		605E5AB61B3BB2A400FD9AB2 /* JobListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobListTableViewCell.m; sourceTree = "<group>"; };
+		605E5AB71B3BB2A400FD9AB2 /* JobListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobListTableViewCell.xib; sourceTree = "<group>"; };
 		607997F21B302CA200408A1F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		607997F41B302CAF00408A1F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		607997F61B302CC200408A1F /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
@@ -2065,10 +2077,11 @@
 		0443C1771AD55430004F29A5 /* First */ = {
 			isa = PBXGroup;
 			children = (
+				605E5AA91B3BB0C300FD9AB2 /* Locationicon.png */,
+				605E5AA31B3BAF6C00FD9AB2 /* MLFirstVC.h */,
+				605E5AA41B3BAF6C00FD9AB2 /* MLFirstVC.m */,
+				605E5AA51B3BAF6C00FD9AB2 /* MLFirstVC.xib */,
 				04C3480D1AEE397D00B48D11 /* subClass */,
-				0443C1701AD5542B004F29A5 /* MLFirstVC.h */,
-				0443C1711AD5542B004F29A5 /* MLFirstVC.m */,
-				0443C1721AD5542B004F29A5 /* MLFirstVC.xib */,
 			);
 			name = First;
 			sourceTree = "<group>";
@@ -2096,11 +2109,11 @@
 		0443C18D1AD554E8004F29A5 /* JobListCell */ = {
 			isa = PBXGroup;
 			children = (
+				605E5AB51B3BB2A400FD9AB2 /* JobListTableViewCell.h */,
+				605E5AB61B3BB2A400FD9AB2 /* JobListTableViewCell.m */,
+				605E5AB71B3BB2A400FD9AB2 /* JobListTableViewCell.xib */,
 				04C348101AEF855200B48D11 /* JobListTableViewCell+configureForJobCell.h */,
 				04C348111AEF855200B48D11 /* JobListTableViewCell+configureForJobCell.m */,
-				0443C18E1AD554E8004F29A5 /* JobListTableViewCell.h */,
-				0443C18F1AD554E8004F29A5 /* JobListTableViewCell.m */,
-				0443C1901AD554E8004F29A5 /* JobListTableViewCell.xib */,
 				0443C1911AD554E8004F29A5 /* listBadgeView.h */,
 				0443C1921AD554E8004F29A5 /* listBadgeView.m */,
 			);
@@ -2993,6 +3006,11 @@
 		04C3480D1AEE397D00B48D11 /* subClass */ = {
 			isa = PBXGroup;
 			children = (
+				605E5AAB1B3BB0CC00FD9AB2 /* distanceIcon.png */,
+				605E5AAC1B3BB0CC00FD9AB2 /* distribterIcon.png */,
+				605E5AAD1B3BB0CC00FD9AB2 /* hmTeacherIcon.png */,
+				605E5AAE1B3BB0CC00FD9AB2 /* internIcon.png */,
+				605E5AAF1B3BB0CC00FD9AB2 /* moreFirstPage.png */,
 			);
 			name = subClass;
 			sourceTree = "<group>";
@@ -4075,7 +4093,6 @@
 				0456252D1AD6211D006E159C /* explore.png in Resources */,
 				3BBF70591AD6D1CB00A33F5A /* section0_emotion3@2x.png in Resources */,
 				3BBF702B1AD6D1CB00A33F5A /* face_HL@2x.png in Resources */,
-				0443C1941AD554E8004F29A5 /* JobListTableViewCell.xib in Resources */,
 				3BBF706F1AD6D1CB00A33F5A /* voice@2x.png in Resources */,
 				040861C91AF9051E0060C76D /* map_line_dot.png in Resources */,
 				045625AE1AD6211D006E159C /* protait3-60.png in Resources */,
@@ -4083,6 +4100,7 @@
 				3BBF705B1AD6D1CB00A33F5A /* section0_emotion5@2x.png in Resources */,
 				0456257C1AD6211D006E159C /* moreTop.png in Resources */,
 				045623131AD61AC9006E159C /* checkbox1_unchecked@2x.png in Resources */,
+				605E5AB11B3BB0CC00FD9AB2 /* distribterIcon.png in Resources */,
 				04B346F21AEA95FA00A8A180 /* 9@2x.png in Resources */,
 				04B346ED1AEA95FA00A8A180 /* 7.png in Resources */,
 				0456258C1AD6211D006E159C /* Icon-Small.png in Resources */,
@@ -4093,6 +4111,7 @@
 				045625901AD6211D006E159C /* partTime.png in Resources */,
 				3BBF70361AD6D1CB00A33F5A /* MessageVideoPlay@2x.png in Resources */,
 				045625451AD6211D006E159C /* am.png in Resources */,
+				605E5AB41B3BB0CC00FD9AB2 /* moreFirstPage.png in Resources */,
 				045626341AD62129006E159C /* user_money.png in Resources */,
 				045626281AD62129006E159C /* placeholder@3x.png in Resources */,
 				045624FD1AD6211D006E159C /* yes@2x.png in Resources */,
@@ -4120,7 +4139,6 @@
 				045626271AD62129006E159C /* placeholder@2x.png in Resources */,
 				3BBF6F511AD6D0E800A33F5A /* ResumeVC.xib in Resources */,
 				3BBF70011AD6D1CB00A33F5A /* u1f609.png in Resources */,
-				0443C1761AD5542B004F29A5 /* MLFirstVC.xib in Resources */,
 				045625271AD6211D006E159C /* menuHover.png in Resources */,
 				045625861AD6211D006E159C /* Icon-72@2x.png in Resources */,
 				3BBF70721AD6D1CB00A33F5A /* VoiceBtn_BlackHL@2x.png in Resources */,
@@ -4225,6 +4243,7 @@
 				0420C0451B170FB0008F9201 /* searchBarImage.png in Resources */,
 				045624E81AD6211D006E159C /* d4.png in Resources */,
 				040861CD1AF905570060C76D /* map_change.png in Resources */,
+				605E5AB31B3BB0CC00FD9AB2 /* internIcon.png in Resources */,
 				045625D31AD6211D006E159C /* releas1@3x.png in Resources */,
 				3BBF6F4E1AD6D0E800A33F5A /* MLTemplateVC.xib in Resources */,
 				040861CB1AF905470060C76D /* huihui_dot_line.png in Resources */,
@@ -4248,12 +4267,14 @@
 				045624E61AD6211D006E159C /* d2.png in Resources */,
 				3BBF6F4C1AD6D0E800A33F5A /* MLStudentCard.xib in Resources */,
 				3BBF703D1AD6D1CB00A33F5A /* MultiSelectedPanelConfirmBtnbKG@2x.png in Resources */,
+				605E5AB21B3BB0CC00FD9AB2 /* hmTeacherIcon.png in Resources */,
 				045625711AD6211D006E159C /* mine1.png in Resources */,
 				045625951AD6211D006E159C /* partTime@3x.png in Resources */,
 				045623051AD61ABC006E159C /* SRLoginVC.xib in Resources */,
 				04B346D21AEA95FA00A8A180 /* 13.png in Resources */,
 				040861C41AF904FC0060C76D /* icon_location.png in Resources */,
 				045625501AD6211D006E159C /* d5.png in Resources */,
+				605E5AA71B3BAF6C00FD9AB2 /* MLFirstVC.xib in Resources */,
 				045626141AD62129006E159C /* box_3.png in Resources */,
 				0443C13B1AD5531D004F29A5 /* Images.xcassets in Resources */,
 				3BBF70081AD6D1CB00A33F5A /* u1f614.png in Resources */,
@@ -4331,8 +4352,10 @@
 				3BBF70121AD6D1CB00A33F5A /* u1f623.png in Resources */,
 				045625A11AD6211D006E159C /* protait1.png in Resources */,
 				045625051AD6211D006E159C /* rank.png in Resources */,
+				605E5AB01B3BB0CC00FD9AB2 /* distanceIcon.png in Resources */,
 				04B346E31AEA95FA00A8A180 /* 20@2x.png in Resources */,
 				0456250E1AD6211D006E159C /* greenPin.png in Resources */,
+				605E5AB91B3BB2A400FD9AB2 /* JobListTableViewCell.xib in Resources */,
 				045625211AD6211D006E159C /* d4.png in Resources */,
 				045625B51AD6211D006E159C /* protait3-Spotlight-40@2x.png in Resources */,
 				045624F31AD6211D006E159C /* no@2x.png in Resources */,
@@ -4428,6 +4451,7 @@
 				045625821AD6211D006E159C /* Icon-60.png in Resources */,
 				3BA492AD1AF51C820081B9A9 /* InputInfoVC.xib in Resources */,
 				045625931AD6211D006E159C /* partTime1@3x.png in Resources */,
+				605E5AAA1B3BB0C300FD9AB2 /* Locationicon.png in Resources */,
 				045625B71AD6211D006E159C /* protait3.png in Resources */,
 				045622C51AD6162D006E159C /* IQButtonBarArrowLeft@2x.png in Resources */,
 				3BBF6F441AD6D0E800A33F5A /* addCard@2x.png in Resources */,
@@ -4576,7 +4600,6 @@
 				0443C1B71AD5553F004F29A5 /* SRAdvertisingView.m in Sources */,
 				045622C71AD6162D006E159C /* IQKeyboardManager.m in Sources */,
 				3BBF6F101AD6D0C900A33F5A /* NSData+EMImageContentType.m in Sources */,
-				0443C1931AD554E8004F29A5 /* JobListTableViewCell.m in Sources */,
 				3BBF6F0E1AD6D0C900A33F5A /* EMSDWebImagePrefetcher.m in Sources */,
 				0443C1641AD553FE004F29A5 /* CityListViewController.m in Sources */,
 				0443C1651AD553FE004F29A5 /* SRCityChooseVC.m in Sources */,
@@ -4592,6 +4615,7 @@
 				3B8D4AAB1AE20533001F5E7F /* QiYeInfo.m in Sources */,
 				3BA76E2E1AE4F96F00A2FF26 /* MLTabbar1.m in Sources */,
 				3BA76E2A1AE4D45600A2FF26 /* KKProgressTimer.m in Sources */,
+				605E5AB81B3BB2A400FD9AB2 /* JobListTableViewCell.m in Sources */,
 				049A96951B00B67400BC8635 /* ResetPwdViewController.m in Sources */,
 				3BBF70931AD6D22A00A33F5A /* MLTabbarVC.m in Sources */,
 				04C348161AEF8D3F00B48D11 /* ArrayDataSource.m in Sources */,
@@ -4618,6 +4642,7 @@
 				045622F21AD61A33006E159C /* CustomAnnotationView.m in Sources */,
 				0443C2281AD5560F004F29A5 /* LineDashPolyline.m in Sources */,
 				045AA7441AE93A6600ED20F1 /* firstSearchDisplayController.m in Sources */,
+				605E5AA61B3BAF6C00FD9AB2 /* MLFirstVC.m in Sources */,
 				3BBF6F671AD6D0F200A33F5A /* HZAreaPickerView.m in Sources */,
 				0443C19A1AD554FF004F29A5 /* MLJobListViewController.m in Sources */,
 				3B8D4AA81AE20489001F5E7F /* JianZhiShenQing.m in Sources */,
@@ -4651,7 +4676,6 @@
 				3B8D4AEB1AE257A9001F5E7F /* MJRefreshConst.m in Sources */,
 				3B49EB801AEFC091002F96AC /* myJobListVC.m in Sources */,
 				3BC84AC11B26D70000B78C6B /* feedbackVC.m in Sources */,
-				0443C1751AD5542B004F29A5 /* MLFirstVC.m in Sources */,
 				0443C2231AD5560F004F29A5 /* CommonUtility.m in Sources */,
 				3BBF6F081AD6D0C900A33F5A /* EMSDImageCache.m in Sources */,
 				040861E51AFA714C0060C76D /* AVQuery+common.m in Sources */,

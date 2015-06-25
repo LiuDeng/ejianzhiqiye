@@ -30,7 +30,7 @@
 #import "JobListWithDropDownListVCViewController.h"
 #import "AJLocationManager.h"
 
-#import "CheckNewVersionVC.h"
+
 #import <AVOSCloud/AVOSCloud.h>
 
 
@@ -43,6 +43,7 @@
 {
     NSArray *collectionViewCellArray;
 }
+
 
 @property (weak, nonatomic) IBOutlet UIScrollView *middleScrollView;
 
@@ -98,20 +99,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIImageView *searchbarImageView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchBarImage"]];
+//    UIImageView *searchbarImageView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchBarImage"]];
     
-    searchbarImageView.userInteractionEnabled=YES;
+//    searchbarImageView.userInteractionEnabled=YES;
     //为searchBar添加操作
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(searchBarTapped)];
-    [searchbarImageView addGestureRecognizer:singleTap];
+//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(searchBarTapped)];
+//    [searchbarImageView addGestureRecognizer:singleTap];
     
-    self.navigationItem.titleView=searchbarImageView;
+    self.navigationItem.title=@"e兼职";
+//    self.navigationItem.titleView=;
+    UIImage *image=[UIImage imageNamed:@"Locationicon"];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(Location)];
+    UIButton *locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [locationBtn setImage:image forState:UIControlStateNormal];
+    locationBtn.tintColor=[UIColor whiteColor];
+    [locationBtn setTitle:@" 北京" forState:UIControlStateNormal];
+    locationBtn.frame =CGRectMake(0, 0, 80, 40);
+    
+//    [locationBtn setBackgroundImage:image forState:UIControlStateNormal];
+    
+    [locationBtn addTarget: self action: @selector(Location) forControlEvents: UIControlEventTouchUpInside];
+      UIBarButtonItem* locationBtnItem=[[UIBarButtonItem alloc]initWithCustomView:locationBtn];
+
+//     [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(Location)];
+    
+    self.navigationItem.leftBarButtonItem=locationBtnItem;
+    
+    
     self.navigationItem.leftBarButtonItem.tintColor=[UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"附近兼职" style:UIBarButtonItemStylePlain target:self action:@selector(findJobWithLocationAction:)];
     self.navigationItem.rightBarButtonItem.tintColor=[UIColor whiteColor];
-    
     self.viewModel=[[MLMainPageViewModel alloc]init];
     [self addChildViewController:self.joblistTableVC];
     //collectiveViewCell
@@ -126,16 +143,7 @@
     [self searchCity];
     self.joblistTableVC.isFisrtView=YES;
     
-    AVQuery *query=[AVQuery queryWithClassName:@"Version"];
-    [query getFirstObjectInBackgroundWithBlock:^(AVObject *object, NSError *error) {
-        if (!error&&object) {
-            NSString *vn=[object objectForKey:@"versionNumber"];
-            if (![vn isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey]]) {
-                CheckNewVersionVC *checkVC=[[CheckNewVersionVC alloc]init];
-                [self presentViewController:checkVC animated:YES completion:nil];
-            }
-        }
-    }];
+    
 }
 
 -(void)searchBarTapped
@@ -348,18 +356,21 @@
 
 - (IBAction)itWorkBtnAction:(id)sender {
     JobListWithDropDownListVCViewController *joblistWithDrowList=[[JobListWithDropDownListVCViewController alloc]init];
-    [joblistWithDrowList setCurrentType:@"开发"];
+    
+    [joblistWithDrowList setCurrentType:@"实习"];
     [self.navigationController pushViewController:joblistWithDrowList animated:YES];
 }
 
 - (IBAction)modelBtnAction:(id)sender {
     JobListWithDropDownListVCViewController *joblistWithDrowList=[[JobListWithDropDownListVCViewController alloc]init];
-    [joblistWithDrowList setCurrentType:@"模特"];
+    
+    [joblistWithDrowList setCurrentType:@"派单"];
     [self.navigationController pushViewController:joblistWithDrowList animated:YES];
 }
 
 - (IBAction)homeTeacherBtnAction:(id)sender {
     JobListWithDropDownListVCViewController *joblistWithDrowList=[[JobListWithDropDownListVCViewController alloc]init];
+    
     [joblistWithDrowList setCurrentType:@"家教"];
     [self.navigationController pushViewController:joblistWithDrowList animated:YES];
 }

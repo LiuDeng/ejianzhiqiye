@@ -898,19 +898,19 @@ EOWutuaVmeS4k+Wcug
                     <include reference="cOT-KW-2Uz"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="90" y="461"/>
+            <point key="canvasLocation" x="146" y="454"/>
         </view>
         <view contentMode="scaleToFill" id="PpE-D9-ywm">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="猜你喜欢" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ec-yG-yJR">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推荐兼职" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ec-yG-yJR">
                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="74" id="6u2-Vp-jS0"/>
                         <constraint firstAttribute="height" constant="21" id="HgJ-dw-uo6"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
@@ -959,16 +959,36 @@ EOWutuaVmeS4k+Wcug
                         </mask>
                     </variation>
                 </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbX-c8-dSo">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="1Ak-Ux-WKZ"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="1Ak-Ux-WKZ"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="1Ak-Ux-WKZ"/>
+                        </mask>
+                    </variation>
+                </view>
             </subviews>
             <constraints>
                 <constraint firstItem="aTj-Bo-2ln" firstAttribute="top" secondItem="0uf-Ja-P2H" secondAttribute="bottom" constant="3" id="5q1-fH-TcC"/>
                 <constraint firstAttribute="trailing" secondItem="0uf-Ja-P2H" secondAttribute="trailing" id="83k-a9-HOw"/>
                 <constraint firstItem="4ec-yG-yJR" firstAttribute="top" secondItem="aTj-Bo-2ln" secondAttribute="bottom" constant="8" id="9dY-68-a0A"/>
+                <constraint firstItem="VbX-c8-dSo" firstAttribute="top" secondItem="4ec-yG-yJR" secondAttribute="bottom" constant="1" id="AJA-0U-32g"/>
                 <constraint firstItem="aTj-Bo-2ln" firstAttribute="leading" secondItem="PpE-D9-ywm" secondAttribute="leading" constant="2" id="H7d-AT-oyx"/>
                 <constraint firstItem="0uf-Ja-P2H" firstAttribute="top" secondItem="PpE-D9-ywm" secondAttribute="top" id="Si6-kx-OvA"/>
                 <constraint firstItem="4ec-yG-yJR" firstAttribute="leading" secondItem="PpE-D9-ywm" secondAttribute="leading" constant="8" id="ZST-pZ-0Wd"/>
+                <constraint firstAttribute="trailing" secondItem="VbX-c8-dSo" secondAttribute="trailing" constant="2" id="ZZK-LB-AmQ"/>
                 <constraint firstAttribute="trailing" secondItem="aTj-Bo-2ln" secondAttribute="trailing" constant="2" id="bBG-iA-Yge"/>
                 <constraint firstItem="0uf-Ja-P2H" firstAttribute="width" secondItem="0uf-Ja-P2H" secondAttribute="height" multiplier="200:81" id="iwl-bT-BvO"/>
+                <constraint firstItem="VbX-c8-dSo" firstAttribute="leading" secondItem="PpE-D9-ywm" secondAttribute="leading" constant="8" id="xjI-zK-eLV"/>
                 <constraint firstItem="0uf-Ja-P2H" firstAttribute="leading" secondItem="PpE-D9-ywm" secondAttribute="leading" id="ygB-Db-d8n"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -977,6 +997,7 @@ EOWutuaVmeS4k+Wcug
                     <exclude reference="4ec-yG-yJR"/>
                     <exclude reference="0uf-Ja-P2H"/>
                     <exclude reference="aTj-Bo-2ln"/>
+                    <exclude reference="VbX-c8-dSo"/>
                 </mask>
                 <mask key="constraints">
                     <exclude reference="9dY-68-a0A"/>
@@ -988,6 +1009,9 @@ EOWutuaVmeS4k+Wcug
                     <exclude reference="Si6-kx-OvA"/>
                     <exclude reference="iwl-bT-BvO"/>
                     <exclude reference="ygB-Db-d8n"/>
+                    <exclude reference="AJA-0U-32g"/>
+                    <exclude reference="ZZK-LB-AmQ"/>
+                    <exclude reference="xjI-zK-eLV"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -995,6 +1019,7 @@ EOWutuaVmeS4k+Wcug
                     <include reference="4ec-yG-yJR"/>
                     <include reference="0uf-Ja-P2H"/>
                     <include reference="aTj-Bo-2ln"/>
+                    <include reference="VbX-c8-dSo"/>
                 </mask>
                 <mask key="constraints">
                     <include reference="9dY-68-a0A"/>
@@ -1006,6 +1031,9 @@ EOWutuaVmeS4k+Wcug
                     <include reference="Si6-kx-OvA"/>
                     <include reference="iwl-bT-BvO"/>
                     <include reference="ygB-Db-d8n"/>
+                    <include reference="AJA-0U-32g"/>
+                    <include reference="ZZK-LB-AmQ"/>
+                    <include reference="xjI-zK-eLV"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="98" y="-175"/>
@@ -1022,7 +1050,7 @@ EOWutuaVmeS4k+Wcug
                         <constraint firstAttribute="width" constant="60" id="m7j-Ol-trq"/>
                         <constraint firstAttribute="width" constant="50" id="oWd-zs-5cP"/>
                     </constraints>
-                    <state key="normal" image="protait4.png">
+                    <state key="normal" image="distribterIcon.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
@@ -1045,7 +1073,7 @@ EOWutuaVmeS4k+Wcug
                         <action selector="modelBtnAction:" destination="-1" eventType="touchUpInside" id="wVz-Bk-54n"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="模特专场" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj0-UO-dW9">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="派单专场" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj0-UO-dW9">
                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="42" id="4WE-aL-iaF">
@@ -1056,7 +1084,7 @@ EOWutuaVmeS4k+Wcug
                         </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -1105,7 +1133,7 @@ EOWutuaVmeS4k+Wcug
                     <include reference="60i-LD-kOP"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="-96" y="-560"/>
+            <point key="canvasLocation" x="-195" y="-857"/>
         </view>
         <view contentMode="scaleToFill" id="Giv-w1-GwJ">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -1119,7 +1147,7 @@ EOWutuaVmeS4k+Wcug
                         <constraint firstAttribute="height" constant="50" id="Zks-dT-Rxt"/>
                         <constraint firstAttribute="height" constant="60" id="lps-xL-ac6"/>
                     </constraints>
-                    <state key="normal" image="protait5.png">
+                    <state key="normal" image="internIcon.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
@@ -1142,7 +1170,7 @@ EOWutuaVmeS4k+Wcug
                         <action selector="itWorkBtnAction:" destination="-1" eventType="touchUpInside" id="sBw-fo-7WB"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IT专场" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYy-JY-768">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="实习专场" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYy-JY-768">
                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="h8Q-fQ-41X">
@@ -1153,7 +1181,7 @@ EOWutuaVmeS4k+Wcug
                         </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -1202,7 +1230,7 @@ EOWutuaVmeS4k+Wcug
                     <include reference="CQk-WX-oTK"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="-282" y="-765"/>
+            <point key="canvasLocation" x="-551" y="-857"/>
         </view>
         <view contentMode="scaleToFill" id="7z6-Q8-P3K">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -1219,7 +1247,7 @@ EOWutuaVmeS4k+Wcug
                         </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -1242,7 +1270,7 @@ EOWutuaVmeS4k+Wcug
                         <constraint firstAttribute="height" constant="50" id="qRm-i7-MBi"/>
                         <constraint firstAttribute="width" constant="60" id="wbo-in-T5A"/>
                     </constraints>
-                    <state key="normal" image="protait3.png">
+                    <state key="normal" image="hmTeacherIcon.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
@@ -1299,7 +1327,7 @@ EOWutuaVmeS4k+Wcug
                     <include reference="t40-EU-yqh"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="146" y="-560"/>
+            <point key="canvasLocation" x="172" y="-857"/>
         </view>
         <view contentMode="scaleToFill" id="wb8-G6-61y">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -1316,7 +1344,7 @@ EOWutuaVmeS4k+Wcug
                         </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -1339,7 +1367,7 @@ EOWutuaVmeS4k+Wcug
                         <constraint firstAttribute="height" constant="60" id="m89-ia-FDd"/>
                         <constraint firstAttribute="width" constant="50" id="mR8-Ku-bVU"/>
                     </constraints>
-                    <state key="normal" image="moreJobs.png">
+                    <state key="normal" image="moreFirstPage.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
@@ -1396,18 +1424,20 @@ EOWutuaVmeS4k+Wcug
                     <include reference="zNA-GD-4a1"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="243" y="-589"/>
+            <point key="canvasLocation" x="489" y="-871"/>
         </view>
     </objects>
     <resources>
         <image name="arrow.png" width="30" height="30"/>
         <image name="card.png" width="110" height="110"/>
-        <image name="moreJobs.png" width="100" height="100"/>
+        <image name="distribterIcon.png" width="195" height="196"/>
+        <image name="hmTeacherIcon.png" width="196" height="196"/>
+        <image name="internIcon.png" width="195" height="196"/>
+        <image name="moreFirstPage.png" width="195" height="196"/>
         <image name="nearby.png" width="110" height="110"/>
         <image name="protait1.png" width="57" height="57"/>
         <image name="protait2-60.png" width="60" height="60"/>
         <image name="protait3.png" width="57" height="57"/>
-        <image name="protait4.png" width="57" height="57"/>
         <image name="protait5.png" width="57" height="57"/>
     </resources>
 </document>
