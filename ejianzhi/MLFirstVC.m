@@ -124,11 +124,19 @@
 //     [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(Location)];
     
     self.navigationItem.leftBarButtonItem=locationBtnItem;
-    
-    
     self.navigationItem.leftBarButtonItem.tintColor=[UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"附近兼职" style:UIBarButtonItemStylePlain target:self action:@selector(findJobWithLocationAction:)];
-    self.navigationItem.rightBarButtonItem.tintColor=[UIColor whiteColor];
+    
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"搜索icon副本.png"] style:UIBarButtonItemStylePlain target:self action:@selector(findJobWithLocationAction:)];
+    self.navigationItem.rightBarButtonItem=rightItem;
+//    UIImage *searchImage=[UIImage imageNamed:@"搜索icon.png"];
+//    UIButton *searchButton=[UIButton buttonWithType:UIButtonTypeCustom];
+//    [searchButton setImage:searchImage forState:UIControlStateNormal];
+//    [searchButton addTarget:self action:@selector(findJobWithLocationAction:) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *searchBtnItem=[[UIBarButtonItem alloc]initWithCustomView:searchButton];
+//    self.navigationItem.rightBarButtonItem=searchBtnItem;
+    
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"附近兼职" style:UIBarButtonItemStylePlain target:self action:@selector(findJobWithLocationAction:)];
+//    self.navigationItem.rightBarButtonItem.tintColor=[UIColor whiteColor];
     self.viewModel=[[MLMainPageViewModel alloc]init];
     [self addChildViewController:self.joblistTableVC];
     //collectiveViewCell
