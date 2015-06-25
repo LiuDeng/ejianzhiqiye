@@ -21,12 +21,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *keyConditionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *payPeriodLabel;
+@property (weak, nonatomic) IBOutlet UIView *distanceView;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 
 @property (weak, nonatomic) IBOutlet listBadgeView *IconView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *updateTimeLabel;
-
+@property (weak, nonatomic) IBOutlet UIView *bottomLineView;
 
 - (void)setInsuranceImageShow:(BOOL)ishidden;
 - (void)setWeekendImageShow:(BOOL)ishidden;
