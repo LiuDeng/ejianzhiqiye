@@ -340,8 +340,9 @@
         } progressBlock:^(NSInteger percentDone) {
             
         }];
-        
     }
+    [[NSUserDefaults standardUserDefaults] setObject:@(3) forKey:@"qiyeIsValidate"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)didReceiveMemoryWarning {

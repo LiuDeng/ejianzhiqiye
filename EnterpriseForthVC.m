@@ -103,6 +103,11 @@
     else if (qiyeIsValidate == 2)
     {
         [self.authenticateButton setTitle:@"未处理" forState:UIControlStateNormal];
+        self.authenticateButton.enabled = YES;
+    }
+    else if (qiyeIsValidate == 3)
+    {
+        [self.authenticateButton setTitle:@"审核中" forState:UIControlStateNormal];
         self.authenticateButton.enabled = NO;
     }
     if ([AVUser currentUser]==nil) {

@@ -105,14 +105,22 @@
     if (validate == 1)
     {
         [self.certifyButton setTitle:@"已认证" forState:UIControlStateNormal];
+        self.certifyButton.enabled = NO;
     }
     else if (validate == 0)
     {
         [self.certifyButton setTitle:@"未认证" forState:UIControlStateNormal];
+        self.certifyButton.enabled = YES;
     }
     else if (validate == 2)
     {
         [self.certifyButton setTitle:@"未处理" forState:UIControlStateNormal];
+        self.certifyButton.enabled = YES;
+    }
+    else if (validate == 3)
+    {
+        [self.certifyButton setTitle:@"审核中" forState:UIControlStateNormal];
+        self.certifyButton.enabled = NO;
     }
     if ([AVUser currentUser]==nil) {
         MLTabbarVC *tabbar = [MLTabbarVC shareInstance];

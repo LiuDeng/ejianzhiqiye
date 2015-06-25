@@ -246,6 +246,8 @@
     }
     
     
+    [[NSUserDefaults standardUserDefaults] setObject:@(3) forKey:@"userIsValidate"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
 
