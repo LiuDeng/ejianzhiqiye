@@ -193,6 +193,7 @@
             [self showErrorWithTitle:@"Installation保存失败" error:error];
         }
     }];
+    NSLog(@"%@", deviceToken);
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{

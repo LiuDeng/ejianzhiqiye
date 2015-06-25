@@ -241,6 +241,11 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     [self previewResume];
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
 - (void)previewResume{
     
     NSMutableArray *tempFreeTime = [[NSMutableArray alloc]init];
@@ -537,6 +542,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 }
 
 - (void)chooseBirthday{
+    [self.view endEditing:YES];
     if (self.userDetailModel.userBirthYear) {
         [datePickerView setBirthday:self.userDetailModel.userBirthYear];
     }else
@@ -567,7 +573,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 }
 
 - (void)selectCityAction{
-    
+    [self.view endEditing:YES];
     [self.view addSubview:coverView];
     [self.locatePicker showInView:self.view];
 }
