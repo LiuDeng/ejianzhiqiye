@@ -224,7 +224,7 @@
                             }
                         }
                         [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
-                        [self.navigationController popViewControllerAnimated:YES];
+//                        [self.navigationController popViewControllerAnimated:YES];
                     }];
                     
                     
