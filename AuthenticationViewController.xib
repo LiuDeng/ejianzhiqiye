@@ -94,7 +94,7 @@
                     <include reference="d5w-2n-2i2"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="608" y="70"/>
+            <point key="canvasLocation" x="405" y="107"/>
         </view>
     </objects>
 </document>

@@ -30,7 +30,6 @@
 
 //登录控制器
 @property (weak,nonatomic) MLLoginManger *loginManager;
-
 @property (weak, nonatomic) IBOutlet UILabel *buttonLabel;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
