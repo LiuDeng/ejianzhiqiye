@@ -60,6 +60,17 @@ static  SRLoginVC *thisController=nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSUserDefaults *mySettingData = [NSUserDefaults standardUserDefaults];
+    
+    if ([[mySettingData objectForKey:@"type"] intValue] == 2 ) {
+        MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
+        [self.navigationController pushViewController:tabbar animated:NO];
+    }else if ([[mySettingData objectForKey:@"type"] intValue] == 1){
+        MLTabbar1 *tabbar=[MLTabbar1 shareInstance];
+        [self.navigationController pushViewController:tabbar animated:NO];
+    }
+    
     int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
     if (type == 1)
     {
@@ -90,15 +101,7 @@ static  SRLoginVC *thisController=nil;
     _loginButton.layer.masksToBounds = YES;
     
     self.sinaLoginButton.tag = 1001;
-    NSUserDefaults *mySettingData = [NSUserDefaults standardUserDefaults];
-
-    if ([[mySettingData objectForKey:@"type"] intValue] == 2 ) {
-        MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
-        [self.navigationController pushViewController:tabbar animated:NO];
-    }else if ([[mySettingData objectForKey:@"type"] intValue] == 1){
-        MLTabbar1 *tabbar=[MLTabbar1 shareInstance];
-        [self.navigationController pushViewController:tabbar animated:NO];
-    }
+    
     
     loginType=0;
     self.loginManager=[MLLoginManger shareInstance];
