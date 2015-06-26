@@ -34,7 +34,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
-@property (strong, nonatomic) IBOutlet UIImageView *userAvatarView;
+//@property (strong, nonatomic) IBOutlet UIImageView *userAvatarView;
+@property (strong, nonatomic) UIImageView *userAvatarView;
 @property (weak, nonatomic) IBOutlet UIButton *authenticateButton;
 
 @end
@@ -60,8 +61,6 @@
     [self.userAvatarView addGestureRecognizer:tapGesture];
     self.userAvatarView.userInteractionEnabled=YES;
     
-    [self.userAvatarView.layer setCornerRadius:40.0f];
-    [self.userAvatarView.layer setMasksToBounds:YES];
 
     [self.logoutButton.layer setBorderWidth:1.0f];
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -110,6 +109,13 @@
         [self.authenticateButton setTitle:@"审核中" forState:UIControlStateNormal];
         self.authenticateButton.enabled = NO;
     }
+    
+    self.userAvatarView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREENWIDTH-80)/2-10, 30, 80, 80)];
+    self.userAvatarView.image = [UIImage imageNamed:@"placeholder"];
+    [self.view addSubview:self.userAvatarView];
+    [self.userAvatarView.layer setCornerRadius:40.0f];
+    [self.userAvatarView.layer setMasksToBounds:YES];
+    
     if ([AVUser currentUser]==nil) {
         MLTabbar1 *tabbar = [MLTabbar1 shareInstance];
         [tabbar.navigationController popViewControllerAnimated:YES];

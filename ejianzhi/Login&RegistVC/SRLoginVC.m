@@ -28,9 +28,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *lookAroundBtn;
 @property (weak, nonatomic) IBOutlet UIButton *resetPassword;
 - (IBAction)resetPWDAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *weixinButton;
 @property (weak, nonatomic) IBOutlet UILabel *weixinLabel;
-@property (weak, nonatomic) IBOutlet UILabel *weiboLabel;
-@property (weak, nonatomic) IBOutlet UILabel *qqLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
@@ -60,6 +59,34 @@ static  SRLoginVC *thisController=nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREENWIDTH-80)/2, 48+44+20, 80, 80)];
+    headImageView.image = [UIImage imageNamed:@"Icon-60.png"];
+    [self.view addSubview:headImageView];
+    
+    UIButton *weiboButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    weiboButton.frame = CGRectMake((SCREENWIDTH-50)/2, 404, 50, 50);
+    [weiboButton setImage:[UIImage imageNamed:@"微博"] forState:UIControlStateNormal];
+    [weiboButton addTarget:self action:@selector(weiboLoginAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:weiboButton];
+    
+    UILabel *weiboLabel = [[UILabel alloc] initWithFrame:CGRectMake(weiboButton.frame.origin.x, weiboButton.frame.origin.y+50+5, weiboButton.frame.size.width, 32)];
+    weiboLabel.text = @"微博";
+    weiboLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:weiboLabel];
+    
+    UILabel *thirdLoginLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREENWIDTH-150)/2, 370, 150, 21)];
+    thirdLoginLabel.text = @"第三方登录";
+    thirdLoginLabel.textColor = [UIColor lightGrayColor];
+    thirdLoginLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:thirdLoginLabel];
+    
+    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(20, 380, 70, 0.5)];
+    leftView.backgroundColor = [UIColor lightGrayColor];
+    [self.view addSubview:leftView];
+    
+    UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH-20-70, 380, 70, 0.5)];
+    rightView.backgroundColor = [UIColor lightGrayColor];
+    [self.view addSubview:rightView];
     
     NSUserDefaults *mySettingData = [NSUserDefaults standardUserDefaults];
     
@@ -94,8 +121,6 @@ static  SRLoginVC *thisController=nil;
     }
     
     _weixinLabel.textColor = COLOR(48, 48, 48);
-    _weiboLabel.textColor = COLOR(48, 48, 48);
-    _qqLabel.textColor = COLOR(48, 48, 48);
     self.view.backgroundColor =COLOR(235, 235, 241);
     _loginButton.layer.cornerRadius = 5.0f;
     _loginButton.layer.masksToBounds = YES;
@@ -428,7 +453,7 @@ static  SRLoginVC *thisController=nil;
     
 }
 
-- (IBAction)weiboLoginAction:(UIButton *)sender
+-(void)weiboLoginAction:(UIButton *)sender
 {
 
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];

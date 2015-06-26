@@ -48,8 +48,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
-@property (strong, nonatomic) IBOutlet UIImageView *userAvatarView;
-
+//@property (strong, nonatomic) IBOutlet UIImageView *userAvatarView;
+@property (nonatomic, strong) UIImageView *userAvatarView;
 @end
 
 @implementation MLForthVC
@@ -57,7 +57,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
+    
+    
     self.edgesForExtendedLayout=UIRectEdgeNone;
     
     [self setNeedsStatusBarAppearanceUpdate];
@@ -68,13 +69,14 @@
     pushing=NO;
     imagePickerPushing=NO;
     
+    
+    
     UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(chooseAvatar)];
     tapGesture.delegate=self;
     [self.userAvatarView addGestureRecognizer:tapGesture];
     self.userAvatarView.userInteractionEnabled=YES;
     
-    [self.userAvatarView.layer setCornerRadius:40.0f];
-    [self.userAvatarView.layer setMasksToBounds:YES];
+    
     
     [self.logoutButton.layer setBorderWidth:1.0f];
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -126,6 +128,13 @@
         MLTabbarVC *tabbar = [MLTabbarVC shareInstance];
         [tabbar.navigationController popViewControllerAnimated:YES];
     }
+    
+    self.userAvatarView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREENWIDTH-80)/2, 25, 80, 80)];
+    self.userAvatarView.image = [UIImage imageNamed:@"placeholder"];
+    [self.view addSubview:self.userAvatarView];
+    [self.userAvatarView.layer setCornerRadius:40.0f];
+    [self.userAvatarView.layer setMasksToBounds:YES];
+    
     if (!imagePickerPushing) {
         if ([AVUser currentUser]!=nil) {
             [self finishLogin];

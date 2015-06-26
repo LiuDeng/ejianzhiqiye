@@ -11,7 +11,6 @@
                 <outlet property="buttonLabel" destination="DYJ-yE-k0j" id="UVu-BX-zGc"/>
                 <outlet property="loginButton" destination="rAw-H8-Haj" id="q5s-ID-z4m"/>
                 <outlet property="qiyeInfo" destination="vf2-nn-ZQd" id="rk2-EL-Y5c"/>
-                <outlet property="userAvatarView" destination="S6F-ip-cQW" id="qcG-0x-oT8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -65,17 +64,6 @@
                                                 <action selector="touchLogin:" destination="-1" eventType="touchUpInside" id="EGX-5b-31e"/>
                                             </connections>
                                         </button>
-                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Na9-v2-afm">
-                                            <rect key="frame" x="244" y="39" width="21" height="84"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="S6F-ip-cQW">
-                                            <rect key="frame" x="137" y="39" width="80" height="80"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="6bE-SG-Kxb"/>
-                                                <constraint firstAttribute="height" constant="80" id="W56-Es-cZF"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.22352941179999999" green="0.61176470589999998" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -86,14 +74,11 @@
                                         <constraint firstItem="a2w-xp-Sox" firstAttribute="top" secondItem="DYJ-yE-k0j" secondAttribute="bottom" constant="16" id="JMG-nV-WN1"/>
                                         <constraint firstAttribute="trailing" secondItem="rAw-H8-Haj" secondAttribute="trailing" constant="48" id="NyM-m7-HiN"/>
                                         <constraint firstItem="DYJ-yE-k0j" firstAttribute="leading" secondItem="ChC-at-NIj" secondAttribute="leading" constant="75" id="OwE-cf-UaK"/>
-                                        <constraint firstItem="S6F-ip-cQW" firstAttribute="top" secondItem="ChC-at-NIj" secondAttribute="top" constant="39" id="T0n-mx-GeS"/>
                                         <constraint firstAttribute="trailing" secondItem="a2w-xp-Sox" secondAttribute="trailing" constant="119" id="VSe-5k-voF"/>
                                         <constraint firstItem="DYJ-yE-k0j" firstAttribute="top" secondItem="ChC-at-NIj" secondAttribute="top" constant="127" id="X0F-dw-0vc"/>
-                                        <constraint firstItem="Na9-v2-afm" firstAttribute="leading" secondItem="S6F-ip-cQW" secondAttribute="trailing" constant="27" id="XQ6-jy-9de"/>
                                         <constraint firstAttribute="width" constant="320" id="iG9-zO-tG5"/>
                                         <constraint firstAttribute="height" constant="210" id="l7t-CT-I6H"/>
                                         <constraint firstAttribute="trailing" secondItem="DYJ-yE-k0j" secondAttribute="trailing" constant="103" id="oP9-od-Ua3"/>
-                                        <constraint firstItem="S6F-ip-cQW" firstAttribute="leading" secondItem="ChC-at-NIj" secondAttribute="leading" constant="137" id="pvN-jO-aM3"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vf2-nn-ZQd">
@@ -282,7 +267,6 @@
     </objects>
     <resources>
         <image name="arrow.png" width="30" height="30"/>
-        <image name="placeholder.png" width="60" height="60"/>
         <image name="profile_pop_button_background_bottom_hl.png" width="640" height="250"/>
         <image name="profile_pop_button_background_top_hl.png" width="640" height="250"/>
         <image name="企业信息icon.png" width="90" height="91"/>

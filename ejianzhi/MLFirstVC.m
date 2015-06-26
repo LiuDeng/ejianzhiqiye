@@ -185,7 +185,7 @@
 -(void)addHeaderAndFooterToTableView
 {
     //添加表头
-    [_tableHeadView2 setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 112+152*[[UIScreen mainScreen] bounds].size.width/320)];
+    [_tableHeadView2 setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 112+152*[[UIScreen mainScreen] bounds].size.width/(SCREENWIDTH-55))];
     //    [_tableHeadView setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 284+130*[[UIScreen mainScreen] bounds].size.width/320)];
     [self.joblistTableVC.tableView setTableHeaderView:_tableHeadView2];
     //添加表尾
@@ -238,7 +238,7 @@
         NSString *imageUrl=[dict objectForKey:@"BannerImageUrl"];
         [urlArray addObject:imageUrl];
     }
-    SRAdvertisingView *bannerView=[[SRAdvertisingView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 130*[[UIScreen mainScreen] bounds].size.width/320) imageArray:urlArray interval:3.0];
+    SRAdvertisingView *bannerView=[[SRAdvertisingView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 152*[[UIScreen mainScreen] bounds].size.width/320) imageArray:urlArray interval:3.0];
     
     bannerView.vDelegate=self;
     [self.blankView addSubview:bannerView];
