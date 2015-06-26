@@ -43,6 +43,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable) name:PubListJianzhiNotif object:nil];
     
     self.title=@"我发布的兼职";
     
@@ -56,6 +57,11 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
+}
+
+- (void)refreshTable
+{
+    [self headerRereshing];
 }
 
 - (void)loadCompanyInfo
@@ -75,6 +81,8 @@
         if (!error) {
             if ([objects count]>0) {
                 self.companyInfoVM = [[CompanyInfoViewModel alloc] initWithData:[objects firstObject]];
+                [self tableViewInit];
+                [self headerRereshing];
                 
                 if ([self.companyInfoVM.isAuthorized isEqualToString:@"已认证"])
                 {
@@ -87,6 +95,8 @@
                 {
                     [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"qiyeIsValidate"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
+                    [self tableViewInit];
+                    [self headerRereshing];
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的企业还未认证" delegate:self cancelButtonTitle:@"稍后认证" otherButtonTitles:@"立即认证", nil];
                     alertView.tag = 100;
                     [alertView show];
@@ -94,6 +104,8 @@
                 {
                     [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"qiyeIsValidate"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
+                    [self tableViewInit];
+                    [self headerRereshing];
                 }
             }else{
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您还没有创建企业信息" delegate:self cancelButtonTitle:@"稍后创建" otherButtonTitles:@"立即创建", nil];
@@ -145,9 +157,9 @@
 
 - (void)addNewJob{
     
-    int qiyeIsValidate = [[[NSUserDefaults standardUserDefaults] objectForKey:@"qiyeIsValidate"] intValue];
-    if (qiyeIsValidate == 1)
-    {
+//    int qiyeIsValidate = [[[NSUserDefaults standardUserDefaults] objectForKey:@"qiyeIsValidate"] intValue];
+//    if (qiyeIsValidate == 1)
+//    {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
         AVQuery *userQuery=[AVUser query];
@@ -176,13 +188,13 @@
                 [self.navigationController pushViewController:addJobVC animated:YES];
             }
         }];
-    }
-    else
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的企业还未认证" delegate:self cancelButtonTitle:@"稍后认证" otherButtonTitles:@"立即认证", nil];
-        alertView.tag = 100;
-        [alertView show];
-    }
+//    }
+//    else
+//    {
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的企业还未认证" delegate:self cancelButtonTitle:@"稍后认证" otherButtonTitles:@"立即认证", nil];
+//        alertView.tag = 100;
+//        [alertView show];
+//    }
 }
 
 - (void)tableViewInit{
@@ -410,6 +422,11 @@
     resumeVC.hidesBottomBarWhenPushed=YES;
     
     [self.navigationController pushViewController:resumeVC animated:YES];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:PubListJianzhiNotif object:nil];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -610,6 +610,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
         if (succeeded) {
             [MBProgressHUD showSuccess:@"保存成功" toView:self.view];
             [self performSelector:@selector(returnAndSave) withObject:nil afterDelay:1.0f];
+            [[NSNotificationCenter defaultCenter] postNotificationName:PubListJianzhiNotif object:nil];
         }else{
             [MBProgressHUD showSuccess:@"保存失败" toView:self.view];
         }

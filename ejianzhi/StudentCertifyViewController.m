@@ -145,6 +145,18 @@
 
 - (void)submitButtonClick:(UIButton *)sender
 {
+    if(firstImage==nil&&secImage==nil){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请上传您的身份证和学生证照片" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }else if (firstImage!=nil&&secImage==nil){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请上传您的身份证照片" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }else if (secImage==nil&&firstImage==nil){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请上传您的学生证照片" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     if (firstImage != nil)
     {
         //上传图片
@@ -157,23 +169,23 @@
             if (succeeded) {
                 if (imageFile.url != Nil)
                 {
-                        AVQuery *query=[AVQuery queryWithClassName:@"UserDetail"];
-                            [query whereKey:@"userObjectId" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"userObjectId"]];
-
-                            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    AVQuery *query=[AVQuery queryWithClassName:@"UserDetail"];
+                    [query whereKey:@"userObjectId" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"userObjectId"]];
+                    
+                    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                        
+                        if (!error)
+                        {
+                            if (objects.count > 0)
+                            {
+                                AVObject *userDetail = [objects objectAtIndex:0];
                                 
-                                if (!error)
-                                {
-                                    if (objects.count > 0)
-                                    {
-                                        AVObject *userDetail = [objects objectAtIndex:0];
-                                        
-                                        [userDetail setObject:imageFile forKey:@"userStudentFile"];
-                                        [userDetail saveEventually];
-                                    }
-                                }
-                                [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
-                            }];
+                                [userDetail setObject:imageFile forKey:@"userStudentFile"];
+                                [userDetail saveEventually];
+                            }
+                        }
+                        [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
+                    }];
                     
                 }else{
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -222,7 +234,8 @@
                             }
                         }
                         [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
-                        [self.navigationController popViewControllerAnimated:YES];
+                        [self performSelector:@selector(backView) withObject:self afterDelay:1.5];
+                        
                     }];
                     
                     
@@ -248,6 +261,11 @@
     
     [[NSUserDefaults standardUserDefaults] setObject:@(3) forKey:@"userIsValidate"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+- (void)backView{
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 

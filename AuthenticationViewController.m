@@ -163,6 +163,15 @@
 
 - (void)submitButtonClick:(UIButton *)sender
 {
+    if(firstImage==nil&&secImage==nil&&thirdImage==nil){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请上传您的营业执照 组织机构代码证 税务登记证照片进行认证" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }else if (firstImage==nil||secImage==nil||thirdImage==nil){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"照片信息尚未上传完整" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     if (firstImage != nil)
     {
         //上传图片
@@ -317,7 +326,7 @@
                                     }
                                 }
                                 [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
-                                [self.navigationController popViewControllerAnimated:YES];
+                                [self performSelector:@selector(backView) withObject:self afterDelay:1.5];
                             }];
                         }
                         
@@ -344,6 +353,11 @@
     }
     [[NSUserDefaults standardUserDefaults] setObject:@(3) forKey:@"qiyeIsValidate"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (void)backView{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {
