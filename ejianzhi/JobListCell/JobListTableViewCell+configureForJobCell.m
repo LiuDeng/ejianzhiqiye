@@ -23,7 +23,7 @@
     //根据兼职信息设置兼职色块颜色
     
     [self setIconBackgroundColor:[self colorForType:jianzhi.jianZhiType]];
-    self.priceLabel.text=[jianzhi.jianZhiWage stringValue];
+    self.priceLabel.text= [@"¥" stringByAppendingString:[jianzhi.jianZhiWage stringValue]];
     self.payPeriodLabel.text=[NSString stringWithFormat:@"/%@",jianzhi.jianZhiWageType];
     self.keyConditionLabel.text=@"该兼职长期有效";
     if (jianzhi.jianZhiTimeStart!=nil && jianzhi.jianZhiTimeEnd!=nil) {

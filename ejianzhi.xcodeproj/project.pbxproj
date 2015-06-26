@@ -451,7 +451,6 @@
 		04B346F81AEA95FA00A8A180 /* warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B346CA1AEA95FA00A8A180 /* warning@2x.png */; };
 		04B346FD1AEC82E100A8A180 /* SearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B346FC1AEC82E100A8A180 /* SearchResultsViewController.m */; };
 		04C3480B1AEE1ECD00B48D11 /* ComJianZhiViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C3480A1AEE1ECD00B48D11 /* ComJianZhiViewModel.m */; };
-		04C348121AEF855200B48D11 /* JobListTableViewCell+configureForJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C348111AEF855200B48D11 /* JobListTableViewCell+configureForJobCell.m */; };
 		04C348161AEF8D3F00B48D11 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C348151AEF8D3F00B48D11 /* ArrayDataSource.m */; };
 		04C3481A1AEFBB9D00B48D11 /* JobOfComListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C348191AEFBB9D00B48D11 /* JobOfComListVC.m */; };
 		04C348211AF0C7CF00B48D11 /* CompanyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C3481F1AF0C7CF00B48D11 /* CompanyInfoViewController.m */; };
@@ -717,6 +716,11 @@
 		3BF28A131B1DB99B00B2CD2D /* box_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BF28A121B1DB99B00B2CD2D /* box_4.png */; };
 		3BF28A181B1DCD3700B2CD2D /* PublishJobVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF28A161B1DCD3700B2CD2D /* PublishJobVC.m */; };
 		3BF28A191B1DCD3700B2CD2D /* PublishJobVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BF28A171B1DCD3700B2CD2D /* PublishJobVC.xib */; };
+		6009BB031B3C30B8006B025C /* MLFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6009BB011B3C30B8006B025C /* MLFirstVC.m */; };
+		6009BB041B3C30B8006B025C /* MLFirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009BB021B3C30B8006B025C /* MLFirstVC.xib */; };
+		6009BB0A1B3CF9FE006B025C /* JobListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6009BB061B3CF9FE006B025C /* JobListTableViewCell.m */; };
+		6009BB0B1B3CF9FE006B025C /* JobListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009BB071B3CF9FE006B025C /* JobListTableViewCell.xib */; };
+		6009BB0C1B3CF9FE006B025C /* JobListTableViewCell+configureForJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6009BB091B3CF9FE006B025C /* JobListTableViewCell+configureForJobCell.m */; };
 		605E590F1B351A4100FD9AB2 /* 企业信息icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E590E1B351A4100FD9AB2 /* 企业信息icon.png */; };
 		605E59111B351B7400FD9AB2 /* 服务中心icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E59101B351B7400FD9AB2 /* 服务中心icon.png */; };
 		605E591B1B351BDC00FD9AB2 /* 默认头像.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E59141B351BDC00FD9AB2 /* 默认头像.png */; };
@@ -765,16 +769,12 @@
 		605E5A9E1B3A8F5900FD9AB2 /* ios-social-sdk-share-quick.html in Resources */ = {isa = PBXBuildFile; fileRef = 605E5A7C1B3A8F5900FD9AB2 /* ios-social-sdk-share-quick.html */; };
 		605E5A9F1B3A8F5900FD9AB2 /* ios-social-sdk-socialBar.html in Resources */ = {isa = PBXBuildFile; fileRef = 605E5A7D1B3A8F5900FD9AB2 /* ios-social-sdk-socialBar.html */; };
 		605E5AA01B3A8F5900FD9AB2 /* markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = 605E5A7E1B3A8F5900FD9AB2 /* markdown.css */; };
-		605E5AA61B3BAF6C00FD9AB2 /* MLFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 605E5AA41B3BAF6C00FD9AB2 /* MLFirstVC.m */; };
-		605E5AA71B3BAF6C00FD9AB2 /* MLFirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AA51B3BAF6C00FD9AB2 /* MLFirstVC.xib */; };
 		605E5AAA1B3BB0C300FD9AB2 /* Locationicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AA91B3BB0C300FD9AB2 /* Locationicon.png */; };
 		605E5AB01B3BB0CC00FD9AB2 /* distanceIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AAB1B3BB0CC00FD9AB2 /* distanceIcon.png */; };
 		605E5AB11B3BB0CC00FD9AB2 /* distribterIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AAC1B3BB0CC00FD9AB2 /* distribterIcon.png */; };
 		605E5AB21B3BB0CC00FD9AB2 /* hmTeacherIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AAD1B3BB0CC00FD9AB2 /* hmTeacherIcon.png */; };
 		605E5AB31B3BB0CC00FD9AB2 /* internIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AAE1B3BB0CC00FD9AB2 /* internIcon.png */; };
 		605E5AB41B3BB0CC00FD9AB2 /* moreFirstPage.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AAF1B3BB0CC00FD9AB2 /* moreFirstPage.png */; };
-		605E5AB81B3BB2A400FD9AB2 /* JobListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 605E5AB61B3BB2A400FD9AB2 /* JobListTableViewCell.m */; };
-		605E5AB91B3BB2A400FD9AB2 /* JobListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AB71B3BB2A400FD9AB2 /* JobListTableViewCell.xib */; };
 		605E5ACE1B3BFCE400FD9AB2 /* explore.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AC21B3BFCE400FD9AB2 /* explore.png */; };
 		605E5ACF1B3BFCE400FD9AB2 /* explore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AC31B3BFCE400FD9AB2 /* explore@2x.png */; };
 		605E5AD01B3BFCE400FD9AB2 /* explore@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5AC41B3BFCE400FD9AB2 /* explore@3x.png */; };
@@ -1394,8 +1394,6 @@
 		04B346FC1AEC82E100A8A180 /* SearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsViewController.m; sourceTree = "<group>"; };
 		04C348091AEE1ECD00B48D11 /* ComJianZhiViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComJianZhiViewModel.h; sourceTree = "<group>"; };
 		04C3480A1AEE1ECD00B48D11 /* ComJianZhiViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComJianZhiViewModel.m; sourceTree = "<group>"; };
-		04C348101AEF855200B48D11 /* JobListTableViewCell+configureForJobCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JobListTableViewCell+configureForJobCell.h"; sourceTree = "<group>"; };
-		04C348111AEF855200B48D11 /* JobListTableViewCell+configureForJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JobListTableViewCell+configureForJobCell.m"; sourceTree = "<group>"; };
 		04C348141AEF8D3F00B48D11 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
 		04C348151AEF8D3F00B48D11 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
 		04C348181AEFBB9D00B48D11 /* JobOfComListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobOfComListVC.h; sourceTree = "<group>"; };
@@ -1750,6 +1748,14 @@
 		3BF28A171B1DCD3700B2CD2D /* PublishJobVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublishJobVC.xib; sourceTree = "<group>"; };
 		4D7B0DB645FE063645795595 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5D949AFCA703C27F1EB6696F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6009BB001B3C30B8006B025C /* MLFirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLFirstVC.h; sourceTree = "<group>"; };
+		6009BB011B3C30B8006B025C /* MLFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLFirstVC.m; sourceTree = "<group>"; };
+		6009BB021B3C30B8006B025C /* MLFirstVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MLFirstVC.xib; sourceTree = "<group>"; };
+		6009BB051B3CF9FE006B025C /* JobListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobListTableViewCell.h; sourceTree = "<group>"; };
+		6009BB061B3CF9FE006B025C /* JobListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobListTableViewCell.m; sourceTree = "<group>"; };
+		6009BB071B3CF9FE006B025C /* JobListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobListTableViewCell.xib; sourceTree = "<group>"; };
+		6009BB081B3CF9FE006B025C /* JobListTableViewCell+configureForJobCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JobListTableViewCell+configureForJobCell.h"; sourceTree = "<group>"; };
+		6009BB091B3CF9FE006B025C /* JobListTableViewCell+configureForJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JobListTableViewCell+configureForJobCell.m"; sourceTree = "<group>"; };
 		605E590E1B351A4100FD9AB2 /* 企业信息icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "企业信息icon.png"; sourceTree = "<group>"; };
 		605E59101B351B7400FD9AB2 /* 服务中心icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "服务中心icon.png"; sourceTree = "<group>"; };
 		605E59141B351BDC00FD9AB2 /* 默认头像.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "默认头像.png"; sourceTree = "<group>"; };
@@ -1819,18 +1825,12 @@
 		605E5A7C1B3A8F5900FD9AB2 /* ios-social-sdk-share-quick.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "ios-social-sdk-share-quick.html"; sourceTree = "<group>"; };
 		605E5A7D1B3A8F5900FD9AB2 /* ios-social-sdk-socialBar.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "ios-social-sdk-socialBar.html"; sourceTree = "<group>"; };
 		605E5A7E1B3A8F5900FD9AB2 /* markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = markdown.css; sourceTree = "<group>"; };
-		605E5AA31B3BAF6C00FD9AB2 /* MLFirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLFirstVC.h; sourceTree = "<group>"; };
-		605E5AA41B3BAF6C00FD9AB2 /* MLFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLFirstVC.m; sourceTree = "<group>"; };
-		605E5AA51B3BAF6C00FD9AB2 /* MLFirstVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MLFirstVC.xib; sourceTree = "<group>"; };
 		605E5AA91B3BB0C300FD9AB2 /* Locationicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Locationicon.png; sourceTree = "<group>"; };
 		605E5AAB1B3BB0CC00FD9AB2 /* distanceIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = distanceIcon.png; sourceTree = "<group>"; };
 		605E5AAC1B3BB0CC00FD9AB2 /* distribterIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = distribterIcon.png; sourceTree = "<group>"; };
 		605E5AAD1B3BB0CC00FD9AB2 /* hmTeacherIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hmTeacherIcon.png; sourceTree = "<group>"; };
 		605E5AAE1B3BB0CC00FD9AB2 /* internIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = internIcon.png; sourceTree = "<group>"; };
 		605E5AAF1B3BB0CC00FD9AB2 /* moreFirstPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moreFirstPage.png; sourceTree = "<group>"; };
-		605E5AB51B3BB2A400FD9AB2 /* JobListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobListTableViewCell.h; sourceTree = "<group>"; };
-		605E5AB61B3BB2A400FD9AB2 /* JobListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobListTableViewCell.m; sourceTree = "<group>"; usesTabs = 0; };
-		605E5AB71B3BB2A400FD9AB2 /* JobListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobListTableViewCell.xib; sourceTree = "<group>"; };
 		605E5AC21B3BFCE400FD9AB2 /* explore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = explore.png; sourceTree = "<group>"; };
 		605E5AC31B3BFCE400FD9AB2 /* explore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explore@2x.png"; sourceTree = "<group>"; };
 		605E5AC41B3BFCE400FD9AB2 /* explore@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explore@3x.png"; sourceTree = "<group>"; };
@@ -2063,9 +2063,9 @@
 				1FEDE4FE1B3BD10F0082476B /* 搜索icon副本.png */,
 				1FEDE4F71B3BC5210082476B /* 搜索icon.png */,
 				605E5AA91B3BB0C300FD9AB2 /* Locationicon.png */,
-				605E5AA31B3BAF6C00FD9AB2 /* MLFirstVC.h */,
-				605E5AA41B3BAF6C00FD9AB2 /* MLFirstVC.m */,
-				605E5AA51B3BAF6C00FD9AB2 /* MLFirstVC.xib */,
+				6009BB001B3C30B8006B025C /* MLFirstVC.h */,
+				6009BB011B3C30B8006B025C /* MLFirstVC.m */,
+				6009BB021B3C30B8006B025C /* MLFirstVC.xib */,
 				04C3480D1AEE397D00B48D11 /* subClass */,
 			);
 			name = First;
@@ -2094,11 +2094,11 @@
 		0443C18D1AD554E8004F29A5 /* JobListCell */ = {
 			isa = PBXGroup;
 			children = (
-				605E5AB51B3BB2A400FD9AB2 /* JobListTableViewCell.h */,
-				605E5AB61B3BB2A400FD9AB2 /* JobListTableViewCell.m */,
-				605E5AB71B3BB2A400FD9AB2 /* JobListTableViewCell.xib */,
-				04C348101AEF855200B48D11 /* JobListTableViewCell+configureForJobCell.h */,
-				04C348111AEF855200B48D11 /* JobListTableViewCell+configureForJobCell.m */,
+				6009BB051B3CF9FE006B025C /* JobListTableViewCell.h */,
+				6009BB061B3CF9FE006B025C /* JobListTableViewCell.m */,
+				6009BB071B3CF9FE006B025C /* JobListTableViewCell.xib */,
+				6009BB081B3CF9FE006B025C /* JobListTableViewCell+configureForJobCell.h */,
+				6009BB091B3CF9FE006B025C /* JobListTableViewCell+configureForJobCell.m */,
 				0443C1911AD554E8004F29A5 /* listBadgeView.h */,
 				0443C1921AD554E8004F29A5 /* listBadgeView.m */,
 			);
@@ -3902,6 +3902,7 @@
 				0443C13E1AD5531D004F29A5 /* LaunchScreen.xib in Resources */,
 				045624EB1AD6211D006E159C /* d7.png in Resources */,
 				045625341AD6211D006E159C /* partTime.png in Resources */,
+				6009BB041B3C30B8006B025C /* MLFirstVC.xib in Resources */,
 				045625001AD6211D006E159C /* btnColor2.png in Resources */,
 				3B5539F71AF36D09009DAB84 /* resumeListCell.xib in Resources */,
 				045625641AD6211D006E159C /* color3.9.png in Resources */,
@@ -3952,6 +3953,7 @@
 				3BBF70161AD6D1CB00A33F5A /* u1f62d.png in Resources */,
 				6079985C1B32AB8200408A1F /* Icon-76@3x.png in Resources */,
 				3BBF706E1AD6D1CB00A33F5A /* sharemore_wxtalk@2x.png in Resources */,
+				6009BB0B1B3CF9FE006B025C /* JobListTableViewCell.xib in Resources */,
 				3BBF704A1AD6D1CB00A33F5A /* RecordingSignal005@2x.png in Resources */,
 				3BBF6FFD1AD6D1CB00A33F5A /* u1f601.png in Resources */,
 				0456254B1AD6211D006E159C /* close.png in Resources */,
@@ -4242,7 +4244,6 @@
 				04B346D21AEA95FA00A8A180 /* 13.png in Resources */,
 				040861C41AF904FC0060C76D /* icon_location.png in Resources */,
 				045625501AD6211D006E159C /* d5.png in Resources */,
-				605E5AA71B3BAF6C00FD9AB2 /* MLFirstVC.xib in Resources */,
 				045626141AD62129006E159C /* box_3.png in Resources */,
 				0443C13B1AD5531D004F29A5 /* Images.xcassets in Resources */,
 				3BBF70081AD6D1CB00A33F5A /* u1f614.png in Resources */,
@@ -4323,7 +4324,6 @@
 				605E5AB01B3BB0CC00FD9AB2 /* distanceIcon.png in Resources */,
 				04B346E31AEA95FA00A8A180 /* 20@2x.png in Resources */,
 				0456250E1AD6211D006E159C /* greenPin.png in Resources */,
-				605E5AB91B3BB2A400FD9AB2 /* JobListTableViewCell.xib in Resources */,
 				045625211AD6211D006E159C /* d4.png in Resources */,
 				045625B51AD6211D006E159C /* protait3-Spotlight-40@2x.png in Resources */,
 				045624F31AD6211D006E159C /* no@2x.png in Resources */,
@@ -4579,13 +4579,13 @@
 				3B8D4AAB1AE20533001F5E7F /* QiYeInfo.m in Sources */,
 				3BA76E2E1AE4F96F00A2FF26 /* MLTabbar1.m in Sources */,
 				3BA76E2A1AE4D45600A2FF26 /* KKProgressTimer.m in Sources */,
-				605E5AB81B3BB2A400FD9AB2 /* JobListTableViewCell.m in Sources */,
 				049A96951B00B67400BC8635 /* ResetPwdViewController.m in Sources */,
 				3BBF70931AD6D22A00A33F5A /* MLTabbarVC.m in Sources */,
 				04C348161AEF8D3F00B48D11 /* ArrayDataSource.m in Sources */,
 				3BBF70891AD6D1ED00A33F5A /* CDUserService.m in Sources */,
 				3BBF6F561AD6D0E800A33F5A /* MLDatePickerView.m in Sources */,
 				3BBF6F111AD6D0C900A33F5A /* UIButton+EMWebCache.m in Sources */,
+				6009BB0C1B3CF9FE006B025C /* JobListTableViewCell+configureForJobCell.m in Sources */,
 				0443C1951AD554E8004F29A5 /* listBadgeView.m in Sources */,
 				0443C1F91AD55591004F29A5 /* ViewModel.m in Sources */,
 				040861F31AFB74B10060C76D /* FogetPWDViewController.m in Sources */,
@@ -4606,7 +4606,7 @@
 				045622F21AD61A33006E159C /* CustomAnnotationView.m in Sources */,
 				0443C2281AD5560F004F29A5 /* LineDashPolyline.m in Sources */,
 				045AA7441AE93A6600ED20F1 /* firstSearchDisplayController.m in Sources */,
-				605E5AA61B3BAF6C00FD9AB2 /* MLFirstVC.m in Sources */,
+				6009BB031B3C30B8006B025C /* MLFirstVC.m in Sources */,
 				3BBF6F671AD6D0F200A33F5A /* HZAreaPickerView.m in Sources */,
 				0443C19A1AD554FF004F29A5 /* MLJobListViewController.m in Sources */,
 				3B8D4AA81AE20489001F5E7F /* JianZhiShenQing.m in Sources */,
@@ -4642,6 +4642,7 @@
 				3BC84AC11B26D70000B78C6B /* feedbackVC.m in Sources */,
 				0443C2231AD5560F004F29A5 /* CommonUtility.m in Sources */,
 				3BBF6F081AD6D0C900A33F5A /* EMSDImageCache.m in Sources */,
+				6009BB0A1B3CF9FE006B025C /* JobListTableViewCell.m in Sources */,
 				040861E51AFA714C0060C76D /* AVQuery+common.m in Sources */,
 				0443C1CD1AD55572004F29A5 /* POIDataModel.m in Sources */,
 				3BBF70871AD6D1ED00A33F5A /* CDCache.m in Sources */,
@@ -4663,7 +4664,6 @@
 				0456231F1AD61B22006E159C /* ButtonCellTableViewCell.m in Sources */,
 				045626481AD6214D006E159C /* imageSaveAndReadUtil.m in Sources */,
 				045623C81AD61E1B006E159C /* PopoverView.m in Sources */,
-				04C348121AEF855200B48D11 /* JobListTableViewCell+configureForJobCell.m in Sources */,
 				1F3E7D3B1B3944330071EECF /* StudentCertifyViewController.m in Sources */,
 				3BBF6F091AD6D0C900A33F5A /* EMSDWebImageCompat.m in Sources */,
 				0443C22B1AD5560F004F29A5 /* SRNavigationCell.m in Sources */,

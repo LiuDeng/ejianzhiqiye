@@ -164,7 +164,7 @@
 -(void)addViewToScrollView
 {
     CGFloat edgewidth=2.0;
-    CGFloat width = 60.0f;
+    CGFloat width = 90.0f;
     CGFloat marginwidth=(MainScreenWidth-(4*edgewidth)-4*width)/3;
     int count=(int)[collectionViewCellArray count];
     for (int i=0; i<[collectionViewCellArray count]; i++) {
@@ -177,7 +177,7 @@
         }
         [self.middleScrollView addSubview:view];
     }
-    self.middleScrollView.contentSize=CGSizeMake((width+marginwidth)*count,80);
+    self.middleScrollView.contentSize=CGSizeMake((width+marginwidth)*count,102);
     //    self.middleScrollView.pagingEnabled=YES;
 }
 
@@ -185,7 +185,7 @@
 -(void)addHeaderAndFooterToTableView
 {
     //添加表头
-    [_tableHeadView2 setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 112+130*[[UIScreen mainScreen] bounds].size.width/320)];
+    [_tableHeadView2 setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 112+152*[[UIScreen mainScreen] bounds].size.width/320)];
     //    [_tableHeadView setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 284+130*[[UIScreen mainScreen] bounds].size.width/320)];
     [self.joblistTableVC.tableView setTableHeaderView:_tableHeadView2];
     //添加表尾
