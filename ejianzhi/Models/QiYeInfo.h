@@ -32,4 +32,5 @@
 @property (nonatomic,strong) AVFile *qiYeIdCard;
 @property (nonatomic,strong) NSString *qiScale;
 @property (nonatomic,strong) AVFile *qiYeAgreement;
+@property (nonatomic, strong) NSString *isAuthorized;
 @end

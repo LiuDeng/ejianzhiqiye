@@ -35,7 +35,7 @@
     
 }
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) CompanyInfoViewModel *companyInfoVM;
+@property (nonatomic, retain) QiYeInfo *qiyeInfo;
 
 @end
 
@@ -66,32 +66,23 @@
 
 - (void)loadCompanyInfo
 {
-    AVQuery *userQuery=[AVUser query];
     AVUser *usr=[AVUser currentUser];
-    [userQuery whereKey:@"objectId" equalTo:usr.objectId];
     
     AVQuery *query=[AVQuery queryWithClassName:@"QiYeInfo"];
-    
-    [query whereKey:@"qiYeUser" matchesQuery:userQuery];
-    
-    query.cachePolicy=kAVCachePolicyNetworkElseCache;
-    query.maxCacheAge=3600*24;
-    
+    [query whereKey:@"userObjectId" equalTo:usr.objectId];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             if ([objects count]>0) {
-                self.companyInfoVM = [[CompanyInfoViewModel alloc] initWithData:[objects firstObject]];
-                [self tableViewInit];
-                [self headerRereshing];
+                AVObject *qiyeInfo = [objects objectAtIndex:0];
                 
-                if ([self.companyInfoVM.isAuthorized isEqualToString:@"已认证"])
+                if ([[qiyeInfo objectForKey:@"isAuthorized"] isEqualToString:@"已认证"])
                 {
                     [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"qiyeIsValidate"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     [self tableViewInit];
                     [self headerRereshing];
                 }
-                else if ([self.companyInfoVM.isAuthorized isEqualToString:@"未认证"])
+                else if ([[qiyeInfo objectForKey:@"isAuthorized"] isEqualToString:@"未认证"])
                 {
                     [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"qiyeIsValidate"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -100,7 +91,7 @@
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的企业还未认证" delegate:self cancelButtonTitle:@"稍后认证" otherButtonTitles:@"立即认证", nil];
                     alertView.tag = 100;
                     [alertView show];
-                } else if ([self.companyInfoVM.isAuthorized isEqualToString:@"未处理"])
+                } else if ([[qiyeInfo objectForKey:@"isAuthorized"] isEqualToString:@"未处理"])
                 {
                     [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"qiyeIsValidate"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
