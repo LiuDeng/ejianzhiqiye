@@ -370,24 +370,29 @@ static  SRLoginVC *thisController=nil;
 
 - (void)setValidateWithArray:(NSArray *)objects
 {
-    UserDetail *userDetail = [[UserDetail alloc] initWithClassName:@"UserDetail"];
-    AVObject *user = [objects objectAtIndex:0];
-    userDetail = (UserDetail *)user;
-    if ([userDetail.isAuthorized isEqualToString:@"已认证"])
+    int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
+    if (type == 2)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"userIsValidate"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        UserDetail *userDetail = [[UserDetail alloc] initWithClassName:@"UserDetail"];
+        AVObject *user = [objects objectAtIndex:0];
+        userDetail = (UserDetail *)user;
+        if ([userDetail.isAuthorized isEqualToString:@"已认证"])
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"userIsValidate"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        else if ([userDetail.isAuthorized isEqualToString:@"未认证"])
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"userIsValidate"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        else if ([userDetail.isAuthorized isEqualToString:@"未处理"])
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"userIsValidate"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
     }
-    else if ([userDetail.isAuthorized isEqualToString:@"未认证"])
-    {
-        [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"userIsValidate"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    else if ([userDetail.isAuthorized isEqualToString:@"未处理"])
-    {
-        [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"userIsValidate"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

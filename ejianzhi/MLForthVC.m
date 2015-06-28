@@ -116,13 +116,8 @@
     }
     else if (validate == 2)
     {
-        [self.certifyButton setTitle:@"未处理" forState:UIControlStateNormal];
-        self.certifyButton.enabled = YES;
-    }
-    else if (validate == 3)
-    {
         [self.certifyButton setTitle:@"审核中" forState:UIControlStateNormal];
-        self.certifyButton.enabled = NO;
+        self.certifyButton.enabled = YES;
     }
     if ([AVUser currentUser]==nil) {
         MLTabbarVC *tabbar = [MLTabbarVC shareInstance];

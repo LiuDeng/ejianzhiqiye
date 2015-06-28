@@ -260,7 +260,7 @@
     }
     
     
-    [[NSUserDefaults standardUserDefaults] setObject:@(3) forKey:@"userIsValidate"];
+    [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"userIsValidate"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }

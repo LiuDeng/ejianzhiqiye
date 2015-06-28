@@ -351,7 +351,7 @@
             
         }];
     }
-    [[NSUserDefaults standardUserDefaults] setObject:@(3) forKey:@"qiyeIsValidate"];
+    [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"qiyeIsValidate"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 - (void)backView{

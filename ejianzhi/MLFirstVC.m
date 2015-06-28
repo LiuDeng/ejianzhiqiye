@@ -42,6 +42,12 @@
 @interface MLFirstVC ()<ValueClickDelegate,UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>
 {
     NSArray *collectionViewCellArray;
+    SRAdvertisingView *_bannerView;
+    UIScrollView *_buttonScrollView;
+    UIView *_lineGrayView;
+    UILabel *_recommendLabel;
+    UIView *_bottomLineView;
+    UIView *_headView;
 }
 
 
@@ -97,8 +103,98 @@
     return self;
 }
 
+- (void)creatHeadView{
+    CGFloat bannerWidth=130*[[UIScreen mainScreen] bounds].size.width/320;
+        _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH,bannerWidth+102+12+37)];
+   // _headView.backgroundColor=[UIColor redColor];
+       _bannerView=[[SRAdvertisingView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 130*[[UIScreen mainScreen] bounds].size.width/320)];
+    [_headView addSubview:_bannerView];
+    
+    
+    [self creatScrollView];
+    [self creatLineGrayView];
+    [self creatRecommendLabel];
+    [self creatBottomLineView];
+    
+}
+
+-(void)creatScrollView{
+    
+    CGFloat scrollViewWidth=102;
+    _buttonScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 130*[[UIScreen mainScreen] bounds].size.width/320, SCREENWIDTH,scrollViewWidth)];
+    [_headView addSubview:_buttonScrollView];
+        NSArray *imageArray=@[@"internIcon.png",@"hmTeacherIcon.png",@"distribterIcon.png",@"moreFirstPage.png"];
+    NSArray *titleArray=@[@"实习",@"家教",@"派单",@"更多"];
+    for(NSInteger i=0;i<4;i++){
+        UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
+        CGFloat width=60;
+        CGFloat height=102;
+        CGFloat space=(SCREENWIDTH-width*4)/5;
+        button.frame=CGRectMake(space*(i+1)+width*i,(height-width)/4, width, width);
+        [button setImage:[UIImage imageNamed:imageArray[i]] forState:UIControlStateNormal];
+
+        [_buttonScrollView addSubview:button];
+        button.tag=100+i;
+        [button addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        UILabel *label=[[UILabel alloc]init];
+        label.frame=CGRectMake(space*(i+1)+width*i,width+(height-width)/4+5, width, 21);
+        label.text=titleArray[i];
+        label.textAlignment=NSTextAlignmentCenter;
+        label.textColor=[UIColor colorWithRed:48/255.0 green:48/255.0 blue:48/255.0 alpha:1];
+        [_buttonScrollView addSubview:label];
+    }
+}
+
+-(void)btnClick:(UIButton*)button{
+
+    switch (button.tag){
+        case 100:{
+            [self itWorkBtnAction:button];
+        }
+            break;
+        case 101:{
+            [self homeTeacherBtnAction:button];
+        }
+            break;
+        case 102:{
+            [self modelBtnAction:button];
+            
+        }
+            break;
+        case 103:{
+            [self moreBtnAction:button];
+        }
+            break;
+            
+    }
+}
+-(void)creatLineGrayView{
+    _lineGrayView=[[UIView alloc]initWithFrame:CGRectMake(0, _bannerView.frame.size.height+_buttonScrollView.frame.size.height, SCREENWIDTH, 12)];
+    _lineGrayView.backgroundColor=[UIColor colorWithRed:239/255.0 green:239/255.0 blue:244/255.0 alpha:1];
+    [_headView addSubview:_lineGrayView];
+
+}
+
+- (void)creatRecommendLabel{
+    _recommendLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, _lineGrayView.frame.origin.y+12, 74, 22)];
+    _recommendLabel.text=@"推荐兼职";
+    _recommendLabel.font=[UIFont fontWithName:nil size:16];
+    _recommendLabel.textColor=[UIColor colorWithRed:48/255.0 green:48/255.0 blue:48/255.0 alpha:1];
+    
+    [_headView addSubview:_recommendLabel];
+    
+}
+
+- (void)creatBottomLineView{
+    _bottomLineView=[[UIView alloc]initWithFrame:CGRectMake(0, _recommendLabel.frame.origin.y+24, SCREENWIDTH, 1)];
+    _bottomLineView.backgroundColor=[UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:0.5];
+
+    [_headView addSubview:_bottomLineView];
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self creatHeadView];
 //    UIImageView *searchbarImageView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchBarImage"]];
     
 //    searchbarImageView.userInteractionEnabled=YES;
@@ -128,15 +224,6 @@
     
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"搜索icon副本.png"] style:UIBarButtonItemStylePlain target:self action:@selector(findJobWithLocationAction:)];
     self.navigationItem.rightBarButtonItem=rightItem;
-//    UIImage *searchImage=[UIImage imageNamed:@"搜索icon.png"];
-//    UIButton *searchButton=[UIButton buttonWithType:UIButtonTypeCustom];
-//    [searchButton setImage:searchImage forState:UIControlStateNormal];
-//    [searchButton addTarget:self action:@selector(findJobWithLocationAction:) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *searchBtnItem=[[UIBarButtonItem alloc]initWithCustomView:searchButton];
-//    self.navigationItem.rightBarButtonItem=searchBtnItem;
-    
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"附近兼职" style:UIBarButtonItemStylePlain target:self action:@selector(findJobWithLocationAction:)];
-//    self.navigationItem.rightBarButtonItem.tintColor=[UIColor whiteColor];
     self.viewModel=[[MLMainPageViewModel alloc]init];
     [self addChildViewController:self.joblistTableVC];
     //collectiveViewCell
@@ -153,6 +240,8 @@
     
     
 }
+
+
 
 -(void)searchBarTapped
 {
@@ -185,9 +274,10 @@
 -(void)addHeaderAndFooterToTableView
 {
     //添加表头
-    [_tableHeadView2 setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 112+152*[[UIScreen mainScreen] bounds].size.width/(SCREENWIDTH-55))];
-    //    [_tableHeadView setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 284+130*[[UIScreen mainScreen] bounds].size.width/320)];
-    [self.joblistTableVC.tableView setTableHeaderView:_tableHeadView2];
+   
+    [_tableHeadView2 setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 172+152*[[UIScreen mainScreen] bounds].size.width/320)];
+        self.joblistTableVC.tableView.tableHeaderView=_headView;
+    //[self.joblistTableVC.tableView setTableHeaderView:_tableHeadView2];
     //添加表尾
     [self.joblistTableVC addFooterRefresher];
 }
@@ -238,10 +328,11 @@
         NSString *imageUrl=[dict objectForKey:@"BannerImageUrl"];
         [urlArray addObject:imageUrl];
     }
-    SRAdvertisingView *bannerView=[[SRAdvertisingView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 152*[[UIScreen mainScreen] bounds].size.width/320) imageArray:urlArray interval:3.0];
+    SRAdvertisingView *bannerView=[[SRAdvertisingView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 130*[[UIScreen mainScreen] bounds].size.width/320) imageArray:urlArray interval:3.0];
     
     bannerView.vDelegate=self;
-    [self.blankView addSubview:bannerView];
+    //[self.blankView addSubview:bannerView];
+    [_bannerView addSubview:bannerView];
 }
 
 

@@ -716,7 +716,6 @@
 		3BF28A131B1DB99B00B2CD2D /* box_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BF28A121B1DB99B00B2CD2D /* box_4.png */; };
 		3BF28A181B1DCD3700B2CD2D /* PublishJobVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF28A161B1DCD3700B2CD2D /* PublishJobVC.m */; };
 		3BF28A191B1DCD3700B2CD2D /* PublishJobVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BF28A171B1DCD3700B2CD2D /* PublishJobVC.xib */; };
-		6009BB031B3C30B8006B025C /* MLFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6009BB011B3C30B8006B025C /* MLFirstVC.m */; };
 		6009BB041B3C30B8006B025C /* MLFirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009BB021B3C30B8006B025C /* MLFirstVC.xib */; };
 		6009BB0A1B3CF9FE006B025C /* JobListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6009BB061B3CF9FE006B025C /* JobListTableViewCell.m */; };
 		6009BB0B1B3CF9FE006B025C /* JobListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009BB071B3CF9FE006B025C /* JobListTableViewCell.xib */; };
@@ -806,6 +805,7 @@
 		6088B57B1B3FD43F0061315A /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 6088B5781B3FD43F0061315A /* Icon-76.png */; };
 		6088B57C1B3FD43F0061315A /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6088B5791B3FD43F0061315A /* Icon-76@2x.png */; };
 		6088B57D1B3FD43F0061315A /* Icon-76@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6088B57A1B3FD43F0061315A /* Icon-76@3x.png */; };
+		6088B5831B3FFF810061315A /* MLFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6088B5821B3FFF810061315A /* MLFirstVC.m */; };
 		F35BA087EEF41E814C4DE314 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D949AFCA703C27F1EB6696F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1750,7 +1750,6 @@
 		4D7B0DB645FE063645795595 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5D949AFCA703C27F1EB6696F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6009BB001B3C30B8006B025C /* MLFirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLFirstVC.h; sourceTree = "<group>"; };
-		6009BB011B3C30B8006B025C /* MLFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLFirstVC.m; sourceTree = "<group>"; };
 		6009BB021B3C30B8006B025C /* MLFirstVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MLFirstVC.xib; sourceTree = "<group>"; };
 		6009BB051B3CF9FE006B025C /* JobListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobListTableViewCell.h; sourceTree = "<group>"; };
 		6009BB061B3CF9FE006B025C /* JobListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobListTableViewCell.m; sourceTree = "<group>"; };
@@ -1865,6 +1864,7 @@
 		6088B5781B3FD43F0061315A /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
 		6088B5791B3FD43F0061315A /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
 		6088B57A1B3FD43F0061315A /* Icon-76@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@3x.png"; sourceTree = "<group>"; };
+		6088B5821B3FFF810061315A /* MLFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLFirstVC.m; sourceTree = "<group>"; };
 		E42360BA5E928BF1053A5BC4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2068,7 +2068,7 @@
 				1FEDE4F71B3BC5210082476B /* 搜索icon.png */,
 				605E5AA91B3BB0C300FD9AB2 /* Locationicon.png */,
 				6009BB001B3C30B8006B025C /* MLFirstVC.h */,
-				6009BB011B3C30B8006B025C /* MLFirstVC.m */,
+				6088B5821B3FFF810061315A /* MLFirstVC.m */,
 				6009BB021B3C30B8006B025C /* MLFirstVC.xib */,
 				04C3480D1AEE397D00B48D11 /* subClass */,
 			);
@@ -4619,7 +4619,6 @@
 				045622F21AD61A33006E159C /* CustomAnnotationView.m in Sources */,
 				0443C2281AD5560F004F29A5 /* LineDashPolyline.m in Sources */,
 				045AA7441AE93A6600ED20F1 /* firstSearchDisplayController.m in Sources */,
-				6009BB031B3C30B8006B025C /* MLFirstVC.m in Sources */,
 				3BBF6F671AD6D0F200A33F5A /* HZAreaPickerView.m in Sources */,
 				0443C19A1AD554FF004F29A5 /* MLJobListViewController.m in Sources */,
 				3B8D4AA81AE20489001F5E7F /* JianZhiShenQing.m in Sources */,
@@ -4678,6 +4677,7 @@
 				045626481AD6214D006E159C /* imageSaveAndReadUtil.m in Sources */,
 				045623C81AD61E1B006E159C /* PopoverView.m in Sources */,
 				1F3E7D3B1B3944330071EECF /* StudentCertifyViewController.m in Sources */,
+				6088B5831B3FFF810061315A /* MLFirstVC.m in Sources */,
 				3BBF6F091AD6D0C900A33F5A /* EMSDWebImageCompat.m in Sources */,
 				0443C22B1AD5560F004F29A5 /* SRNavigationCell.m in Sources */,
 				045623141AD61AC9006E159C /* QCheckBox.m in Sources */,

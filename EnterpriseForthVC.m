@@ -96,19 +96,15 @@
     }
     else if (qiyeIsValidate == 0)
     {
-        [self.authenticateButton setTitle:@"去认证" forState:UIControlStateNormal];
+        [self.authenticateButton setTitle:@"未认证" forState:UIControlStateNormal];
         self.authenticateButton.enabled = YES;
     }
     else if (qiyeIsValidate == 2)
     {
-        [self.authenticateButton setTitle:@"未处理" forState:UIControlStateNormal];
+        [self.authenticateButton setTitle:@"审核中" forState:UIControlStateNormal];
         self.authenticateButton.enabled = YES;
     }
-    else if (qiyeIsValidate == 3)
-    {
-        [self.authenticateButton setTitle:@"审核中" forState:UIControlStateNormal];
-        self.authenticateButton.enabled = NO;
-    }
+    
     
     self.userAvatarView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREENWIDTH-80)/2-10, 30, 80, 80)];
     self.userAvatarView.image = [UIImage imageNamed:@"placeholder"];

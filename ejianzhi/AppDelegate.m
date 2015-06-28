@@ -239,11 +239,15 @@
     NSString *action = [data objectForKey:@"action"];
     if ([action isEqualToString:@"com.ejianzhi.qiye.validate"]) // 企业认证通过通知
     {
+        [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"qiyeIsValidate"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[data objectForKey:@"title"] message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]  delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
     }
     else if ([action isEqualToString:@"com.ejianzhi.student.validate"])  // 学生认证通知
     {
+        [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"userIsValidate"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[data objectForKey:@"title"] message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]  delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
     }
