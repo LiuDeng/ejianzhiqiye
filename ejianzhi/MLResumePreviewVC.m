@@ -485,6 +485,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     [AVCloud callFunctionInBackground:@"luyong" withParameters:parameters block:^(id object, NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if (!error) {
+            
             [MBProgressHUD showSuccess:@"您已录用该求职者" toView:self.view];
         }else{
             [MBProgressHUD showSuccess:@"请求失败，请再次尝试" toView:self.view];

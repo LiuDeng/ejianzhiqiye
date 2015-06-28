@@ -30,10 +30,16 @@
 #import "UMSocialSinaHandler.h"
 #import <AVOSCloudSNS/AVOSCloudSNS.h>
 #import "UMSocialWechatHandler.h"
+#import "HelpViewController.h"
+#import "MyApplicationList.h"
+#import "MLForthVC.h"
 
 #define SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 
-@interface AppDelegate ()
+@interface AppDelegate () <HelpViewControllerDelegate, UIAlertViewDelegate>
+{
+    UINavigationController *nav;
+}
 
 
 @property (strong,nonatomic)MLLoginManger *loginManager;
@@ -160,15 +166,37 @@
     }
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[SRLoginVC shareLoginVC]];
+    nav = [[UINavigationController alloc]initWithRootViewController:[SRLoginVC shareLoginVC]];
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"didGuide"] intValue] == 1)
+    {
+        self.window.rootViewController = nav;
+    }
+    else
+    {
+        [self showWelcome];
+    }
+    [launchOptions objectForKey:@"userInfo"];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     //消除消息提示数字
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
-        
+    
     return YES;
+}
+
+- (void)showWelcome
+{
+    HelpViewController *help = [[HelpViewController alloc] init];
+    help.delegate = self;
+    self.window.rootViewController = help;
+}
+
+-(void)hideHelpViewController
+{
+    self.window.rootViewController = nav;
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
@@ -188,6 +216,8 @@
     //聊天接收推送消息必需
     AVInstallation *currentInstallation = [AVInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
+    [[NSUserDefaults standardUserDefaults] setObject:currentInstallation.deviceToken forKey:@"deviceToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [currentInstallation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
             [self showErrorWithTitle:@"Installation保存失败" error:error];
@@ -204,13 +234,61 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     NSLog(@"%@", userInfo);
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]  delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-    [alertView show];
+    
+    NSDictionary *data = [userInfo objectForKey:@"data"];
+    NSString *action = [data objectForKey:@"action"];
+    if ([action isEqualToString:@"com.ejianzhi.qiye.validate"]) // 企业认证通过通知
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[data objectForKey:@"title"] message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]  delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+    else if ([action isEqualToString:@"com.ejianzhi.student.validate"])  // 学生认证通知
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[data objectForKey:@"title"] message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]  delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+    else if ([action isEqualToString:@"com.ejianzhi.notification"]) // 推送申请录用通知(打开我的申请界面)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[data objectForKey:@"title"] message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]  delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        alertView.tag = notification;
+        [alertView show];
+    }
+    else if ([action isEqualToString:@"com.ejianzhi.jobdetail"]) // 当推送某个兼职详情时
+    {
+        
+    }
+    else if ([action isEqualToString:@"com.ejianzhi.wap"]) //推送某个网址(打开webview界面)
+    {
+        
+    }
+    
+    
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == notification)
+    {
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue] == 2)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"notification"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [MLTabbarVC shareInstance].selectedIndex = 2;
+            [self performSelector:@selector(dealWithNotification) withObject:self afterDelay:0.1];
+            
+        }
+    }
+}
+
+- (void)dealWithNotification
+{
+    [[MLTabbarVC shareInstance].forthVC showMyApplication:[MLTabbarVC shareInstance].forthVC.myApplicationButton];
+    
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -11,18 +11,13 @@
 
 
 //tabViewController
-#import "MLFirstVC.h"
-#import "MLChatVC.h"
-#import "MLForthVC.h"
+
 
 #import "JobListTableViewController.h"
 #import "JobListWithDropDownListVCViewController.h"
 @interface MLTabbarVC ()
 
-@property (strong,nonatomic)MLFirstVC *firstVC;
-//@property (strong,nonatomic)MLSecondVC *secondVC;
-@property (strong,nonatomic)MLChatVC *chatVC;
-@property (strong,nonatomic)MLForthVC *forthVC;
+
 
 @end
 

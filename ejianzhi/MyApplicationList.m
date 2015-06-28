@@ -211,6 +211,13 @@
     
     [self.view addSubview:switcher];
     
+    int notification = [[[NSUserDefaults standardUserDefaults] objectForKey:@"notification"] intValue];
+    if (notification == 1)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"notification"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [switcher forceSelectedIndex:1 animated:YES];
+    }
 }
 
 

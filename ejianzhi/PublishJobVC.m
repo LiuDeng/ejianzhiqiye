@@ -82,7 +82,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    self.title = @"发布职位";
     if (!self.jianzhiModel) {
         self.jianzhiModel=[[JianZhi alloc]init];
     }
@@ -353,6 +353,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 };
 
 - (void)chooseArea{
+    [self.view endEditing:YES];
     [self.view addSubview:coverView];
     [self.locatePicker showInView:self.view];
 }
@@ -426,7 +427,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 }
 
 - (void)chooseSalaryType{
-    
+    [self.view endEditing:YES];
     NSArray *array=[[NSUserDefaults standardUserDefaults]objectForKey:FliterSettlementWay];
     
     self.filterVC.datasource=array;
@@ -460,7 +461,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 }
 
 - (void)chooseJobType{
-    
+    [self.view endEditing:YES];
     NSArray *array=[[NSUserDefaults standardUserDefaults]objectForKey:FliterType];
     
     self.filterVC.datasource=array;
@@ -472,6 +473,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 }
 
 - (void)chooseDate1{
+    [self.view endEditing:YES];
     [datePickerView setBirthday:[NSDate date]];
     datePickerView.index=1;
     [self.view addSubview:coverView];
@@ -480,6 +482,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 }
 
 - (void)chooseDate2{
+    [self.view endEditing:YES];
     [datePickerView setBirthday:[NSDate date]];
     datePickerView.index=2;
     [self.view addSubview:coverView];

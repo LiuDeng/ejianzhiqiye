@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MLForthVC : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *myApplicationButton;
+- (IBAction)showMyApplication:(UIButton *)sender;
 
 @end

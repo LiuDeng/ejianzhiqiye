@@ -12,6 +12,14 @@
 #import "MLTabbarVC.h"
 #import "MLTabbar1.h"
 
+enum PUSHTYPE {
+    qiyeValidate = 1,
+    studentValidate = 2,
+    notification = 3,
+    jobdetail = 4,
+    wap
+};
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

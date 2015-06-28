@@ -181,8 +181,8 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
             self.navigationItem.leftBarButtonItem=leftBarItem;
 
         }else{
-            UIBarButtonItem *rightBarItem=[[UIBarButtonItem alloc]initWithTitle:@"再次发布" style:UIBarButtonItemStylePlain target:self action:@selector(publishAgain)];
-            self.navigationItem.rightBarButtonItem=rightBarItem;
+//            UIBarButtonItem *rightBarItem=[[UIBarButtonItem alloc]initWithTitle:@"再次发布" style:UIBarButtonItemStylePlain target:self action:@selector(publishAgain)];
+//            self.navigationItem.rightBarButtonItem=rightBarItem;
         }
         
     }else{
@@ -566,7 +566,8 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 
 - (void)publish{
     
-    AVObject *jianzhiObject=[AVObject objectWithClassName:@"JianZhi"];;
+    AVObject *jianzhiObject=[AVObject objectWithClassName:@"JianZhi"];
+    [jianzhiObject setObject:@(test) forKey:@"isTest"];
     [jianzhiObject setObject:self.viewModel.jianZhi.jianZhiQiYeLuYongValue forKey:@"jianZhiQiYeLuYongValue"];
     [jianzhiObject setObject:self.viewModel.jianZhi.jianZhiContent forKey:@"jianZhiContent"];
     [jianzhiObject setObject:self.viewModel.jianZhi.jianZhiAddress forKey:@"jianZhiAddress"];

@@ -43,6 +43,7 @@
 
 @property (nonatomic,strong)NSString *jobPhone;
 @property (nonatomic,strong)NSString *jobContactName;
+@property (nonatomic, assign) BOOL isTest;
 //页面所需评价、评论数据请求
 
 @property (nonatomic,strong)UIImage *typeImage;

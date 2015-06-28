@@ -58,6 +58,7 @@
     AVQuery *query= [AVQuery queryWithClassName:[NSString stringWithFormat:@"%@",[JianZhi class]]];
     [query whereKey:key equalTo:value];
     [query orderByDescending:@"createdAt"];
+    [self.mainQuery whereKey:@"isTest" equalTo:@(test)];
     return query;
 }
 
@@ -68,7 +69,8 @@
     [self.mainQuery whereKey:key equalTo:value];
     [self.mainQuery orderByDescending:@"createdAt"];
      [self.mainQuery whereKey:@"isOutDated" notEqualTo:@YES];
-    [self.mainQuery whereKey:@"isTest" notEqualTo:@YES];
+    [self.mainQuery whereKey:@"isTest" equalTo:@(test)];
+//    [self.mainQuery whereKey:@"isTest" notEqualTo:@YES];
 }
 
 ///**
@@ -83,6 +85,7 @@
     query.cachePolicy=kAVCachePolicyNetworkElseCache;
     [query orderByDescending:@"createdAt"];
     [query whereKey:@"isOutDated" notEqualTo:@YES];
+    [query whereKey:@"isTest" equalTo:@(test)];
     return query;
 }
 
@@ -100,6 +103,7 @@
     [query orderByDescending:@"createdAt"];
     [query whereKey:@"isShowInHome" notEqualTo:@NO];
     [query whereKey:@"isOutDated" notEqualTo:@YES];
+    [query whereKey:@"isTest" equalTo:@(test)];
     return query;
 }
 
@@ -213,10 +217,11 @@
             }
             //字段 如何从子类中获得
             typeQuery=[self setFliterSubQueryParams:@"jianZhiType" objectKey:keyword];
+            [typeQuery whereKey:@"isTest" equalTo:@(test)];
             [self addSubQueryToQueryArray:typeQuery];
         }
         [self setMainQueryParamsFromSubquerise];
-        [self headerRefresh];
+        [self headerRefresh];//分类导航
     }
 }
 
@@ -235,6 +240,7 @@
                 [self removeQueryFromQueryArray:settleQuery];
             }
             settleQuery=[self setFliterSubQueryParams:@"jianZhiWageType" objectKey:keyword];
+            [settleQuery whereKey:@"isTest" equalTo:@(test)];
             [self addSubQueryToQueryArray:settleQuery];
         }
         [self setMainQueryParamsFromSubquerise];
@@ -274,6 +280,7 @@
     if (fliterContent!=nil && keyword!=nil) {
         AVQuery *query = [AVQuery queryWithClassName:[NSString stringWithFormat:@"%@",[JianZhi class]]];
         [query whereKey:fliterContent equalTo:keyword];
+        [query whereKey:@"isTest" equalTo:@(test)];
         return query;
     }
     return nil;

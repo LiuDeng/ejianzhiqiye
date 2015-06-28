@@ -291,6 +291,8 @@ static  SRLoginVC *thisController=nil;
                         [[NSUserDefaults standardUserDefaults] setObject:user.objectId forKey:@"userObjectId"];
                         [[NSUserDefaults standardUserDefaults] synchronize];
                         
+                        
+                        
                         AVQuery *query1 = [AVQuery queryWithClassName:@"UserDetail"];
                         [query1 whereKey:@"userObjectId" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"userObjectId"]];
                         [query1 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -303,7 +305,10 @@ static  SRLoginVC *thisController=nil;
                     }
                 }];
                 
-               
+                AVUser *user = [AVUser currentUser];
+                [user setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"] forKey:@"installationId"];
+                [user saveEventually];
+                
                 int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
                 if (type == 1)
                 {
@@ -515,6 +520,11 @@ static  SRLoginVC *thisController=nil;
                         }
                         
                         [loginer loginInbackground:snsAccount.userName Pwd:@"123456" loginType:loginType withBlock:^(BOOL succeed, NSNumber *userType) {
+                            
+                            AVUser *user = [AVUser currentUser];
+                            [user setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"] forKey:@"installationId"];
+                            [user saveEventually];
+                            
                             [[NSUserDefaults standardUserDefaults] setObject:snsAccount.userName forKey:@"userName"];
                             [[NSUserDefaults standardUserDefaults] synchronize];
                             int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
@@ -602,6 +612,11 @@ static  SRLoginVC *thisController=nil;
                         }
                         
                         [loginer loginInbackground:snsAccount.userName Pwd:@"123456" loginType:loginType withBlock:^(BOOL succeed, NSNumber *userType) {
+                            
+                            AVUser *user = [AVUser currentUser];
+                            [user setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"] forKey:@"installationId"];
+                            [user saveEventually];
+                            
                             [[NSUserDefaults standardUserDefaults] setObject:snsAccount.userName forKey:@"userName"];
                             [[NSUserDefaults standardUserDefaults] synchronize];
                             int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
@@ -688,6 +703,11 @@ static  SRLoginVC *thisController=nil;
                         }
                         
                         [loginer loginInbackground:snsAccount.userName Pwd:@"123456" loginType:loginType withBlock:^(BOOL succeed, NSNumber *userType) {
+                            
+                            AVUser *user = [AVUser currentUser];
+                            [user setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"] forKey:@"installationId"];
+                            [user saveEventually];
+                            
                             [[NSUserDefaults standardUserDefaults] setObject:snsAccount.userName forKey:@"userName"];
                             [[NSUserDefaults standardUserDefaults] synchronize];
                             int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];

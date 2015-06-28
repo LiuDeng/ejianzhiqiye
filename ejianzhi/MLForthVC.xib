@@ -12,6 +12,7 @@
                 <outlet property="containerView" destination="cLb-Of-AaN" id="9hj-yc-Jvy"/>
                 <outlet property="loginButton" destination="7E0-ky-tqn" id="QqI-ig-AlX"/>
                 <outlet property="mainScrollView" destination="S3c-5R-9WS" id="t3B-wS-HWX"/>
+                <outlet property="myApplicationButton" destination="8sH-fe-tKB" id="F4G-75-WM3"/>
                 <outlet property="userAvatarView" destination="RUB-Lq-set" id="2Db-zn-9gy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -50,7 +51,7 @@
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="03EBBDAF-29D0-4A7B-8207-4710BD9957F6" translatesAutoresizingMaskIntoConstraints="NO" id="RUB-Lq-set">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="076BE23D-E351-49AE-BFE0-64A9CD60B2A2" translatesAutoresizingMaskIntoConstraints="NO" id="RUB-Lq-set">
                                             <rect key="frame" x="15" y="28" width="50" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="2Xp-4i-v0B"/>
@@ -339,7 +340,7 @@
                                         </mask>
                                     </variation>
                                     <connections>
-                                        <action selector="showMyApplication:" destination="-1" eventType="touchUpInside" id="Nbe-bF-9u8"/>
+                                        <action selector="showMyApplication:" destination="-1" eventType="touchUpInside" id="KaF-Vn-Cjr"/>
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="OFP-oH-nga">
@@ -1051,7 +1052,7 @@
         </view>
     </objects>
     <resources>
-        <image name="03EBBDAF-29D0-4A7B-8207-4710BD9957F6" width="60" height="60">
+        <image name="076BE23D-E351-49AE-BFE0-64A9CD60B2A2" width="60" height="60">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -1303,7 +1304,7 @@ AAAAAAAAAAAAADjaA
         </image>
         <image name="arrow.png" width="30" height="30"/>
         <image name="profile_pop_button_background_bottom_hl.png" width="640" height="210"/>
-        <image name="profile_pop_button_background_top_hl.png" width="640" height="210"/>
+        <image name="profile_pop_button_background_top_hl.png" width="702" height="226"/>
         <image name="我的收藏icon.png" width="90" height="91"/>
         <image name="我的申请icon.png" width="90" height="91"/>
         <image name="我的简历icon.png" width="90" height="91"/>

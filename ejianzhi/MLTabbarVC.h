@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MLFirstVC.h"
+#import "MLChatVC.h"
+#import "MLForthVC.h"
 @interface MLTabbarVC : UITabBarController
 +(MLTabbarVC*)shareInstance;
+@property (strong,nonatomic)MLFirstVC *firstVC;
+//@property (strong,nonatomic)MLSecondVC *secondVC;
+@property (strong,nonatomic)MLChatVC *chatVC;
+@property (strong,nonatomic)MLForthVC *forthVC;
 @end
