@@ -512,7 +512,6 @@
 		3BB8881C1AE37B100046DAD2 /* settingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8881A1AE37B100046DAD2 /* settingVC.m */; };
 		3BB8881D1AE37B100046DAD2 /* settingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BB8881B1AE37B100046DAD2 /* settingVC.xib */; };
 		3BBC19AD1B2082CA0061CF69 /* JobDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBC19AB1B2082CA0061CF69 /* JobDetailVC.m */; };
-		3BBC19AE1B2082CA0061CF69 /* JobDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBC19AC1B2082CA0061CF69 /* JobDetailVC.xib */; };
 		3BBE11E31AF8C984007CC3B7 /* radio_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BBE11DF1AF8C984007CC3B7 /* radio_checked.png */; };
 		3BBE11E41AF8C984007CC3B7 /* radio_checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BBE11E01AF8C984007CC3B7 /* radio_checked@2x.png */; };
 		3BBE11E51AF8C984007CC3B7 /* radio_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BBE11E11AF8C984007CC3B7 /* radio_unchecked.png */; };
@@ -806,6 +805,7 @@
 		6088B57C1B3FD43F0061315A /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6088B5791B3FD43F0061315A /* Icon-76@2x.png */; };
 		6088B57D1B3FD43F0061315A /* Icon-76@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6088B57A1B3FD43F0061315A /* Icon-76@3x.png */; };
 		6088B5831B3FFF810061315A /* MLFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6088B5821B3FFF810061315A /* MLFirstVC.m */; };
+		6088B5881B40F2E20061315A /* JobDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6088B5871B40F2E20061315A /* JobDetailVC.xib */; };
 		F35BA087EEF41E814C4DE314 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D949AFCA703C27F1EB6696F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1489,7 +1489,6 @@
 		3BB8881B1AE37B100046DAD2 /* settingVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = settingVC.xib; sourceTree = "<group>"; };
 		3BBC19AA1B2082CA0061CF69 /* JobDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobDetailVC.h; sourceTree = "<group>"; };
 		3BBC19AB1B2082CA0061CF69 /* JobDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobDetailVC.m; sourceTree = "<group>"; };
-		3BBC19AC1B2082CA0061CF69 /* JobDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobDetailVC.xib; sourceTree = "<group>"; };
 		3BBE11DF1AF8C984007CC3B7 /* radio_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_checked.png; sourceTree = "<group>"; };
 		3BBE11E01AF8C984007CC3B7 /* radio_checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radio_checked@2x.png"; sourceTree = "<group>"; };
 		3BBE11E11AF8C984007CC3B7 /* radio_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_unchecked.png; sourceTree = "<group>"; };
@@ -1865,6 +1864,7 @@
 		6088B5791B3FD43F0061315A /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
 		6088B57A1B3FD43F0061315A /* Icon-76@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@3x.png"; sourceTree = "<group>"; };
 		6088B5821B3FFF810061315A /* MLFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLFirstVC.m; sourceTree = "<group>"; };
+		6088B5871B40F2E20061315A /* JobDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobDetailVC.xib; sourceTree = "<group>"; };
 		E42360BA5E928BF1053A5BC4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2258,7 +2258,7 @@
 			children = (
 				3BBC19AA1B2082CA0061CF69 /* JobDetailVC.h */,
 				3BBC19AB1B2082CA0061CF69 /* JobDetailVC.m */,
-				3BBC19AC1B2082CA0061CF69 /* JobDetailVC.xib */,
+				6088B5871B40F2E20061315A /* JobDetailVC.xib */,
 				3B250BF81AFC5CB20045E89B /* messageblue.png */,
 				040861DA1AFA5D180060C76D /* hollowheart25-25.png */,
 				040861DB1AFA5D180060C76D /* solidheart25-25.png */,
@@ -4098,6 +4098,7 @@
 				045625D41AD6211D006E159C /* release.png in Resources */,
 				04B346DA1AEA95FA00A8A180 /* 17.png in Resources */,
 				3BBF70361AD6D1CB00A33F5A /* MessageVideoPlay@2x.png in Resources */,
+				6088B5881B40F2E20061315A /* JobDetailVC.xib in Resources */,
 				045625451AD6211D006E159C /* am.png in Resources */,
 				605E5AB41B3BB0CC00FD9AB2 /* moreFirstPage.png in Resources */,
 				045626341AD62129006E159C /* user_money.png in Resources */,
@@ -4371,7 +4372,6 @@
 				0456257F1AD6211D006E159C /* tourists.png in Resources */,
 				045624F11AD6211D006E159C /* menuHover.png in Resources */,
 				0443C17D1AD55455004F29A5 /* MLCell1.xib in Resources */,
-				3BBC19AE1B2082CA0061CF69 /* JobDetailVC.xib in Resources */,
 				04B346E61AEA95FA00A8A180 /* 3@2x.png in Resources */,
 				0456259C1AD6211D006E159C /* protait1-Small@2x.png in Resources */,
 				045625A51AD6211D006E159C /* protait2-60@3x.png in Resources */,

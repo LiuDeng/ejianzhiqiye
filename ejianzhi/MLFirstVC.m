@@ -195,29 +195,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self creatHeadView];
-//    UIImageView *searchbarImageView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchBarImage"]];
-    
-//    searchbarImageView.userInteractionEnabled=YES;
-    //为searchBar添加操作
-//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(searchBarTapped)];
-//    [searchbarImageView addGestureRecognizer:singleTap];
-    
-    self.navigationItem.title=@"e兼职";
-//    self.navigationItem.titleView=;
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 60, 44)];
+    label.font=[UIFont fontWithName:nil size:18];
+    label.textColor=[UIColor whiteColor];
+    label.text=@"e兼职";
+    self.navigationItem.titleView=label;
+    //self.navigationItem.title=@"e兼职";
     UIImage *image=[UIImage imageNamed:@"Locationicon"];
     
     UIButton *locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    locationBtn.imageEdgeInsets=UIEdgeInsetsMake(0, -24, 0, 0);
+    locationBtn.titleEdgeInsets=UIEdgeInsetsMake(0 ,-18, 0, 0);
     [locationBtn setImage:image forState:UIControlStateNormal];
     locationBtn.tintColor=[UIColor whiteColor];
-    [locationBtn setTitle:@" 北京" forState:UIControlStateNormal];
-    locationBtn.frame =CGRectMake(0, 0, 80, 40);
+    [locationBtn setTitle:@"北京" forState:UIControlStateNormal];
+    locationBtn.titleLabel.font=[UIFont fontWithName:nil size:15];
+    locationBtn.frame =CGRectMake(0, 0, 60, 40);
     
-//    [locationBtn setBackgroundImage:image forState:UIControlStateNormal];
+    //    [locationBtn setBackgroundImage:image forState:UIControlStateNormal];
     
     [locationBtn addTarget: self action: @selector(Location) forControlEvents: UIControlEventTouchUpInside];
-      UIBarButtonItem* locationBtnItem=[[UIBarButtonItem alloc]initWithCustomView:locationBtn];
-
-//     [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(Location)];
+    UIBarButtonItem* locationBtnItem=[[UIBarButtonItem alloc]initWithCustomView:locationBtn];
+    
+    //     [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(Location)];
     
     self.navigationItem.leftBarButtonItem=locationBtnItem;
     self.navigationItem.leftBarButtonItem.tintColor=[UIColor whiteColor];
