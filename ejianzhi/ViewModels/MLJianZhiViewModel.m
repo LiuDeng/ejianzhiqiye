@@ -59,6 +59,7 @@
     [query whereKey:key equalTo:value];
     [query orderByDescending:@"createdAt"];
     [self.mainQuery whereKey:@"isTest" equalTo:@(test)];
+    [query whereKey:@"isAuthorized" equalTo:authorized];
     return query;
 }
 
@@ -70,6 +71,7 @@
     [self.mainQuery orderByDescending:@"createdAt"];
      [self.mainQuery whereKey:@"isOutDated" notEqualTo:@YES];
     [self.mainQuery whereKey:@"isTest" equalTo:@(test)];
+    [self.mainQuery whereKey:@"isAuthorized" equalTo:authorized];
 //    [self.mainQuery whereKey:@"isTest" notEqualTo:@YES];
 }
 
@@ -86,6 +88,7 @@
     [query orderByDescending:@"createdAt"];
     [query whereKey:@"isOutDated" notEqualTo:@YES];
     [query whereKey:@"isTest" equalTo:@(test)];
+    [query whereKey:@"isAuthorized" equalTo:authorized];
     return query;
 }
 
@@ -104,6 +107,7 @@
     [query whereKey:@"isShowInHome" notEqualTo:@NO];
     [query whereKey:@"isOutDated" notEqualTo:@YES];
     [query whereKey:@"isTest" equalTo:@(test)];
+    [query whereKey:@"isAuthorized" equalTo:authorized];
     return query;
 }
 

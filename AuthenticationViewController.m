@@ -19,6 +19,9 @@
     UIImage *firstImage;
     UIImage *secImage;
     UIImage *thirdImage;
+    BOOL _firstImg;
+    BOOL _secodImg;
+    BOOL _thirdImg;
 }
 
 @property (nonatomic, retain) UIScrollView *scrollView;
@@ -204,6 +207,9 @@
                                         
                                         [qiyeInfo setObject:imageFile forKey:@"qiYeBusinessLicense"];
                                         [qiyeInfo saveEventually];
+                                        _firstImg=YES;
+                                        [self setqiyeState:objects];
+                                        
                                     }
                                 }
                                 [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
@@ -263,6 +269,9 @@
                                         
                                         [qiyeInfo setObject:imageFile forKey:@"qiYeZuZhiJiGou"];
                                         [qiyeInfo saveEventually];
+                                        _secodImg=YES;
+                                        [self setqiyeState:objects];
+                                        
                                     }
                                 }
                                 [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
@@ -323,10 +332,13 @@
                                         
                                         [qiyeInfo setObject:imageFile forKey:@"qiYeShuiWuDengJi"];
                                         [qiyeInfo saveEventually];
+                                        _thirdImg=YES;
+                                        [self setqiyeState:objects];
                                     }
                                 }
                                 [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
-                                [self performSelector:@selector(backView) withObject:self afterDelay:1.5];
+                                
+                                
                             }];
                         }
                         
@@ -351,8 +363,19 @@
             
         }];
     }
-    [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"qiyeIsValidate"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+- (void)setqiyeState:(NSArray *)objects{
+    if(_firstImg&&_secodImg&&_thirdImg){
+        AVObject *object=[objects objectAtIndex:0];
+        [object setObject:@"未处理" forKey:@"isAuthorzied"];
+        [object saveEventually];
+        [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"qiyeIsValidate"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self performSelector:@selector(backView) withObject:self afterDelay:1.5];
+    }
+    
 }
 - (void)backView{
     

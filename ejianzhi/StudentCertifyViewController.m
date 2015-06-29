@@ -20,6 +20,8 @@
      BOOL imagePickerPushing;
      UIImage *firstImage;
      UIImage *secImage;
+    BOOL firstImageSuc;
+    BOOL secImageSuc;
 
 }
 
@@ -185,7 +187,9 @@
                                 [userDetail saveEventually];
                             }
                         }
+                        firstImageSuc = YES;
                         [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
+                        [self uploadSucWithobjects:objects];
                     }];
                     
                 }else{
@@ -234,8 +238,9 @@
                                 [userDetail saveEventually];
                             }
                         }
+                        secImageSuc = YES;
                         [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
-                        [self performSelector:@selector(backView) withObject:self afterDelay:1.5];
+                        [self uploadSucWithobjects:objects];
                         
                     }];
                     
@@ -260,9 +265,22 @@
     }
     
     
-    [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"userIsValidate"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
     
+    
+}
+
+- (void)uploadSucWithobjects:(NSArray *)objects
+{
+    if (secImageSuc && firstImageSuc)
+    {
+        AVObject *userDetail = [objects objectAtIndex:0];
+        [userDetail setObject:@"未处理" forKey:@"isAuthorized"];
+        [userDetail saveEventually];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"userIsValidate"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self performSelector:@selector(backView) withObject:self afterDelay:1];
+    }
 }
 
 - (void)backView{

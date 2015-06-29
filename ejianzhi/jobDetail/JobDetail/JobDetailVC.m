@@ -602,7 +602,19 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     
     //AVUser *user=[AVUser currentUser];
     [jianzhiObject setObject:self.viewModel.jianZhi.jianZhiQiYe forKey:@"jianZhiQiYe"];
-    
+    int qiyeIsValidate = [[[NSUserDefaults standardUserDefaults] objectForKey:@"qiyeIsValidate"] intValue];
+    if(qiyeIsValidate==1)
+    {
+        [jianzhiObject setObject:@"已认证" forKey:@"isAuthorzied"];
+    }
+    else if(qiyeIsValidate==0)
+    {
+        [jianzhiObject setObject:@"未认证" forKey:@"isAuthorzied"];
+    }
+    else if (qiyeIsValidate == 2)
+    {
+        [jianzhiObject setObject:@"未处理" forKey:@"isAuthorzied"];
+    }
     
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
