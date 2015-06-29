@@ -121,11 +121,11 @@ static  MLTabbarVC *thisController=nil;
     
     tabBarItem1.title=@"首页";
     
-    tabBarItem2.title=@"分类导航";
+    tabBarItem2.title=@"发现";
     
     //tabBarItem3.title=@"消息";
     
-    tabBarItem4.title=@"我的";
+    tabBarItem4.title=@"我";
     
 
     [[self.tabBar.items objectAtIndex:0] setFinishedSelectedImage:[[UIImage imageNamed:@"首页icon(高亮)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] withFinishedUnselectedImage:[[UIImage imageNamed:@"首页icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
