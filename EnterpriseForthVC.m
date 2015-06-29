@@ -102,7 +102,7 @@
     else if (qiyeIsValidate == 2)
     {
         [self.authenticateButton setTitle:@"审核中" forState:UIControlStateNormal];
-        self.authenticateButton.enabled = YES;
+        self.authenticateButton.enabled = NO;
     }
     
     
@@ -373,27 +373,27 @@
         if ([mySettingData objectForKey:@"userName"]) {
             self.buttonLabel.text=[mySettingData objectForKey:@"userName"];
         }else{
-            
-            AVQuery *userQuery=[AVUser query];
-            AVUser *usr=[AVUser currentUser];
-            [userQuery whereKey:@"objectId" equalTo:usr.objectId];
-            
-            AVQuery *innerQuery=[AVQuery queryWithClassName:@"QiYeInfo"];
-            
-            [innerQuery whereKey:@"qiYeUser" matchesQuery:userQuery];
-            
-            [innerQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                if(!error&&[objects count]>0){
-                    AVObject *userObject=[objects objectAtIndex:0];
-                    if ([userObject objectForKey:@"qiYeName"]) {
-                        self.buttonLabel.text=[userObject objectForKey:@"qiYeName"];
-                    }else{
-                        self.buttonLabel.text=@"e小兼";
-                    }
-                }else{
-                    self.buttonLabel.text=@"e小兼";
-                }
-            }];
+            self.buttonLabel.text = [AVUser currentUser].username;
+//            AVQuery *userQuery=[AVUser query];
+//            AVUser *usr=[AVUser currentUser];
+//            [userQuery whereKey:@"objectId" equalTo:usr.objectId];
+//            
+//            AVQuery *innerQuery=[AVQuery queryWithClassName:@"QiYeInfo"];
+//            
+//            [innerQuery whereKey:@"qiYeUser" matchesQuery:userQuery];
+//            
+//            [innerQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//                if(!error&&[objects count]>0){
+//                    AVObject *userObject=[objects objectAtIndex:0];
+//                    if ([userObject objectForKey:@"qiYeName"]) {
+//                        self.buttonLabel.text=[userObject objectForKey:@"qiYeName"];
+//                    }else{
+//                        self.buttonLabel.text=@"e小兼";
+//                    }
+//                }else{
+//                    self.buttonLabel.text=@"e小兼";
+//                }
+//            }];
         }
 
 }

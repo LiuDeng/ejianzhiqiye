@@ -289,6 +289,7 @@ static  SRLoginVC *thisController=nil;
                     {
                         AVUser *user = [objects objectAtIndex:0];
                         [[NSUserDefaults standardUserDefaults] setObject:user.objectId forKey:@"userObjectId"];
+                        [[NSUserDefaults standardUserDefaults] setObject:user.username forKey:@"userName"];
                         [[NSUserDefaults standardUserDefaults] synchronize];
                         
                         
@@ -373,20 +374,18 @@ static  SRLoginVC *thisController=nil;
     int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
     if (type == 2)
     {
-        UserDetail *userDetail = [[UserDetail alloc] initWithClassName:@"UserDetail"];
         AVObject *user = [objects objectAtIndex:0];
-        userDetail = (UserDetail *)user;
-        if ([userDetail.isAuthorized isEqualToString:@"已认证"])
+        if ([[user objectForKey:@"isAuthorized"] isEqualToString:@"已认证"])
         {
             [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"userIsValidate"];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }
-        else if ([userDetail.isAuthorized isEqualToString:@"未认证"])
+        else if ([[user objectForKey:@"isAuthorized"] isEqualToString:@"未认证"])
         {
             [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"userIsValidate"];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }
-        else if ([userDetail.isAuthorized isEqualToString:@"未处理"])
+        else if ([[user objectForKey:@"isAuthorized"] isEqualToString:@"未处理"])
         {
             [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"userIsValidate"];
             [[NSUserDefaults standardUserDefaults] synchronize];

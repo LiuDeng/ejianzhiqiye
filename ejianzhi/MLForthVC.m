@@ -117,7 +117,7 @@
     else if (validate == 2)
     {
         [self.certifyButton setTitle:@"审核中" forState:UIControlStateNormal];
-        self.certifyButton.enabled = YES;
+        self.certifyButton.enabled = NO;
     }
     if ([AVUser currentUser]==nil) {
         MLTabbarVC *tabbar = [MLTabbarVC shareInstance];
@@ -446,20 +446,21 @@
         if ([mySettingData objectForKey:@"userName"]) {
             self.buttonLabel.text=[mySettingData objectForKey:@"userName"];
         }else{
-            AVQuery *query=[AVQuery  queryWithClassName:@"UserDetail"];
-            [query whereKey:@"userObjectId" equalTo:[AVUser currentUser].objectId];
-            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                if(!error&&[objects count]>0){
-                    AVObject *userObject=[objects objectAtIndex:0];
-                    if ([userObject objectForKey:@"userRealName"]) {
-                        self.buttonLabel.text=[userObject objectForKey:@"userRealName"];
-                    }else{
-                        self.buttonLabel.text=@"e小兼";
-                    }
-                }else{
-                    self.buttonLabel.text=@"e小兼";
-                }
-            }];
+            self.buttonLabel.text = [AVUser currentUser].username;
+//            AVQuery *query=[AVQuery  queryWithClassName:@"UserDetail"];
+//            [query whereKey:@"userObjectId" equalTo:[AVUser currentUser].objectId];
+//            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//                if(!error&&[objects count]>0){
+//                    AVObject *userObject=[objects objectAtIndex:0];
+//                    if ([userObject objectForKey:@"userRealName"]) {
+//                        self.buttonLabel.text=[userObject objectForKey:@"userRealName"];
+//                    }else{
+//                        self.buttonLabel.text=@"e小兼";
+//                    }
+//                }else{
+//                    self.buttonLabel.text=@"e小兼";
+//                }
+//            }];
         }
     
 }
