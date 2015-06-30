@@ -97,8 +97,6 @@
 		045622F31AD61A33006E159C /* MLMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045622F11AD61A33006E159C /* MLMapView.m */; };
 		045622F91AD61A8F006E159C /* SRLoginBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 045622F61AD61A8F006E159C /* SRLoginBusiness.m */; };
 		045622FA1AD61A8F006E159C /* SRRegistBussiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 045622F81AD61A8F006E159C /* SRRegistBussiness.m */; };
-		045623041AD61ABC006E159C /* SRLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 045622FD1AD61ABC006E159C /* SRLoginVC.m */; };
-		045623051AD61ABC006E159C /* SRLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045622FE1AD61ABC006E159C /* SRLoginVC.xib */; };
 		045623061AD61ABC006E159C /* SRRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 045623001AD61ABC006E159C /* SRRegisterVC.m */; };
 		045623071AD61ABC006E159C /* SRRegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045623011AD61ABC006E159C /* SRRegisterVC.xib */; };
 		045623081AD61ABC006E159C /* SRUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 045623031AD61ABC006E159C /* SRUserInfo.m */; };
@@ -504,7 +502,6 @@
 		3BA364151AF0CDBB00D1EF03 /* resumeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA364131AF0CDBB00D1EF03 /* resumeListVC.m */; };
 		3BA364161AF0CDBB00D1EF03 /* resumeListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA364141AF0CDBB00D1EF03 /* resumeListVC.xib */; };
 		3BA492A61AF4F1450081B9A9 /* EnterpriseForthVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA492A41AF4F1450081B9A9 /* EnterpriseForthVC.m */; };
-		3BA492A71AF4F1450081B9A9 /* EnterpriseForthVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA492A51AF4F1450081B9A9 /* EnterpriseForthVC.xib */; };
 		3BA492AC1AF51C820081B9A9 /* InputInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA492AA1AF51C820081B9A9 /* InputInfoVC.m */; };
 		3BA492AD1AF51C820081B9A9 /* InputInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA492AB1AF51C820081B9A9 /* InputInfoVC.xib */; };
 		3BA76E2A1AE4D45600A2FF26 /* KKProgressTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA76E291AE4D45600A2FF26 /* KKProgressTimer.m */; };
@@ -806,6 +803,9 @@
 		6088B57D1B3FD43F0061315A /* Icon-76@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6088B57A1B3FD43F0061315A /* Icon-76@3x.png */; };
 		6088B5831B3FFF810061315A /* MLFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6088B5821B3FFF810061315A /* MLFirstVC.m */; };
 		6088B5881B40F2E20061315A /* JobDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6088B5871B40F2E20061315A /* JobDetailVC.xib */; };
+		6088B58C1B4265AF0061315A /* EnterpriseForthVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6088B58B1B4265AF0061315A /* EnterpriseForthVC.xib */; };
+		6088B5991B426C8A0061315A /* SRLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6088B5971B426C8A0061315A /* SRLoginVC.m */; };
+		6088B59A1B426C8A0061315A /* SRLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6088B5981B426C8A0061315A /* SRLoginVC.xib */; };
 		F35BA087EEF41E814C4DE314 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D949AFCA703C27F1EB6696F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1016,8 +1016,6 @@
 		045622F71AD61A8F006E159C /* SRRegistBussiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRRegistBussiness.h; path = "../SRLogin&Regis/SRRegistBussiness.h"; sourceTree = "<group>"; };
 		045622F81AD61A8F006E159C /* SRRegistBussiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRRegistBussiness.m; path = "../SRLogin&Regis/SRRegistBussiness.m"; sourceTree = "<group>"; };
 		045622FC1AD61ABC006E159C /* SRLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRLoginVC.h; sourceTree = "<group>"; };
-		045622FD1AD61ABC006E159C /* SRLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRLoginVC.m; sourceTree = "<group>"; };
-		045622FE1AD61ABC006E159C /* SRLoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRLoginVC.xib; sourceTree = "<group>"; };
 		045622FF1AD61ABC006E159C /* SRRegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRegisterVC.h; sourceTree = "<group>"; };
 		045623001AD61ABC006E159C /* SRRegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRegisterVC.m; sourceTree = "<group>"; };
 		045623011AD61ABC006E159C /* SRRegisterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRRegisterVC.xib; sourceTree = "<group>"; };
@@ -1476,7 +1474,6 @@
 		3BA364141AF0CDBB00D1EF03 /* resumeListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = resumeListVC.xib; sourceTree = "<group>"; };
 		3BA492A31AF4F1450081B9A9 /* EnterpriseForthVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterpriseForthVC.h; sourceTree = "<group>"; };
 		3BA492A41AF4F1450081B9A9 /* EnterpriseForthVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterpriseForthVC.m; sourceTree = "<group>"; };
-		3BA492A51AF4F1450081B9A9 /* EnterpriseForthVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterpriseForthVC.xib; sourceTree = "<group>"; };
 		3BA492A91AF51C820081B9A9 /* InputInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputInfoVC.h; sourceTree = "<group>"; };
 		3BA492AA1AF51C820081B9A9 /* InputInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputInfoVC.m; sourceTree = "<group>"; };
 		3BA492AB1AF51C820081B9A9 /* InputInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputInfoVC.xib; sourceTree = "<group>"; };
@@ -1865,6 +1862,9 @@
 		6088B57A1B3FD43F0061315A /* Icon-76@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@3x.png"; sourceTree = "<group>"; };
 		6088B5821B3FFF810061315A /* MLFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLFirstVC.m; sourceTree = "<group>"; };
 		6088B5871B40F2E20061315A /* JobDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobDetailVC.xib; sourceTree = "<group>"; };
+		6088B58B1B4265AF0061315A /* EnterpriseForthVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterpriseForthVC.xib; sourceTree = "<group>"; };
+		6088B5971B426C8A0061315A /* SRLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRLoginVC.m; sourceTree = "<group>"; };
+		6088B5981B426C8A0061315A /* SRLoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRLoginVC.xib; sourceTree = "<group>"; };
 		E42360BA5E928BF1053A5BC4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2314,8 +2314,8 @@
 			isa = PBXGroup;
 			children = (
 				045622FC1AD61ABC006E159C /* SRLoginVC.h */,
-				045622FD1AD61ABC006E159C /* SRLoginVC.m */,
-				045622FE1AD61ABC006E159C /* SRLoginVC.xib */,
+				6088B5971B426C8A0061315A /* SRLoginVC.m */,
+				6088B5981B426C8A0061315A /* SRLoginVC.xib */,
 				045622FF1AD61ABC006E159C /* SRRegisterVC.h */,
 				045623001AD61ABC006E159C /* SRRegisterVC.m */,
 				045623011AD61ABC006E159C /* SRRegisterVC.xib */,
@@ -3119,7 +3119,7 @@
 			children = (
 				3BA492A31AF4F1450081B9A9 /* EnterpriseForthVC.h */,
 				3BA492A41AF4F1450081B9A9 /* EnterpriseForthVC.m */,
-				3BA492A51AF4F1450081B9A9 /* EnterpriseForthVC.xib */,
+				6088B58B1B4265AF0061315A /* EnterpriseForthVC.xib */,
 				605E59231B354C7800FD9AB2 /* AuthenticationViewController.h */,
 				605E59241B354C7800FD9AB2 /* AuthenticationViewController.m */,
 				605E59251B354C7800FD9AB2 /* AuthenticationViewController.xib */,
@@ -3968,6 +3968,7 @@
 				3BBF70161AD6D1CB00A33F5A /* u1f62d.png in Resources */,
 				3BBF706E1AD6D1CB00A33F5A /* sharemore_wxtalk@2x.png in Resources */,
 				6009BB0B1B3CF9FE006B025C /* JobListTableViewCell.xib in Resources */,
+				6088B59A1B426C8A0061315A /* SRLoginVC.xib in Resources */,
 				3BBF704A1AD6D1CB00A33F5A /* RecordingSignal005@2x.png in Resources */,
 				3BBF6FFD1AD6D1CB00A33F5A /* u1f601.png in Resources */,
 				0456254B1AD6211D006E159C /* close.png in Resources */,
@@ -4254,7 +4255,6 @@
 				3BBF6F4C1AD6D0E800A33F5A /* MLStudentCard.xib in Resources */,
 				3BBF703D1AD6D1CB00A33F5A /* MultiSelectedPanelConfirmBtnbKG@2x.png in Resources */,
 				605E5AB21B3BB0CC00FD9AB2 /* hmTeacherIcon.png in Resources */,
-				045623051AD61ABC006E159C /* SRLoginVC.xib in Resources */,
 				04B346D21AEA95FA00A8A180 /* 13.png in Resources */,
 				040861C41AF904FC0060C76D /* icon_location.png in Resources */,
 				045625501AD6211D006E159C /* d5.png in Resources */,
@@ -4262,6 +4262,7 @@
 				0443C13B1AD5531D004F29A5 /* Images.xcassets in Resources */,
 				3BBF70081AD6D1CB00A33F5A /* u1f614.png in Resources */,
 				3BBF70561AD6D1CB00A33F5A /* section0_emotion15@2x.png in Resources */,
+				6088B58C1B4265AF0061315A /* EnterpriseForthVC.xib in Resources */,
 				3BBF70101AD6D1CB00A33F5A /* u1f621.png in Resources */,
 				605E591C1B351BDC00FD9AB2 /* 我的简历icon.png in Resources */,
 				3BBE11E31AF8C984007CC3B7 /* radio_checked.png in Resources */,
@@ -4309,7 +4310,6 @@
 				605E5A891B3A8F5900FD9AB2 /* UMSShareListController.xib in Resources */,
 				045625A81AD6211D006E159C /* protait2-Small@3x.png in Resources */,
 				3BBF6FFB1AD6D1CB00A33F5A /* u1f44e.png in Resources */,
-				3BA492A71AF4F1450081B9A9 /* EnterpriseForthVC.xib in Resources */,
 				045624E01AD6211D006E159C /* add1.png in Resources */,
 				3BBF70321AD6D1CB00A33F5A /* input-field-cover@2x.png in Resources */,
 				0456260E1AD62129006E159C /* activity.png in Resources */,
@@ -4565,7 +4565,6 @@
 				04F5C9991AE54D9F00341491 /* SubIconCollectionViewController.m in Sources */,
 				3BBF6F191AD6D0C900A33F5A /* SDPhotoBrowser.m in Sources */,
 				0443C1B81AD5553F004F29A5 /* UrlImageButton.m in Sources */,
-				045623041AD61ABC006E159C /* SRLoginVC.m in Sources */,
 				040861D71AFA4A210060C76D /* NSDate+Category.m in Sources */,
 				3B04C14A1B25AE41006C008A /* CheckNewVersionVC.m in Sources */,
 				04B346961AEA8C1900A8A180 /* JobAnonationView.m in Sources */,
@@ -4659,6 +4658,7 @@
 				0443C1CD1AD55572004F29A5 /* POIDataModel.m in Sources */,
 				3BBF70871AD6D1ED00A33F5A /* CDCache.m in Sources */,
 				045623D21AD6210B006E159C /* LaunchViewController.m in Sources */,
+				6088B5991B426C8A0061315A /* SRLoginVC.m in Sources */,
 				0443C1E51AD55589004F29A5 /* MLLoginManger.m in Sources */,
 				3BBF6F691AD6D0F200A33F5A /* HZLocation.m in Sources */,
 				0443C1B61AD5553F004F29A5 /* SDWebImageManager.m in Sources */,

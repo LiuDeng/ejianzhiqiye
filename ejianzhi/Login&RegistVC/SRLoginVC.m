@@ -22,6 +22,7 @@
 @interface SRLoginVC ()<successRegistered,UIAlertViewDelegate>
 {
     NSInteger loginType;
+    UIView *_thirdLoginView;
 }
 @property (weak,nonatomic) MLLoginManger *loginManager;
 @property (strong, nonatomic) IBOutlet UIButton *otherLoginBtn;
@@ -30,6 +31,10 @@
 - (IBAction)resetPWDAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *weixinButton;
 @property (weak, nonatomic) IBOutlet UILabel *weixinLabel;
+@property (weak, nonatomic) IBOutlet UIButton *weiboButton;
+@property (weak, nonatomic) IBOutlet UILabel *weiboLabel;
+@property (weak, nonatomic) IBOutlet UIButton *qqButton;
+@property (weak, nonatomic) IBOutlet UILabel *qqLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
@@ -57,36 +62,98 @@ static  SRLoginVC *thisController=nil;
     
 }
 
+- (void)creatThirdLoginView{
+    
+    //self.weixinButton.hidden=YES;
+    
+    if(SCREENHEIGHT==480){
+        self.weixinButton.hidden=YES;
+        self.weixinLabel.hidden=YES;
+        self.weiboButton.hidden=YES;
+        self.weiboLabel.hidden=YES;
+        self.qqButton.hidden=YES;
+        self.qqLabel.hidden=YES;
+    _thirdLoginView=[[UIView alloc]initWithFrame:CGRectMake(0, self.loginButton.frame.origin.y+80, SCREENWIDTH, 80)];
+    //_thirdLoginView.backgroundColor=[UIColor redColor];
+    [self.view addSubview:_thirdLoginView];
+    }
+    NSArray *imageArray=@[@"微信",@"微博",@"qq"];
+    NSArray *titleArray=@[@"微信",@"微博",@"QQ"];
+    
+    for(NSInteger i=0; i<3; i++){
+        UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
+        CGFloat space=(SCREENWIDTH-150)/4;
+        button.frame=CGRectMake(space+(50*i)+space*i, 0, 50, 50);
+        [button setImage:[UIImage imageNamed:imageArray[i]] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(thirdButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        button.tag=200+i;
+        UILabel *label=[[UILabel alloc]initWithFrame:
+        CGRectMake(space+(50*i)+space*i, 51, 50, 21)];
+        label.text=titleArray[i];
+        label.textAlignment=UITextAlignmentCenter;
+        [_thirdLoginView addSubview:label];
+        [_thirdLoginView addSubview:button];
+    }
+}
+
+
+-(void)thirdButtonClick:(UIButton *)button{
+    switch (button.tag) {
+        case 200:
+        {
+            [self weixinLoginAction:button];
+        
+        }
+            break;
+        case 201:
+        {
+            [self weiboLoginClick:button];
+            
+        }
+            break;
+        case 202:
+        {
+            [self qqLoginAction:button];
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREENWIDTH-80)/2, 48+44+20, 80, 80)];
-    headImageView.image = [UIImage imageNamed:@"Icon-60.png"];
-    [self.view addSubview:headImageView];
-    
-    UIButton *weiboButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    weiboButton.frame = CGRectMake((SCREENWIDTH-50)/2, 404, 50, 50);
-    [weiboButton setImage:[UIImage imageNamed:@"微博"] forState:UIControlStateNormal];
-    [weiboButton addTarget:self action:@selector(weiboLoginAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:weiboButton];
-    
-    UILabel *weiboLabel = [[UILabel alloc] initWithFrame:CGRectMake(weiboButton.frame.origin.x, weiboButton.frame.origin.y+50+5, weiboButton.frame.size.width, 32)];
-    weiboLabel.text = @"微博";
-    weiboLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:weiboLabel];
-    
-    UILabel *thirdLoginLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREENWIDTH-150)/2, 370, 150, 21)];
-    thirdLoginLabel.text = @"第三方登录";
-    thirdLoginLabel.textColor = [UIColor lightGrayColor];
-    thirdLoginLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:thirdLoginLabel];
-    
-    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(20, 380, 70, 0.5)];
-    leftView.backgroundColor = [UIColor lightGrayColor];
-    [self.view addSubview:leftView];
-    
-    UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH-20-70, 380, 70, 0.5)];
-    rightView.backgroundColor = [UIColor lightGrayColor];
-    [self.view addSubview:rightView];
+    self.loginButton.tag=101;
+    [self creatThirdLoginView];
+//    UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREENWIDTH-80)/2, 48+44+20, 80, 80)];
+//    headImageView.image = [UIImage imageNamed:@"Icon-60.png"];
+//    [self.view addSubview:headImageView];
+//    
+//    UIButton *weiboButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    weiboButton.frame = CGRectMake((SCREENWIDTH-50)/2, 404, 50, 50);
+//    [weiboButton setImage:[UIImage imageNamed:@"微博"] forState:UIControlStateNormal];
+//    [weiboButton addTarget:self action:@selector(weiboLoginAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:weiboButton];
+//    
+//    UILabel *weiboLabel = [[UILabel alloc] initWithFrame:CGRectMake(weiboButton.frame.origin.x, weiboButton.frame.origin.y+50+5, weiboButton.frame.size.width, 32)];
+//    weiboLabel.text = @"微博";
+//    weiboLabel.textAlignment = NSTextAlignmentCenter;
+//    [self.view addSubview:weiboLabel];
+//    
+//    UILabel *thirdLoginLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREENWIDTH-150)/2, 370, 150, 21)];
+//    thirdLoginLabel.text = @"第三方登录";
+//    thirdLoginLabel.textColor = [UIColor lightGrayColor];
+//    thirdLoginLabel.textAlignment = NSTextAlignmentCenter;
+//    [self.view addSubview:thirdLoginLabel];
+//    
+//    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(20, 380, 70, 0.5)];
+//    leftView.backgroundColor = [UIColor lightGrayColor];
+//    [self.view addSubview:leftView];
+//    
+//    UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH-20-70, 380, 70, 0.5)];
+//    rightView.backgroundColor = [UIColor lightGrayColor];
+//    [self.view addSubview:rightView];
     
     NSUserDefaults *mySettingData = [NSUserDefaults standardUserDefaults];
     
@@ -247,9 +314,12 @@ static  SRLoginVC *thisController=nil;
 
 - (void)keyboardWillShow:(NSNotification *)notification{
     if ([[UIScreen mainScreen] bounds].size.height == 480) {
-        CGRect rect2=CGRectMake(self.rect1.origin.x, self.rect1.origin.y-50, self.rect1.size.width, self.rect1.size.height);
+        
+        //        CGRect rect2=CGRectMake(self.rect1.origin.x, self.rect1.origin.y-50, self.rect1.size.width, self.rect1.size.height);
         [UIView animateWithDuration:0.3 animations:^{
-            self.floatView2.frame=rect2;
+            //self.floatView2.frame=rect2;
+            self.floatView2.frame=CGRectMake(0, 0, SCREENWIDTH, 191);
+
         }];
     }
 }
@@ -258,7 +328,7 @@ static  SRLoginVC *thisController=nil;
     if ([[UIScreen mainScreen] bounds].size.height == 480) {
         
         [UIView animateWithDuration:0.3 animations:^{
-            
+           
             self.floatView2.frame=self.rect1;
         }];
     }
@@ -403,8 +473,7 @@ static  SRLoginVC *thisController=nil;
         {
             [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"userIsValidate"];
             [[NSUserDefaults standardUserDefaults] synchronize];
-        }
-        else
+        }else
         {
             [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"userIsValidate"];
             [[NSUserDefaults standardUserDefaults] synchronize];
@@ -481,9 +550,8 @@ static  SRLoginVC *thisController=nil;
     
 }
 
--(void)weiboLoginAction:(UIButton *)sender
-{
 
+- (IBAction)weiboLoginClick:(id)sender {
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
     
     snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
@@ -499,7 +567,7 @@ static  SRLoginVC *thisController=nil;
             user.password = @"123456";
             [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 AVFile *imageFile = [AVFile fileWithName:@"AvatarImage" data:[NSData dataWithContentsOfURL:[NSURL URLWithString:snsAccount.iconURL]]];
-
+                
                 [[NSUserDefaults standardUserDefaults] setObject:snsAccount.iconURL forKey:@"userAvatar"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 
@@ -583,6 +651,7 @@ static  SRLoginVC *thisController=nil;
             
         }});
 }
+
 
 - (IBAction)weixinLoginAction:(UIButton *)sender
 {

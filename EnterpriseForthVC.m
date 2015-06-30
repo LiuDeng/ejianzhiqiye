@@ -30,6 +30,7 @@
 
 //登录控制器
 @property (weak,nonatomic) MLLoginManger *loginManager;
+@property (weak, nonatomic) IBOutlet UIView *headView;
 @property (weak, nonatomic) IBOutlet UILabel *buttonLabel;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -106,9 +107,9 @@
     }
     
     
-    self.userAvatarView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREENWIDTH-80)/2-10, 30, 80, 80)];
+    self.userAvatarView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREENWIDTH-80)/2, 30, 80, 80)];
     self.userAvatarView.image = [UIImage imageNamed:@"placeholder"];
-    [self.view addSubview:self.userAvatarView];
+    [self.headView addSubview:self.userAvatarView];
     [self.userAvatarView.layer setCornerRadius:40.0f];
     [self.userAvatarView.layer setMasksToBounds:YES];
     
