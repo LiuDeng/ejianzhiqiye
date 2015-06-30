@@ -186,10 +186,14 @@
                                 [userDetail setObject:imageFile forKey:@"userStudentFile"];
                                 [userDetail saveEventually];
                             }
+                            firstImageSuc = YES;
+                            [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
+                            [self uploadSucWithobjects:objects];
                         }
-                        firstImageSuc = YES;
-                        [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
-                        [self uploadSucWithobjects:objects];
+                       else
+                       {
+                           [MBProgressHUD showError:UPLOADFAIL toView:self.view];
+                       }
                     }];
                     
                 }else{
@@ -237,10 +241,14 @@
                                 [userDetail setObject:imageFile forKey:@"userIdentifyFile"];
                                 [userDetail saveEventually];
                             }
+                            secImageSuc = YES;
+                            [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
+                            [self uploadSucWithobjects:objects];
                         }
-                        secImageSuc = YES;
-                        [MBProgressHUD showError:UPLOADSUCCESS toView:self.view];
-                        [self uploadSucWithobjects:objects];
+                        else
+                        {
+                            [MBProgressHUD showError:UPLOADFAIL toView:self.view];
+                        }
                         
                     }];
                     

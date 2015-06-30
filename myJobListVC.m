@@ -98,6 +98,11 @@
                     [self tableViewInit];
                     [self headerRereshing];
                 }
+                else
+                {
+                    [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"qiyeIsValidate"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                }
             }else{
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您还没有创建企业信息" delegate:self cancelButtonTitle:@"稍后创建" otherButtonTitles:@"立即创建", nil];
                 alertView.tag = 100;
@@ -131,7 +136,6 @@
                 UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
                 backItem.title = @"";
                 self.navigationItem.backBarButtonItem = backItem;
-//                pushing=YES;
                 
                 companyInfoVC.hidesBottomBarWhenPushed=YES;
                 companyInfoVC.edgesForExtendedLayout=UIRectEdgeNone;

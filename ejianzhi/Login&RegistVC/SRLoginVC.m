@@ -297,10 +297,24 @@ static  SRLoginVC *thisController=nil;
                         AVQuery *query1 = [AVQuery queryWithClassName:@"UserDetail"];
                         [query1 whereKey:@"userObjectId" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"userObjectId"]];
                         [query1 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                            if (objects.count > 0)
+                            if (!error)
                             {
-                                [self setValidateWithArray:objects];
-                                
+                                if (objects.count > 0)
+                                {
+                                    [self setValidateWithArray:objects];
+                                    [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:hasJianLi];
+                                    [[NSUserDefaults standardUserDefaults] synchronize];
+                                }
+                                else
+                                {
+                                    [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:hasJianLi];
+                                    [[NSUserDefaults standardUserDefaults] synchronize];
+                                }
+                            }
+                            else
+                            {
+                                [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:hasJianLi];
+                                [[NSUserDefaults standardUserDefaults] synchronize];
                             }
                         }];
                     }
@@ -388,6 +402,11 @@ static  SRLoginVC *thisController=nil;
         else if ([[user objectForKey:@"isAuthorized"] isEqualToString:@"未处理"])
         {
             [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"userIsValidate"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        else
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"userIsValidate"];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }
     }
@@ -508,12 +527,21 @@ static  SRLoginVC *thisController=nil;
                                     [imageArray insertObject:imageFile.url atIndex:0];
                                     [userDetailObject setObject:imageArray forKey:@"userImageArray"];
                                     [userDetailObject saveEventually];
+                                    [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:hasJianLi];
+                                    [[NSUserDefaults standardUserDefaults] synchronize];
                                 }else{
                                     AVObject *userDetailObject = [AVObject objectWithClassName:@"UserDetail"];
                                     NSMutableArray *imageArray=[[NSMutableArray alloc] initWithObjects:imageFile.url, nil];
                                     [userDetailObject setObject:imageArray forKey:@"userImageArray"];
                                     [userDetailObject saveEventually];
+                                    [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:hasJianLi];
+                                    [[NSUserDefaults standardUserDefaults] synchronize];
                                 }
+                            }
+                            else
+                            {
+                                [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:hasJianLi];
+                                [[NSUserDefaults standardUserDefaults] synchronize];
                             }
                         }];
                         
@@ -600,12 +628,21 @@ static  SRLoginVC *thisController=nil;
                                     [imageArray insertObject:imageFile.url atIndex:0];
                                     [userDetailObject setObject:imageArray forKey:@"userImageArray"];
                                     [userDetailObject saveEventually];
+                                    [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:hasJianLi];
+                                    [[NSUserDefaults standardUserDefaults] synchronize];
                                 }else{
                                     AVObject *userDetailObject = [AVObject objectWithClassName:@"UserDetail"];
                                     NSMutableArray *imageArray=[[NSMutableArray alloc] initWithObjects:imageFile.url, nil];
                                     [userDetailObject setObject:imageArray forKey:@"userImageArray"];
                                     [userDetailObject saveEventually];
+                                    [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:hasJianLi];
+                                    [[NSUserDefaults standardUserDefaults] synchronize];
                                 }
+                            }
+                            else
+                            {
+                                [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:hasJianLi];
+                                [[NSUserDefaults standardUserDefaults] synchronize];
                             }
                         }];
                         
@@ -691,12 +728,21 @@ static  SRLoginVC *thisController=nil;
                                     [imageArray insertObject:imageFile.url atIndex:0];
                                     [userDetailObject setObject:imageArray forKey:@"userImageArray"];
                                     [userDetailObject saveEventually];
+                                    [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:hasJianLi];
+                                    [[NSUserDefaults standardUserDefaults] synchronize];
                                 }else{
                                     AVObject *userDetailObject = [AVObject objectWithClassName:@"UserDetail"];
                                     NSMutableArray *imageArray=[[NSMutableArray alloc] initWithObjects:imageFile.url, nil];
                                     [userDetailObject setObject:imageArray forKey:@"userImageArray"];
                                     [userDetailObject saveEventually];
+                                    [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:hasJianLi];
+                                    [[NSUserDefaults standardUserDefaults] synchronize];
                                 }
+                            }
+                            else
+                            {
+                                [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:hasJianLi];
+                                [[NSUserDefaults standardUserDefaults] synchronize];
                             }
                         }];
                         

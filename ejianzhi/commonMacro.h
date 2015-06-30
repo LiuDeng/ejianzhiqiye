@@ -46,3 +46,4 @@
 #define FliterType @"filterType"
 #define FliterReDu @"filterReDu"
 #define FliterSettlementWay @"filterSettlementWay"
+#define hasJianLi @"hasJianLi"

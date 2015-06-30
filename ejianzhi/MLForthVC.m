@@ -199,13 +199,23 @@
 }
 #pragma -mark 学生认证
 - (IBAction)touchCertify:(id)sender {
-    StudentCertifyViewController *studentCertify=[[StudentCertifyViewController alloc]init];
-    studentCertify.title=@"学生认证";
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
-    studentCertify.hidesBottomBarWhenPushed=YES;
-    pushing=YES;
-    self.navigationItem.backBarButtonItem=backItem;
-    [self.navigationController pushViewController:studentCertify animated:YES];
+    int ishasJianli = [[[NSUserDefaults standardUserDefaults] objectForKey:hasJianLi] intValue];
+    if (ishasJianli == 2)
+    {
+        StudentCertifyViewController *studentCertify=[[StudentCertifyViewController alloc]init];
+        studentCertify.title=@"学生认证";
+        UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
+        studentCertify.hidesBottomBarWhenPushed=YES;
+        pushing=YES;
+        self.navigationItem.backBarButtonItem=backItem;
+        [self.navigationController pushViewController:studentCertify animated:YES];
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请您先完善简历再去认证" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+    
 }
 
 

@@ -316,14 +316,38 @@
 #pragma mark 去认证
 - (IBAction)goAuthentication:(UIButton *)sender
 {
-    AuthenticationViewController *authent = [[AuthenticationViewController alloc] init];
-    authent.title = @"公司认证";
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
-    backItem.title = @"";
-    self.navigationItem.backBarButtonItem = backItem;
-    pushing=YES;
-    authent.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:authent animated:YES];
+    AVQuery *query=[AVQuery queryWithClassName:@"QiYeInfo"];
+    [query whereKey:@"qiYeUser" equalTo:[AVUser currentUser]];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if (!error)
+        {
+            if (objects.count > 0)
+            {
+                AuthenticationViewController *authent = [[AuthenticationViewController alloc] init];
+                authent.title = @"公司认证";
+                UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+                backItem.title = @"";
+                self.navigationItem.backBarButtonItem = backItem;
+                pushing=YES;
+                authent.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:authent animated:YES];
+                
+            }
+            else
+            {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请您完善企业信息再认证" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+            }
+        }
+        else
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请您完善企业信息再认证" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alertView show];
+        }
+    }];
+    
 }
 
 - (IBAction)showEnterpriseInfo:(id)sender {

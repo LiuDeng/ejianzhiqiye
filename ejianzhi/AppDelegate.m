@@ -220,7 +220,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     [currentInstallation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
-            [self showErrorWithTitle:@"Installation保存失败" error:error];
+//            [self showErrorWithTitle:@"Installation保存失败" error:error];
         }
     }];
     NSLog(@"%@", deviceToken);
@@ -235,25 +235,24 @@
 {
     NSLog(@"%@", userInfo);
     
-    NSDictionary *data = [userInfo objectForKey:@"data"];
-    NSString *action = [data objectForKey:@"action"];
+    NSString *action = [userInfo objectForKey:@"action"];
     if ([action isEqualToString:@"com.ejianzhi.qiye.validate"]) // 企业认证通过通知
     {
         [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"qiyeIsValidate"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[data objectForKey:@"title"] message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]  delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[userInfo objectForKey:@"title"] message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]  delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
     }
     else if ([action isEqualToString:@"com.ejianzhi.student.validate"])  // 学生认证通知
     {
         [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"userIsValidate"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[data objectForKey:@"title"] message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]  delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[userInfo objectForKey:@"title"] message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]  delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
     }
     else if ([action isEqualToString:@"com.ejianzhi.notification"]) // 推送申请录用通知(打开我的申请界面)
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[data objectForKey:@"title"] message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]  delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[userInfo objectForKey:@"title"] message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]  delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         alertView.tag = notification;
         [alertView show];
     }

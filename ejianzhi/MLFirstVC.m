@@ -222,7 +222,7 @@
     self.navigationItem.leftBarButtonItem=locationBtnItem;
     self.navigationItem.leftBarButtonItem.tintColor=[UIColor whiteColor];
     
-    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"搜索icon副本.png"] style:UIBarButtonItemStylePlain target:self action:@selector(findJobWithLocationAction:)];
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"搜索icon副本.png"] style:UIBarButtonItemStylePlain target:self action:@selector(searchBarTapped)];
     self.navigationItem.rightBarButtonItem=rightItem;
     self.viewModel=[[MLMainPageViewModel alloc]init];
     [self addChildViewController:self.joblistTableVC];
