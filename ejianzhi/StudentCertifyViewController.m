@@ -64,7 +64,6 @@
     {
         [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width, height)];
     }
-    
     [self.view addSubview:_scrollView];
 
 }
