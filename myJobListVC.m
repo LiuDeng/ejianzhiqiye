@@ -28,15 +28,13 @@
     BOOL headerRefreshing;
     BOOL footerRefreshing;
     int skipTimes;
-    NSMutableArray *recordArray;
+    NSMutableArray *_recordArray;
     BOOL firstLoad;
-    
     AVUser *curUsr;
-    
+    UIBarButtonItem *_leftButtonItem;
 }
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) QiYeInfo *qiyeInfo;
-
 @end
 
 @implementation myJobListVC
@@ -44,12 +42,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable) name:PubListJianzhiNotif object:nil];
-    
     self.title=@"我发布的兼职";
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布职位" style:UIBarButtonItemStylePlain target:self action:@selector(addNewJob)];
     self.navigationItem.rightBarButtonItem.tintColor=[UIColor whiteColor];
-
     [self loadCompanyInfo];
     
 }
@@ -67,14 +62,12 @@
 - (void)loadCompanyInfo
 {
     AVUser *usr=[AVUser currentUser];
-    
     AVQuery *query=[AVQuery queryWithClassName:@"QiYeInfo"];
     [query whereKey:@"userObjectId" equalTo:usr.objectId];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             if ([objects count]>0) {
                 AVObject *qiyeInfo = [objects objectAtIndex:0];
-                
                 if ([[qiyeInfo objectForKey:@"isAuthorized"] isEqualToString:@"已认证"])
                 {
                     [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"qiyeIsValidate"];
@@ -193,8 +186,8 @@
 }
 
 - (void)tableViewInit{
-    if (!recordArray) {
-        recordArray=[[NSMutableArray alloc]init];
+    if (!_recordArray) {
+        _recordArray=[[NSMutableArray alloc]init];
     }
     
     skipTimes=0;
@@ -234,12 +227,12 @@
         if (!error) {
             
             if (headerRefreshing) {
-                [recordArray removeAllObjects];
+                [_recordArray removeAllObjects];
             }
             
             for (AVObject *obj in objects) {
                 
-                [recordArray addObject:obj];
+                [_recordArray addObject:obj];
                 
             }
             
@@ -292,16 +285,16 @@
             
             for (AVObject *obj in objects) {
                 
-                [recordArray addObject:obj];
+                [_recordArray addObject:obj];
                 
             }
             
             NSMutableArray *insertIndexPaths = [NSMutableArray arrayWithCapacity:10];
             
-            NSInteger n=[recordArray count];
+            NSInteger n=[_recordArray count];
             NSInteger m=[objects count];
             
-            for (NSInteger k=n-m; k<[recordArray count];k++) {
+            for (NSInteger k=n-m; k<[_recordArray count];k++) {
                 NSIndexPath *newPath = [NSIndexPath indexPathForRow:k inSection:0];
                 [insertIndexPaths addObject:newPath];
             }
@@ -325,7 +318,6 @@
     query=nil;
 }
 
-
 - (void)footerRereshing{
     footerRefreshing=YES;
     [self footRefreshData];
@@ -337,7 +329,33 @@
     [self refreshData];
 }
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSUInteger row = [indexPath row]; //获取当前行
+    JianZhi *object=[_recordArray objectAtIndex:row];
+    [object deleteInBackground];
+    [ _recordArray removeObjectAtIndex:row]; //在数据中删除当前对象
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade]; //数组执行删除 操作
+    
+    //[object saveInBackground];
+       }
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+    return YES;
+
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -345,7 +363,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [recordArray count];
+    return [_recordArray count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -353,7 +371,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   
+    
     BOOL nibsRegistered = NO;
     static NSString *Cellidentifier=@"myJobListCell";
     if (!nibsRegistered) {
@@ -366,8 +384,7 @@
     myJobListCell *cell = [tableView dequeueReusableCellWithIdentifier:Cellidentifier forIndexPath:indexPath];
     cell.resumeDelegate=self;
     cell.index=row;
-    
-    JianZhi *object=[recordArray objectAtIndex:row];
+    JianZhi *object=[_recordArray objectAtIndex:row];
     
     cell.jobTitleLabel.text= [object objectForKey:@"jianZhiTitle"];
     cell.resumeNumLabel.text= [NSString stringWithFormat:@"共收到%@份简历",[object objectForKey:@"jianZhiQiYeResumeValue"]];
@@ -388,7 +405,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    JobDetailVC *detailVC=[[JobDetailVC alloc]initWithData:[recordArray objectAtIndex:indexPath.row]];
+    JobDetailVC *detailVC=[[JobDetailVC alloc]initWithData:[_recordArray objectAtIndex:indexPath.row]];
     detailVC.hidesBottomBarWhenPushed=YES;
     detailVC.fromEnterprise=YES;
     
@@ -406,7 +423,7 @@
 }
 
 - (void)showRelativeResume:(NSInteger)index{
-    JianZhi *object=[recordArray objectAtIndex:index];
+    JianZhi *object=[_recordArray objectAtIndex:index];
     resumeListVC *resumeVC=[[resumeListVC alloc]init];
     resumeVC.jobObject=object;
     

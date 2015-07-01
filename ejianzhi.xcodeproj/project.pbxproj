@@ -471,7 +471,6 @@
 		3B04C14A1B25AE41006C008A /* CheckNewVersionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B04C1481B25AE41006C008A /* CheckNewVersionVC.m */; };
 		3B04C14B1B25AE41006C008A /* CheckNewVersionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B04C1491B25AE41006C008A /* CheckNewVersionVC.xib */; };
 		3B250BF91AFC5CB20045E89B /* messageblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B250BF81AFC5CB20045E89B /* messageblue.png */; };
-		3B49EB801AEFC091002F96AC /* myJobListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B49EB7E1AEFC091002F96AC /* myJobListVC.m */; };
 		3B49EB811AEFC091002F96AC /* myJobListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B49EB7F1AEFC091002F96AC /* myJobListVC.xib */; };
 		3B5539F61AF36D09009DAB84 /* resumeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5539F41AF36D09009DAB84 /* resumeListCell.m */; };
 		3B5539F71AF36D09009DAB84 /* resumeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B5539F51AF36D09009DAB84 /* resumeListCell.xib */; };
@@ -717,6 +716,7 @@
 		6009BB0B1B3CF9FE006B025C /* JobListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009BB071B3CF9FE006B025C /* JobListTableViewCell.xib */; };
 		6009BB0C1B3CF9FE006B025C /* JobListTableViewCell+configureForJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6009BB091B3CF9FE006B025C /* JobListTableViewCell+configureForJobCell.m */; };
 		6009BB101B3E4B53006B025C /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6009BB0F1B3E4B53006B025C /* HelpViewController.m */; };
+		601A36911B4399F700779C35 /* myJobListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 601A36901B4399F700779C35 /* myJobListVC.m */; };
 		605E590F1B351A4100FD9AB2 /* 企业信息icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E590E1B351A4100FD9AB2 /* 企业信息icon.png */; };
 		605E59111B351B7400FD9AB2 /* 服务中心icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E59101B351B7400FD9AB2 /* 服务中心icon.png */; };
 		605E591B1B351BDC00FD9AB2 /* 默认头像.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E59141B351BDC00FD9AB2 /* 默认头像.png */; };
@@ -1425,7 +1425,6 @@
 		3B04C1491B25AE41006C008A /* CheckNewVersionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckNewVersionVC.xib; sourceTree = "<group>"; };
 		3B250BF81AFC5CB20045E89B /* messageblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messageblue.png; sourceTree = "<group>"; };
 		3B49EB7D1AEFC091002F96AC /* myJobListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myJobListVC.h; sourceTree = "<group>"; };
-		3B49EB7E1AEFC091002F96AC /* myJobListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myJobListVC.m; sourceTree = "<group>"; };
 		3B49EB7F1AEFC091002F96AC /* myJobListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myJobListVC.xib; sourceTree = "<group>"; };
 		3B49EB831AEFD0AE002F96AC /* myJobListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myJobListCell.h; sourceTree = "<group>"; };
 		3B5539F31AF36D09009DAB84 /* resumeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resumeListCell.h; sourceTree = "<group>"; };
@@ -1754,6 +1753,7 @@
 		6009BB091B3CF9FE006B025C /* JobListTableViewCell+configureForJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JobListTableViewCell+configureForJobCell.m"; sourceTree = "<group>"; };
 		6009BB0E1B3E4B53006B025C /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		6009BB0F1B3E4B53006B025C /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		601A36901B4399F700779C35 /* myJobListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myJobListVC.m; sourceTree = "<group>"; };
 		605E590E1B351A4100FD9AB2 /* 企业信息icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "企业信息icon.png"; sourceTree = "<group>"; };
 		605E59101B351B7400FD9AB2 /* 服务中心icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "服务中心icon.png"; sourceTree = "<group>"; };
 		605E59141B351BDC00FD9AB2 /* 默认头像.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "默认头像.png"; sourceTree = "<group>"; };
@@ -3057,7 +3057,7 @@
 			isa = PBXGroup;
 			children = (
 				3B49EB7D1AEFC091002F96AC /* myJobListVC.h */,
-				3B49EB7E1AEFC091002F96AC /* myJobListVC.m */,
+				601A36901B4399F700779C35 /* myJobListVC.m */,
 				3B49EB7F1AEFC091002F96AC /* myJobListVC.xib */,
 				3B49EB831AEFD0AE002F96AC /* myJobListCell.h */,
 				3B7740701AEB90EA0017E549 /* myJobListCell.m */,
@@ -4563,6 +4563,7 @@
 				3BBF6F4F1AD6D0E800A33F5A /* QRadioButton.m in Sources */,
 				3BBF6F171AD6D0C900A33F5A /* UIView+EMWebCacheOperation.m in Sources */,
 				04F5C9991AE54D9F00341491 /* SubIconCollectionViewController.m in Sources */,
+				601A36911B4399F700779C35 /* myJobListVC.m in Sources */,
 				3BBF6F191AD6D0C900A33F5A /* SDPhotoBrowser.m in Sources */,
 				0443C1B81AD5553F004F29A5 /* UrlImageButton.m in Sources */,
 				040861D71AFA4A210060C76D /* NSDate+Category.m in Sources */,
@@ -4649,7 +4650,6 @@
 				3BBF6F491AD6D0E800A33F5A /* MLSelectInffShow.m in Sources */,
 				3BBC19AD1B2082CA0061CF69 /* JobDetailVC.m in Sources */,
 				3B8D4AEB1AE257A9001F5E7F /* MJRefreshConst.m in Sources */,
-				3B49EB801AEFC091002F96AC /* myJobListVC.m in Sources */,
 				3BC84AC11B26D70000B78C6B /* feedbackVC.m in Sources */,
 				0443C2231AD5560F004F29A5 /* CommonUtility.m in Sources */,
 				3BBF6F081AD6D0C900A33F5A /* EMSDImageCache.m in Sources */,
