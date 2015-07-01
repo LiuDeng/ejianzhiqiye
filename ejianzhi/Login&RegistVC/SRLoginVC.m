@@ -49,7 +49,7 @@ static  SRLoginVC *thisController=nil;
 +(id)shareLoginVC
 {
     if (thisController==nil) {
-        thisController=[[SRLoginVC alloc] initWithNibName:@"SRLoginVC" bundle:nil];
+        thisController=[[SRLoginVC alloc] initWithNibName:@"SRLoginVC" bundle:[NSBundle mainBundle]];
     }
     return thisController;
 }
@@ -164,6 +164,8 @@ static  SRLoginVC *thisController=nil;
     }else if ([[mySettingData objectForKey:@"type"] intValue] == 1){
         MLTabbar1 *tabbar=[MLTabbar1 shareInstance];
         [self.navigationController pushViewController:tabbar animated:NO];
+    }else
+    {
     }
     
     int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
