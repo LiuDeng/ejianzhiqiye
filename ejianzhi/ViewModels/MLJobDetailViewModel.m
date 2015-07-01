@@ -252,6 +252,7 @@
  */
 - (void)addFavirateAction
 {
+    if(self.isFavorite==NO){
     AVUser *currentUser=[AVUser currentUser];
     if (currentUser!=nil) {
         //FIXME: 子类化后修改
@@ -262,6 +263,7 @@
         }
          [MBProgressHUD showMessag:@"正在收藏..." toView:nil];
         NSDictionary *parameters=@{@"jianZhiId":self.jianZhi.objectId,@"qiYeInfoId":qiYeId,@"userId":currentUser.objectId};
+        NSLog(@"这个兼职的id是%@",self.jianZhi.objectId);
         [AVCloud callFunctionInBackground:@"add_shoucang" withParameters:parameters block:^(id object, NSError *error) {
             [MBProgressHUD hideAllHUDsForView: [UIApplication sharedApplication].keyWindow animated:YES];
             // 执行结果
@@ -274,13 +276,38 @@
                 NSString *errorMsg=[error.userInfo objectForKey:@"error"];
                 TTAlert(errorMsg);
             }
-         }];
-    }else
-    {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"你还未登录，请先登录再收藏" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles: nil];
-        [alert show];
+        }];
     }
-}
+ //       else
+//    {
+//        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"你还未登录，请先登录再收藏" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+//        [alert show];
+//    }
+    }else if(self.isFavorite==YES){
+        
+        AVQuery *query=[AVQuery queryWithClassName:@"JianZhiShouCang"];
+        AVUser *currentUser=[AVUser currentUser];
+        [query whereKey:@"userObjectId" equalTo:currentUser.objectId];
+        [query whereKey:@"jianZhi" equalTo:self.jianZhi];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                if(objects.count>0){
+                    AVObject *object=[objects objectAtIndex:0];
+                    [object deleteInBackground];
+                    TTAlert(@"取消收藏成功");
+                    self.isFavorite=NO;
+                }
+                
+                
+            } else {
+                // 输出错误信息
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+        }
+    
+           }
+
 
 - (void)tousuAction: (NSString*)tousuContent
 {
