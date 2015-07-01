@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRLoginVC">
             <connections>
                 <outlet property="floatView2" destination="1vU-6Q-aDc" id="ZHY-Lw-upQ"/>
-                <outlet property="loginButton" destination="fhv-w2-Wmf" id="nuB-G6-48W"/>
+                <outlet property="loginButton" destination="fhv-w2-Wmf" id="Pfp-NK-d1A"/>
                 <outlet property="otherLoginBtn" destination="gtx-wV-vNx" id="gPr-gp-XRB"/>
                 <outlet property="qqButton" destination="9H4-Tn-tAe" id="CqO-sS-iAZ"/>
                 <outlet property="qqLabel" destination="32F-is-lFE" id="Rgh-Ge-da4"/>
@@ -100,7 +100,7 @@
                             <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
