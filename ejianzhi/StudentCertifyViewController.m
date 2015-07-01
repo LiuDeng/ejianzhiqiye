@@ -158,6 +158,7 @@
         [alert show];
         return;
     }
+    
     if (firstImage != nil)
     {
         //上传图片
