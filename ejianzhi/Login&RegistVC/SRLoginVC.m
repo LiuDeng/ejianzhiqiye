@@ -172,12 +172,20 @@ static  SRLoginVC *thisController=nil;
         self.titleLabel.text=@"企业登录";
         self.userAccount.placeholder=@"请输入企业登录账户";
         [self.otherLoginBtn setTitle:@"求职者登录" forState:UIControlStateNormal];
+        self.view.backgroundColor = COLOR(53, 156, 108);
+        [self.otherLoginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _loginButton.backgroundColor = [UIColor whiteColor];
+        [_loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     else if (type == 2)
     {
         self.userAccount.placeholder=@"请输入账户名";
         self.titleLabel.text=@"求职者登录";
         [self.otherLoginBtn setTitle:@"企业登录" forState:UIControlStateNormal];
+        self.view.backgroundColor =COLOR(235, 235, 241);
+        [self.otherLoginBtn setTitleColor:COLOR(53, 156, 108) forState:UIControlStateNormal];
+        _loginButton.backgroundColor = COLOR(53, 156, 108);
+        [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }
     else
     {
@@ -186,10 +194,14 @@ static  SRLoginVC *thisController=nil;
         self.userAccount.placeholder=@"请输入账户名";
         self.titleLabel.text=@"求职者登录";
         [self.otherLoginBtn setTitle:@"企业登录" forState:UIControlStateNormal];
+        self.view.backgroundColor = COLOR(53, 156, 108);
+        [self.otherLoginBtn setTitleColor:COLOR(53, 156, 108) forState:UIControlStateNormal];
+        _loginButton.backgroundColor = COLOR(53, 156, 108);
+        [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }
     
     _weixinLabel.textColor = COLOR(48, 48, 48);
-    self.view.backgroundColor =COLOR(235, 235, 241);
+    
     _loginButton.layer.cornerRadius = 5.0f;
     _loginButton.layer.masksToBounds = YES;
     
@@ -515,6 +527,10 @@ static  SRLoginVC *thisController=nil;
         self.userAccount.placeholder=@"请输入企业登录账户";
         [self.otherLoginBtn setTitle:@"求职者登录" forState:UIControlStateNormal];
         loginType=1;
+        self.view.backgroundColor = COLOR(53, 156, 108);
+        [self.otherLoginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _loginButton.backgroundColor = [UIColor whiteColor];
+        [_loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         //    CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 33/255.0, 174/255.0, 148/255.0, 1.0 });
 //        UIColor *comColor=[UIColor colorWithRed:232/255.0 green:192/255.0 blue:111/255.0 alpha:1.0];
 //        self.view.backgroundColor=comColor;
@@ -528,7 +544,10 @@ static  SRLoginVC *thisController=nil;
         self.titleLabel.text=@"求职者登录";
         [self.otherLoginBtn setTitle:@"企业登录" forState:UIControlStateNormal];
         loginType=0;
-       
+        [self.otherLoginBtn setTitleColor:COLOR(53, 156, 108) forState:UIControlStateNormal];
+        self.view.backgroundColor =COLOR(235, 235, 241);
+        _loginButton.backgroundColor = COLOR(53, 156, 108);
+        [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 //        UIColor *usrColor=[UIColor colorWithRed:33/255.0 green:174/255.0 blue:148/255.0 alpha:1.0f];
 //        self.view.backgroundColor=usrColor;
 //        self.floatView2.backgroundColor=usrColor;
