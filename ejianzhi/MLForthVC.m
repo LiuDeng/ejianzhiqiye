@@ -40,6 +40,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *certifyButton;
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIView *headView;
 
 //登录控制器
 @property (weak,nonatomic) MLLoginManger *loginManager;
@@ -57,7 +58,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    [self creatAvuserImage];
     
     self.edgesForExtendedLayout=UIRectEdgeNone;
     
@@ -85,6 +86,19 @@
     [self.logoutButton.layer setCornerRadius:5.0];
 }
 
+- (void)creatAvuserImage{
+    self.userAvatarView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREENWIDTH-80)/2, 30, 80, 80)];
+    self.userAvatarView.image = [UIImage imageNamed:@"placeholder"];
+    [self.headView addSubview:self.userAvatarView];
+    [self.userAvatarView.layer setCornerRadius:40.0f];
+    [self.userAvatarView.layer setMasksToBounds:YES];
+    UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(chooseAvatar)];
+    tapGesture.delegate=self;
+    [self.userAvatarView addGestureRecognizer:tapGesture];
+    self.userAvatarView.userInteractionEnabled=YES;
+
+
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -124,11 +138,6 @@
         [tabbar.navigationController popViewControllerAnimated:YES];
     }
     
-    self.userAvatarView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREENWIDTH-80)/2, 25, 80, 80)];
-    self.userAvatarView.image = [UIImage imageNamed:@"placeholder"];
-    [self.view addSubview:self.userAvatarView];
-    [self.userAvatarView.layer setCornerRadius:40.0f];
-    [self.userAvatarView.layer setMasksToBounds:YES];
     
     if (!imagePickerPushing) {
         if ([AVUser currentUser]!=nil) {

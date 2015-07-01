@@ -64,7 +64,6 @@
     {
         [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width, height)];
     }
-    
     [self.view addSubview:_scrollView];
 
 }
@@ -159,6 +158,7 @@
         [alert show];
         return;
     }
+    
     if (firstImage != nil)
     {
         //上传图片

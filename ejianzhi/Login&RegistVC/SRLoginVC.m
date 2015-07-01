@@ -124,6 +124,7 @@ static  SRLoginVC *thisController=nil;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.userPassword.clearButtonMode=NO;
     self.loginButton.tag=101;
     [self creatThirdLoginView];
 //    UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREENWIDTH-80)/2, 48+44+20, 80, 80)];
