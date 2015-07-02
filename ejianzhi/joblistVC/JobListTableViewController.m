@@ -70,6 +70,7 @@
     self.edgesForExtendedLayout=UIRectEdgeNone;
     [self addDataSourceObbserver];
     [self tableViewInit];
+    //[self.tableView registerClass:@"JobListTableViewCell" forCellReuseIdentifier:@"JobListTableViewCell"];
     
     [RACObserve(self, isFisrtView) subscribeNext:^(id x) {
         if ([x boolValue]) {
