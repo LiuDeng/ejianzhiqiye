@@ -44,7 +44,12 @@
     self.countNumbersWithinUnitsLabel.text=[NSString stringWithFormat:@"%d/%d人",[jianzhi.jianZhiQiYeLuYongValue intValue],[jianzhi.jianZhiRecruitment intValue]];
     //待完善
     self.distanceLabel.text=[self distanceFromJobPoint:jianzhi.jianZhiPoint.latitude Lon:jianzhi.jianZhiPoint.longitude];
-    self.updateTimeLabel.text=[jianzhi.createdAt timeIntervalDescription];
+    if([self.distanceLabel.text isEqualToString:@""]){
+        self.distanceView.hidden=YES;
+    }else{
+        self.distanceView.hidden=NO;
+    }
+        self.updateTimeLabel.text=[jianzhi.createdAt timeIntervalDescription];
     
 //    self.IconView.badgeText=jianzhi.jianZhiKaoPuDu;
     
@@ -70,9 +75,7 @@
     if (lat>0 && lon>0) {
     
         CLLocationCoordinate2D jobP=CLLocationCoordinate2DMake(lat, lon);
-        
         CLLocationCoordinate2D location=[AJLocationManager shareLocation].lastCoordinate;
-        
         NSNumber *disNumber=[MLMapManager calDistanceMeterWithPointA:jobP PointB:location];
         int threshold=[disNumber intValue];
         if (threshold >100000) {
@@ -80,12 +83,13 @@
         }else if(threshold>1000)
         {
             return [NSString stringWithFormat:@"%.2fkm",[disNumber doubleValue]/1000];
-        }else if(threshold<100)
+        }else if(threshold<100&&threshold>0)
         {
             return [NSString stringWithFormat:@"%dm",threshold];
         }
         
     }
     return @"";
+    
 }
 @end
