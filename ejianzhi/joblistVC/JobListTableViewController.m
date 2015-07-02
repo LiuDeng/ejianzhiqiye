@@ -70,8 +70,6 @@
     self.edgesForExtendedLayout=UIRectEdgeNone;
     [self addDataSourceObbserver];
     [self tableViewInit];
-    //[self.tableView registerClass:@"JobListTableViewCell" forCellReuseIdentifier:@"JobListTableViewCell"];
-    
     [RACObserve(self, isFisrtView) subscribeNext:^(id x) {
         if ([x boolValue]) {
             [self.viewModel firstLoadForRecommended];
@@ -83,13 +81,13 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self firstLoad];
-    [self.tableView reloadData];
-}
-
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    [self firstLoad];
+//    [self.tableView reloadData];
+//}
+//
 - (void)tableViewInit{
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.tableView.scrollEnabled=YES;
@@ -103,6 +101,7 @@
         [viewModel firstLoad];
     }
 }
+
 
 - (void)addFooterRefresher
 {

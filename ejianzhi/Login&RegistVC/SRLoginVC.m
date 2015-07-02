@@ -79,7 +79,7 @@ static  SRLoginVC *thisController=nil;
     }
     NSArray *imageArray=@[@"微信",@"微博",@"qq"];
     NSArray *titleArray=@[@"微信",@"微博",@"QQ"];
-    
+    //注释的代码
     for(NSInteger i=0; i<3; i++){
         UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
         CGFloat space=(SCREENWIDTH-150)/4;

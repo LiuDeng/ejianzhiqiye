@@ -106,7 +106,6 @@
 - (void)creatHeadView{
     CGFloat bannerWidth=130*[[UIScreen mainScreen] bounds].size.width/320;
         _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH,bannerWidth+102+12+37)];
-   // _headView.backgroundColor=[UIColor redColor];
        _bannerView=[[SRAdvertisingView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 130*[[UIScreen mainScreen] bounds].size.width/320)];
     [_headView addSubview:_bannerView];
     
@@ -132,8 +131,6 @@
         CGFloat space=(SCREENWIDTH-width*4)/5;
         button.frame=CGRectMake(space*(i+1)+width*i,(height-width)/4, width, width);
         [button setImage:[UIImage imageNamed:imageArray[i]] forState:UIControlStateNormal];
-
-        [_buttonScrollView addSubview:button];
         button.tag=100+i;
         [button addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         UILabel *label=[[UILabel alloc]init];
@@ -141,7 +138,8 @@
         label.text=titleArray[i];
         label.textAlignment=NSTextAlignmentCenter;
         label.textColor=[UIColor colorWithRed:48/255.0 green:48/255.0 blue:48/255.0 alpha:1];
-        [_buttonScrollView addSubview:label];
+        [_buttonScrollView addSubview:button];
+         [_buttonScrollView addSubview:label];
     }
 }
 
@@ -180,7 +178,6 @@
     _recommendLabel.text=@"推荐兼职";
     _recommendLabel.font=[UIFont fontWithName:nil size:16];
     _recommendLabel.textColor=[UIColor colorWithRed:48/255.0 green:48/255.0 blue:48/255.0 alpha:1];
-    
     [_headView addSubview:_recommendLabel];
     
 }
@@ -188,42 +185,17 @@
 - (void)creatBottomLineView{
     _bottomLineView=[[UIView alloc]initWithFrame:CGRectMake(0, _recommendLabel.frame.origin.y+24, SCREENWIDTH, 1)];
     _bottomLineView.backgroundColor=[UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:0.5];
-
     [_headView addSubview:_bottomLineView];
     
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self creatHeadView];
-    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 60, 44)];
-    label.font=[UIFont fontWithName:nil size:18];
-    label.textColor=[UIColor whiteColor];
-    label.text=@"e兼职";
-    self.navigationItem.titleView=label;
-    //self.navigationItem.title=@"e兼职";
-    UIImage *image=[UIImage imageNamed:@"Locationicon"];
+    [self creatTitleLabel];
+    [self creatLocationButton];
     
-    UIButton *locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    locationBtn.imageEdgeInsets=UIEdgeInsetsMake(0, -24, 0, 0);
-    locationBtn.titleEdgeInsets=UIEdgeInsetsMake(0 ,-18, 0, 0);
-    [locationBtn setImage:image forState:UIControlStateNormal];
-    locationBtn.tintColor=[UIColor whiteColor];
-    [locationBtn setTitle:@"北京" forState:UIControlStateNormal];
-    locationBtn.titleLabel.font=[UIFont fontWithName:nil size:15];
-    locationBtn.frame =CGRectMake(0, 0, 60, 40);
     
-    //    [locationBtn setBackgroundImage:image forState:UIControlStateNormal];
     
-    [locationBtn addTarget: self action: @selector(Location) forControlEvents: UIControlEventTouchUpInside];
-    UIBarButtonItem* locationBtnItem=[[UIBarButtonItem alloc]initWithCustomView:locationBtn];
-    
-    //     [[UIBarButtonItem alloc] initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(Location)];
-    
-    self.navigationItem.leftBarButtonItem=locationBtnItem;
-    self.navigationItem.leftBarButtonItem.tintColor=[UIColor whiteColor];
-    
-    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"搜索icon副本.png"] style:UIBarButtonItemStylePlain target:self action:@selector(searchBarTapped)];
-    self.navigationItem.rightBarButtonItem=rightItem;
     self.viewModel=[[MLMainPageViewModel alloc]init];
     [self addChildViewController:self.joblistTableVC];
     //collectiveViewCell
@@ -241,7 +213,34 @@
     
 }
 
+-(void)creatRightButtonItem{
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"搜索icon副本.png"] style:UIBarButtonItemStylePlain target:self action:@selector(searchBarTapped)];
+    self.navigationItem.rightBarButtonItem=rightItem;
 
+}
+- (void)creatLocationButton{
+    UIImage *image=[UIImage imageNamed:@"Locationicon"];
+    UIButton *locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    locationBtn.imageEdgeInsets=UIEdgeInsetsMake(0, -24, 0, 0);
+    locationBtn.titleEdgeInsets=UIEdgeInsetsMake(0 ,-18, 0, 0);
+    [locationBtn setImage:image forState:UIControlStateNormal];
+    locationBtn.tintColor=[UIColor whiteColor];
+    [locationBtn setTitle:@"北京" forState:UIControlStateNormal];
+    locationBtn.titleLabel.font=[UIFont fontWithName:nil size:15];
+    locationBtn.frame =CGRectMake(0, 0, 60, 40);
+    [locationBtn addTarget: self action: @selector(Location) forControlEvents: UIControlEventTouchUpInside];
+    UIBarButtonItem* locationBtnItem=[[UIBarButtonItem alloc]initWithCustomView:locationBtn];
+    self.navigationItem.leftBarButtonItem=locationBtnItem;
+    self.navigationItem.leftBarButtonItem.tintColor=[UIColor whiteColor];
+}
+
+- (void)creatTitleLabel{
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 60, 44)];
+    label.font=[UIFont fontWithName:nil size:18];
+    label.textColor=[UIColor whiteColor];
+    label.text=@"e兼职";
+    self.navigationItem.titleView=label;
+}
 
 -(void)searchBarTapped
 {
@@ -280,6 +279,7 @@
     //[self.joblistTableVC.tableView setTableHeaderView:_tableHeadView2];
     //添加表尾
     [self.joblistTableVC addFooterRefresher];
+    [self.joblistTableVC addHeaderRefresher];
 }
 
 
