@@ -261,7 +261,7 @@
         if (qiyePointer.objectId!=nil) {
             qiYeId=qiyePointer.objectId;
         }
-         [MBProgressHUD showMessag:@"正在收藏..." toView:nil];
+        [MBProgressHUD showMessag:@"正在收藏..." toView:nil];
         NSDictionary *parameters=@{@"jianZhiId":self.jianZhi.objectId,@"qiYeInfoId":qiYeId,@"userId":currentUser.objectId};
         NSLog(@"这个兼职的id是%@",self.jianZhi.objectId);
         [AVCloud callFunctionInBackground:@"add_shoucang" withParameters:parameters block:^(id object, NSError *error) {
