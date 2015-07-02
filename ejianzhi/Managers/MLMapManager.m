@@ -196,6 +196,7 @@ static NSString *mapKey=@"75b8982e76c3c19b749f1fb7fd9ef67a";
     //2.计算距离
     CLLocationDistance distance = MAMetersBetweenMapPoints(point1,point2);
     return [NSNumber numberWithDouble:distance];
+    
 }
 
 
