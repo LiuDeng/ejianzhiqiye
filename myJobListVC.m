@@ -391,7 +391,7 @@
     
     cell.jobTitleLabel.text= [object objectForKey:@"jianZhiTitle"];
     cell.resumeNumLabel.text= [NSString stringWithFormat:@"共收到%@份简历",[object objectForKey:@"jianZhiQiYeResumeValue"]];
-    cell.jobSalaryLabel.text=[NSString stringWithFormat:@"%@元/月",[object objectForKey:@"jianZhiWage"]];
+    cell.jobSalaryLabel.text=[NSString stringWithFormat:@"%@元/%@",[object objectForKey:@"jianZhiWage"],[object objectForKey:@"jianZhiWageType"]];
     
     NSInteger n=[[object objectForKey:@"jianZhiRecruitment"] integerValue]-[[object objectForKey:@"jianZhiQiYeLuYongValue"] integerValue];
     if (n<0)
