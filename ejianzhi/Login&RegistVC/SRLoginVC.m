@@ -285,7 +285,7 @@ static  SRLoginVC *thisController=nil;
                         }];
                     }
                 }];
-                
+                [self loadCompanyInfo];
                 AVUser *user = [AVUser currentUser];
                 [user setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"] forKey:@"installationId"];
                 [user saveEventually];
@@ -432,7 +432,7 @@ static  SRLoginVC *thisController=nil;
                         }
                         
                         [loginer loginInbackground:snsAccount.userName Pwd:@"123456" loginType:loginType withBlock:^(BOOL succeed, NSNumber *userType) {
-                            
+                            [self loadCompanyInfo];
                             AVUser *user = [AVUser currentUser];
                             [user setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"] forKey:@"installationId"];
                             [user saveEventually];
@@ -525,7 +525,7 @@ static  SRLoginVC *thisController=nil;
                         }
                         
                         [loginer loginInbackground:snsAccount.userName Pwd:@"123456" loginType:loginType withBlock:^(BOOL succeed, NSNumber *userType) {
-                            
+                            [self loadCompanyInfo];
                             AVUser *user = [AVUser currentUser];
                             [user setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"] forKey:@"installationId"];
                             [user saveEventually];
@@ -616,7 +616,7 @@ static  SRLoginVC *thisController=nil;
                         }
                         
                         [loginer loginInbackground:snsAccount.userName Pwd:@"123456" loginType:loginType withBlock:^(BOOL succeed, NSNumber *userType) {
-                            
+                            [self loadCompanyInfo];
                             AVUser *user = [AVUser currentUser];
                             [user setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"] forKey:@"installationId"];
                             [user saveEventually];
@@ -637,6 +637,50 @@ static  SRLoginVC *thisController=nil;
             NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
             
         }});
+}
+
+- (void)loadCompanyInfo
+{
+    AVUser *usr=[AVUser currentUser];
+    if (usr != nil) {
+        AVQuery *query=[AVQuery queryWithClassName:@"QiYeInfo"];
+        [query whereKey:@"userObjectId" equalTo:usr.objectId];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                if ([objects count]>0) {
+                    AVObject *qiyeInfo = [objects objectAtIndex:0];
+                    if ([[qiyeInfo objectForKey:@"isAuthorized"] isEqualToString:@"已认证"])
+                    {
+                        [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"qiyeIsValidate"];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                    }
+                    else if ([[qiyeInfo objectForKey:@"isAuthorized"] isEqualToString:@"未认证"])
+                    {
+                        [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"qiyeIsValidate"];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                    } else if ([[qiyeInfo objectForKey:@"isAuthorized"] isEqualToString:@"未处理"])
+                    {
+                        [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"qiyeIsValidate"];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                    }
+                    else
+                    {
+                        [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"qiyeIsValidate"];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                    }
+                }else{
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您还没有创建企业信息" delegate:self cancelButtonTitle:@"稍后创建" otherButtonTitles:@"立即创建", nil];
+                    alertView.tag = 100;
+                    [alertView show];
+                }
+            }else{
+                
+            }
+            
+        }];
+    }
+    
+    
 }
 
 @end

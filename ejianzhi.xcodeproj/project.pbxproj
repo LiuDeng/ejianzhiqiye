@@ -533,10 +533,10 @@
 		6009BB0B1B3CF9FE006B025C /* JobListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009BB071B3CF9FE006B025C /* JobListTableViewCell.xib */; };
 		6009BB0C1B3CF9FE006B025C /* JobListTableViewCell+configureForJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6009BB091B3CF9FE006B025C /* JobListTableViewCell+configureForJobCell.m */; };
 		6009BB101B3E4B53006B025C /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6009BB0F1B3E4B53006B025C /* HelpViewController.m */; };
-		601A36911B4399F700779C35 /* myJobListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 601A36901B4399F700779C35 /* myJobListVC.m */; };
 		601A4BF21B46893100779C35 /* CompanyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 601A4BF11B46893100779C35 /* CompanyInfoViewController.xib */; };
 		601A4BF71B4689AE00779C35 /* FliterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 601A4BF51B4689AE00779C35 /* FliterTableViewController.m */; };
 		601A4BF81B4689AE00779C35 /* FliterTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 601A4BF61B4689AE00779C35 /* FliterTableViewController.xib */; };
+		601A4BFB1B469B7600779C35 /* myJobListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 601A4BFA1B469B7600779C35 /* myJobListVC.m */; };
 		605E590F1B351A4100FD9AB2 /* 企业信息icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E590E1B351A4100FD9AB2 /* 企业信息icon.png */; };
 		605E59111B351B7400FD9AB2 /* 服务中心icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E59101B351B7400FD9AB2 /* 服务中心icon.png */; };
 		605E591B1B351BDC00FD9AB2 /* 默认头像.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E59141B351BDC00FD9AB2 /* 默认头像.png */; };
@@ -1316,11 +1316,11 @@
 		6009BB091B3CF9FE006B025C /* JobListTableViewCell+configureForJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JobListTableViewCell+configureForJobCell.m"; sourceTree = "<group>"; };
 		6009BB0E1B3E4B53006B025C /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		6009BB0F1B3E4B53006B025C /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
-		601A36901B4399F700779C35 /* myJobListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myJobListVC.m; sourceTree = "<group>"; };
 		601A4BF11B46893100779C35 /* CompanyInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyInfoViewController.xib; sourceTree = "<group>"; };
 		601A4BF41B4689AE00779C35 /* FliterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FliterTableViewController.h; sourceTree = "<group>"; };
 		601A4BF51B4689AE00779C35 /* FliterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FliterTableViewController.m; sourceTree = "<group>"; };
 		601A4BF61B4689AE00779C35 /* FliterTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FliterTableViewController.xib; sourceTree = "<group>"; };
+		601A4BFA1B469B7600779C35 /* myJobListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myJobListVC.m; sourceTree = "<group>"; };
 		605E590E1B351A4100FD9AB2 /* 企业信息icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "企业信息icon.png"; sourceTree = "<group>"; };
 		605E59101B351B7400FD9AB2 /* 服务中心icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "服务中心icon.png"; sourceTree = "<group>"; };
 		605E59141B351BDC00FD9AB2 /* 默认头像.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "默认头像.png"; sourceTree = "<group>"; };
@@ -2433,7 +2433,7 @@
 			isa = PBXGroup;
 			children = (
 				3B49EB7D1AEFC091002F96AC /* myJobListVC.h */,
-				601A36901B4399F700779C35 /* myJobListVC.m */,
+				601A4BFA1B469B7600779C35 /* myJobListVC.m */,
 				3B49EB7F1AEFC091002F96AC /* myJobListVC.xib */,
 				3B49EB831AEFD0AE002F96AC /* myJobListCell.h */,
 				3B7740701AEB90EA0017E549 /* myJobListCell.m */,
@@ -3534,9 +3534,9 @@
 				3BBF6F4F1AD6D0E800A33F5A /* QRadioButton.m in Sources */,
 				3BBF6F171AD6D0C900A33F5A /* UIView+EMWebCacheOperation.m in Sources */,
 				04F5C9991AE54D9F00341491 /* SubIconCollectionViewController.m in Sources */,
-				601A36911B4399F700779C35 /* myJobListVC.m in Sources */,
 				3BBF6F191AD6D0C900A33F5A /* SDPhotoBrowser.m in Sources */,
 				040861D71AFA4A210060C76D /* NSDate+Category.m in Sources */,
+				601A4BFB1B469B7600779C35 /* myJobListVC.m in Sources */,
 				3B04C14A1B25AE41006C008A /* CheckNewVersionVC.m in Sources */,
 				04B346961AEA8C1900A8A180 /* JobAnonationView.m in Sources */,
 				3BBF6F121AD6D0C900A33F5A /* UIImage+EMGIF.m in Sources */,

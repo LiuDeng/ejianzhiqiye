@@ -45,7 +45,16 @@
     self.title=@"我发布的兼职";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布职位" style:UIBarButtonItemStylePlain target:self action:@selector(addNewJob)];
     self.navigationItem.rightBarButtonItem.tintColor=[UIColor whiteColor];
-    [self loadCompanyInfo];
+    
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"qiyeIsValidate"] intValue] == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的企业还未认证" delegate:self cancelButtonTitle:@"稍后认证" otherButtonTitles:@"立即认证", nil];
+        alertView.tag = 100;
+        [alertView show];
+    }
+    
+    [self tableViewInit];
+    [self headerRereshing];
+//    [self loadCompanyInfo];
     
 }
 
@@ -59,67 +68,12 @@
     [self headerRereshing];
 }
 
-- (void)loadCompanyInfo
-{
-    AVUser *usr=[AVUser currentUser];
-    if (usr != nil) {
-        AVQuery *query=[AVQuery queryWithClassName:@"QiYeInfo"];
-        [query whereKey:@"userObjectId" equalTo:usr.objectId];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                if ([objects count]>0) {
-                    AVObject *qiyeInfo = [objects objectAtIndex:0];
-                    if ([[qiyeInfo objectForKey:@"isAuthorized"] isEqualToString:@"已认证"])
-                    {
-                        [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"qiyeIsValidate"];
-                        [[NSUserDefaults standardUserDefaults] synchronize];
-                        [self tableViewInit];
-                        [self headerRereshing];
-                    }
-                    else if ([[qiyeInfo objectForKey:@"isAuthorized"] isEqualToString:@"未认证"])
-                    {
-                        [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"qiyeIsValidate"];
-                        [[NSUserDefaults standardUserDefaults] synchronize];
-                        [self tableViewInit];
-                        [self headerRereshing];
-                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的企业还未认证" delegate:self cancelButtonTitle:@"稍后认证" otherButtonTitles:@"立即认证", nil];
-                        alertView.tag = 100;
-                        [alertView show];
-                    } else if ([[qiyeInfo objectForKey:@"isAuthorized"] isEqualToString:@"未处理"])
-                    {
-                        [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"qiyeIsValidate"];
-                        [[NSUserDefaults standardUserDefaults] synchronize];
-                        [self tableViewInit];
-                        [self headerRereshing];
-                    }
-                    else
-                    {
-                        [[NSUserDefaults standardUserDefaults] setObject:@(0) forKey:@"qiyeIsValidate"];
-                        [[NSUserDefaults standardUserDefaults] synchronize];
-                    }
-                }else{
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您还没有创建企业信息" delegate:self cancelButtonTitle:@"稍后创建" otherButtonTitles:@"立即创建", nil];
-                    alertView.tag = 100;
-                    [alertView show];
-                }
-            }else{
-                NSString *errorString=[NSString stringWithFormat:@"sorry，加载出错。错误原因：%@"  ,error.description];
-                [MBProgressHUD showError:errorString toView:nil];
-            }
-            
-        }];
-    }
-    
-    
-}
-
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (alertView.tag == 100)
     {
         if (buttonIndex == 0)
         {
-            
         }
         else if (buttonIndex == 1)
         {
