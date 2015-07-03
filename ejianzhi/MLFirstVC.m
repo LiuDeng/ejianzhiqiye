@@ -221,10 +221,11 @@
 - (void)creatLocationButton{
     UIImage *image=[UIImage imageNamed:@"Locationicon"];
     UIButton *locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    locationBtn.imageEdgeInsets=UIEdgeInsetsMake(0, -24, 0, 0);
-    locationBtn.titleEdgeInsets=UIEdgeInsetsMake(0 ,-18, 0, 0);
-    [locationBtn setImage:image forState:UIControlStateNormal];
     locationBtn.tintColor=[UIColor whiteColor];
+    UIImageView *locationImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 12, 12, 17)];
+    locationImageView.image=image;
+    [locationBtn addSubview:locationImageView];
+    
     [locationBtn setTitle:@"北京" forState:UIControlStateNormal];
     locationBtn.titleLabel.font=[UIFont fontWithName:nil size:15];
     locationBtn.frame =CGRectMake(0, 0, 60, 40);
