@@ -28,11 +28,8 @@
 
 #import "UMSocial.h"
 #import "UMSocialSinaHandler.h"
-#import <AVOSCloudSNS/AVOSCloudSNS.h>
 #import "UMSocialWechatHandler.h"
 #import "HelpViewController.h"
-#import "MyApplicationList.h"
-#import "MLForthVC.h"
 
 #define SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 
@@ -46,15 +43,6 @@
 @end
 
 @implementation AppDelegate
-
--(MLTabbarVC*)mainTabViewController
-{
-   if(_mainTabViewController==nil)
-   {
-       _mainTabViewController=[[MLTabbarVC alloc]init];
-   }
-    return _mainTabViewController;
-}
 
 -(MLTabbar1*)qiyeTabViewController
 {
@@ -276,18 +264,12 @@
         {
             [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"notification"];
             [[NSUserDefaults standardUserDefaults] synchronize];
-            [MLTabbarVC shareInstance].selectedIndex = 2;
-            [self performSelector:@selector(dealWithNotification) withObject:self afterDelay:0.1];
+            [MLTabbar1 shareInstance].selectedIndex = 0;
             
         }
     }
 }
 
-- (void)dealWithNotification
-{
-    [[MLTabbarVC shareInstance].forthVC showMyApplication:[MLTabbarVC shareInstance].forthVC.myApplicationButton];
-    
-}
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {

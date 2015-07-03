@@ -12,8 +12,7 @@
 #import "MLMapManager.h"
 #import "AJLocationManager.h"
 #import "MapViewController.h"
-#import "tousuViewController.h"
-@interface MLJobDetailViewModel()<tousuViewControllerDelegate>
+@interface MLJobDetailViewModel()
 
 @property (weak,nonatomic) MLMapManager *mapManager;
 @property (weak,nonatomic) AJLocationManager *locationManager;

@@ -16,8 +16,6 @@
 #import "ResumeVC.h"
 #import "imageWithUrlObject.h"
 #import "SDPhotoBrowser.h"
-#import "CDService.h"
-#import "CDUserFactory.h"
 
 #define  PIC_WIDTH 80
 #define  PIC_HEIGHT 80
@@ -86,13 +84,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
         }else{
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"联系" style:UIBarButtonItemStylePlain target:self action:@selector(contactUser)];
             
-            CDIM* im=[CDIM sharedInstance];
-            im.userDelegate=[CDIMService shareInstance];
-            [im openWithClientId:[AVUser currentUser].objectId callback:^(BOOL succeeded, NSError *error) {
-                if(!error){
-                    
-                }
-            }];
+           
         }
         
         [self initDataFromNet];
@@ -496,26 +488,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 
 - (void)contactUser{
 
-    AVQuery *userQuery=[AVUser query];
-    [userQuery whereKey:@"objectId" equalTo:self.userObjectId];
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            AVUser *_user=[objects objectAtIndex:0];
-            [CDCache registerUser:_user];
-            
-            CDIM* im=[CDIM sharedInstance];
-            WEAKSELF
-            [im fetchConvWithUserId:_user.objectId callback:^(AVIMConversation *conversation, NSError *error) {
-                if(error){
-                    DLog(@"%@",error);
-                }else{
-                    CDChatRoomVC* chatRoomVC=[[CDChatRoomVC alloc] initWithConv:conversation];
-                    chatRoomVC.hidesBottomBarWhenPushed=YES;
-                    [weakSelf.navigationController pushViewController:chatRoomVC animated:YES];
-                }
-            }];
-        }
-    }];
+   
 }
 
 - (void)didReceiveMemoryWarning {

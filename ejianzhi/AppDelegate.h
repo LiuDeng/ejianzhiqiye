@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "IQKeyboardManager.h"
 #import <AVOSCloud/AVOSCloud.h>
-#import "MLTabbarVC.h"
 #import "MLTabbar1.h"
 
 enum PUSHTYPE {
@@ -23,7 +22,6 @@ enum PUSHTYPE {
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong,nonatomic)MLTabbarVC *mainTabViewController;
 @property (strong,nonatomic)MLTabbar1 *qiyeTabViewController;
 @end
 

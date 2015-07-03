@@ -7,7 +7,6 @@
 //
 
 #import "CompanyInfoViewController.h"
-#import "JobOfComListVC.h"
 #import "CompanyInfoViewModel.h"
 #import "InputInfoVC.h"
 #import "HZAreaPickerView.h"
@@ -18,7 +17,6 @@
     UIView *covervView;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-- (IBAction)seeMoreJobAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *tagImageView1;
 @property (weak, nonatomic) IBOutlet UILabel *comTitleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *comIconView;
@@ -142,14 +140,6 @@
 }
 */
 
-- (IBAction)seeMoreJobAction:(id)sender {
-    JobOfComListVC *jobListForCom=[[JobOfComListVC alloc]init];
-    [self.navigationController pushViewController:jobListForCom animated:YES];
-    
-    if (self.company!=nil) {
-        [jobListForCom setCompanyAndQuery:self.company];
-    }
-}
 
 - (IBAction)btn2Click:(id)sender {
     InputInfoVC *inputVC=[[InputInfoVC alloc]init];

@@ -11,12 +11,9 @@
 
 #import "MLLoginViewModel.h"
 #import "MLLoginManger.h"
-#import "MLTabbarVC.h"
 #import "MLTabbar1.h"
 #import "ResetPwdViewController.h"
 #import "UMSocial.h"
-#import <AVOSCloudSNS/AVOSCloudSNS.h>
-#import <AVOSCloudSNS/AVUser+SNS.h>
 #import "UserDetail.h"
 
 @interface SRLoginVC ()<successRegistered,UIAlertViewDelegate>
@@ -127,78 +124,15 @@ static  SRLoginVC *thisController=nil;
     self.userPassword.clearButtonMode=NO;
     self.loginButton.tag=101;
     [self creatThirdLoginView];
-//    UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREENWIDTH-80)/2, 48+44+20, 80, 80)];
-//    headImageView.image = [UIImage imageNamed:@"Icon-60.png"];
-//    [self.view addSubview:headImageView];
-//    
-//    UIButton *weiboButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    weiboButton.frame = CGRectMake((SCREENWIDTH-50)/2, 404, 50, 50);
-//    [weiboButton setImage:[UIImage imageNamed:@"微博"] forState:UIControlStateNormal];
-//    [weiboButton addTarget:self action:@selector(weiboLoginAction:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:weiboButton];
-//    
-//    UILabel *weiboLabel = [[UILabel alloc] initWithFrame:CGRectMake(weiboButton.frame.origin.x, weiboButton.frame.origin.y+50+5, weiboButton.frame.size.width, 32)];
-//    weiboLabel.text = @"微博";
-//    weiboLabel.textAlignment = NSTextAlignmentCenter;
-//    [self.view addSubview:weiboLabel];
-//    
-//    UILabel *thirdLoginLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREENWIDTH-150)/2, 370, 150, 21)];
-//    thirdLoginLabel.text = @"第三方登录";
-//    thirdLoginLabel.textColor = [UIColor lightGrayColor];
-//    thirdLoginLabel.textAlignment = NSTextAlignmentCenter;
-//    [self.view addSubview:thirdLoginLabel];
-//    
-//    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(20, 380, 70, 0.5)];
-//    leftView.backgroundColor = [UIColor lightGrayColor];
-//    [self.view addSubview:leftView];
-//    
-//    UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH-20-70, 380, 70, 0.5)];
-//    rightView.backgroundColor = [UIColor lightGrayColor];
-//    [self.view addSubview:rightView];
     
-    NSUserDefaults *mySettingData = [NSUserDefaults standardUserDefaults];
     
-    if ([[mySettingData objectForKey:@"type"] intValue] == 2 ) {
-        MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
-        [self.navigationController pushViewController:tabbar animated:NO];
-    }else if ([[mySettingData objectForKey:@"type"] intValue] == 1){
-        MLTabbar1 *tabbar=[MLTabbar1 shareInstance];
-        [self.navigationController pushViewController:tabbar animated:NO];
-    }else
-    {
-    }
-    
-    int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
-    if (type == 1)
-    {
-        self.titleLabel.text=@"企业登录";
-        self.userAccount.placeholder=@"请输入企业登录账户";
-        [self.otherLoginBtn setTitle:@"求职者登录" forState:UIControlStateNormal];
-        self.view.backgroundColor = COLOR(53, 156, 108);
-        [self.otherLoginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _loginButton.backgroundColor = [UIColor whiteColor];
-        [_loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-    else if (type == 2)
-    {
-        self.userAccount.placeholder=@"请输入账户名";
-        self.titleLabel.text=@"求职者登录";
-        [self.otherLoginBtn setTitle:@"企业登录" forState:UIControlStateNormal];
-        self.view.backgroundColor =COLOR(235, 235, 241);
-        [self.otherLoginBtn setTitleColor:COLOR(53, 156, 108) forState:UIControlStateNormal];
-        _loginButton.backgroundColor = COLOR(53, 156, 108);
-        [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }
-    else
-    {
-        self.userAccount.placeholder=@"请输入账户名";
-        self.titleLabel.text=@"求职者登录";
-        [self.otherLoginBtn setTitle:@"企业登录" forState:UIControlStateNormal];
-        self.view.backgroundColor = COLOR(235, 235, 241);
-        [self.otherLoginBtn setTitleColor:COLOR(53, 156, 108) forState:UIControlStateNormal];
-        _loginButton.backgroundColor = COLOR(53, 156, 108);
-        [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }
+    self.titleLabel.text=@"企业登录";
+    self.userAccount.placeholder=@"请输入企业登录账户";
+    [self.otherLoginBtn setTitle:@"求职者登录" forState:UIControlStateNormal];
+    self.view.backgroundColor = COLOR(53, 156, 108);
+    [self.otherLoginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _loginButton.backgroundColor = [UIColor whiteColor];
+    [_loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     _weixinLabel.textColor = COLOR(48, 48, 48);
     
@@ -241,60 +175,9 @@ static  SRLoginVC *thisController=nil;
     [self.lookAroundBtn.layer setCornerRadius:5.0];
 
     
-//    //初始化检验步骤  误删后续有用
-//        RACSignal *validUsernameSignal = [self.userAccount.rac_textSignal map:^id(NSString *value) {
-//            return @(value.length > 0);
-//        }];
-//    
-//        RACSignal *validPasswordSignal = [self.userPassword.rac_textSignal map:^id(NSString *value) {
-//            return @(value.length > 0);
-//        }];
-    //
-    //
-//        [validUsernameSignal subscribeNext:^(NSNumber *usernameValid) {
-////            if ([usernameValid boolValue]==NO) {
-////                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入账户名或手机号码" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-////                [alert show];
-////            }
-//        }];
-    //
-//        [validPasswordSignal subscribeNext:^(NSNumber *passwordValid) {
-//            if ([passwordValid boolValue]==NO) {
-//                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入登陆密码" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//                [alert show];
-//            }
-//    
-//        }];
-    //
-    //
-    //    //创建login信号
-//        RACSignal *loginActiveSignal=[RACSignal combineLatest:@[validUsernameSignal,validPasswordSignal]
-//           reduce:^id(NSNumber *usernameValid, NSNumber *passwordValid){
-//               return @(([usernameValid boolValue]&&[passwordValid boolValue]));
-//           }];
-//    
-    //设置loginbutton 的rac_command
-//    @weakify(self)
-//    self.loginButton.rac_command=[[RACCommand alloc]initWithEnabled:loginActiveSignal signalBlock:^RACSignal *(id input) {
-//        @strongify(self)
-//        [self touchLoginButton:nil];
-//        //监控这个这个信号，应该监控operation操作完成的信号
-//        return RACObserve(self.loginManager,LoginState);
-//    }];
-    
-//    RAC(self.loginButton,backgroundColor)=[loginActiveSignal map:^id(NSNumber *value) {
-//        @strongify(self)
-//        return self.loginButton.enabled? [UIColor colorWithRed:0.13 green:0.62 blue:0.52 alpha:1.0f]:[UIColor grayColor];
-//    }];
     
     self.resetPassword.rac_command=[[RACCommand alloc]initWithSignalBlock:^RACSignal *(id input) {
         if ([self.userAccount.text length]==11) {
-//            
-//            
-//            
-//            
-//            
-//            [SMS_SDK sendSMS:self.userAccount.text AndMessage:[NSString stringWithFormat:@"重置密码成功,新密码为:123456,登录请及时修改"]];
         }
         
         return [RACSignal empty];
@@ -407,57 +290,9 @@ static  SRLoginVC *thisController=nil;
                 [user setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"] forKey:@"installationId"];
                 [user saveEventually];
                 
-                int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
-                if (type == 1)
-                {
-                    if ([userType integerValue]==loginType)
-                    {
-                        MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
-                        [self.navigationController pushViewController:tabbar1 animated:YES];
-                    }
-                    else
-                    {
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"该账户为普通账户，是否继续登录？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录普通账户",nil];
-                        alert.tag=2002;
-                        [alert show];
-                    }
-                    
-                }
-                else if (type == 2)
-                {
-                    if ([userType integerValue]==loginType)
-                    {
-                        MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
-                        [self.navigationController pushViewController:tabbar animated:YES];
-                    }
-                    else
-                    {
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"该账户为企业账户，是否继续登录？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录企业账户",nil];
-                        alert.tag=3003;
-                        [alert show];
-                    }
-                }
-//                if ([userType integerValue]==0) {
-//                    if ([userType integerValue]==loginType) {
-//                        MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
-//                        [self.navigationController pushViewController:tabbar animated:YES];
-//                    }else{
-//                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"该账户为普通账户，是否继续登录？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录普通账户",nil];
-//                        alert.tag=2002;
-//                        [alert show];
-//                    }
-//                    
-//                }else{
-//                    if ([userType integerValue]==loginType) {
-//                        MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
-//                        [self.navigationController pushViewController:tabbar1 animated:YES];
-//                    }else{
-//                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"该账户为企业账户，是否继续登录？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录企业账户",nil];
-//                        alert.tag=3003;
-//                        [alert show];
-//                    }
-//                }
-//
+                MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
+                [self.navigationController pushViewController:tabbar1 animated:YES];
+                
             }else{
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:loginer.feedback message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [alert show];
@@ -496,12 +331,6 @@ static  SRLoginVC *thisController=nil;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (alertView.tag==2002) {
-        if (buttonIndex==1) {
-            MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
-            [self.navigationController pushViewController:tabbar animated:YES];
-        }
-    }
     if (alertView.tag==3003) {
         if (buttonIndex==1) {
             MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
@@ -514,46 +343,9 @@ static  SRLoginVC *thisController=nil;
     //[self logIn];
 }
 
-- (IBAction)lookAround:(id)sender {
-    MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
-    [self.navigationController pushViewController:tabbar animated:YES];
-}
 
 - (IBAction)otherLogin:(id)sender {
-    if ([self.titleLabel.text isEqualToString:@"求职者登录"]) {
-        [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:@"type"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        self.titleLabel.text=@"企业登录";
-        self.userAccount.placeholder=@"请输入企业登录账户";
-        [self.otherLoginBtn setTitle:@"求职者登录" forState:UIControlStateNormal];
-        loginType=1;
-        self.view.backgroundColor = COLOR(53, 156, 108);
-        [self.otherLoginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _loginButton.backgroundColor = [UIColor whiteColor];
-        [_loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        //    CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 33/255.0, 174/255.0, 148/255.0, 1.0 });
-//        UIColor *comColor=[UIColor colorWithRed:232/255.0 green:192/255.0 blue:111/255.0 alpha:1.0];
-//        self.view.backgroundColor=comColor;
-//        self.floatView2.backgroundColor=comColor;
-////        self.loginButton.titleLabel.textColor=comColor;
-//        self.navBar.barTintColor=comColor;
-    }else{
-        [[NSUserDefaults standardUserDefaults] setObject:@(2) forKey:@"type"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        self.userAccount.placeholder=@"请输入账户名";
-        self.titleLabel.text=@"求职者登录";
-        [self.otherLoginBtn setTitle:@"企业登录" forState:UIControlStateNormal];
-        loginType=0;
-        [self.otherLoginBtn setTitleColor:COLOR(53, 156, 108) forState:UIControlStateNormal];
-        self.view.backgroundColor =COLOR(235, 235, 241);
-        _loginButton.backgroundColor = COLOR(53, 156, 108);
-        [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        UIColor *usrColor=[UIColor colorWithRed:33/255.0 green:174/255.0 blue:148/255.0 alpha:1.0f];
-//        self.view.backgroundColor=usrColor;
-//        self.floatView2.backgroundColor=usrColor;
-////        self.loginButton.titleLabel.textColor=usrColor;
-//        self.navBar.barTintColor=usrColor;
-    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -647,18 +439,9 @@ static  SRLoginVC *thisController=nil;
                             
                             [[NSUserDefaults standardUserDefaults] setObject:snsAccount.userName forKey:@"userName"];
                             [[NSUserDefaults standardUserDefaults] synchronize];
-                            int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
-                            if (type == 1)
-                            {
-                                
-                                MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
-                                [self.navigationController pushViewController:tabbar1 animated:YES];
-                            }
-                            else if (type == 2)
-                            {
-                                MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
-                                [self.navigationController pushViewController:tabbar animated:YES];
-                            }
+                            MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
+                            [self.navigationController pushViewController:tabbar1 animated:YES];
+                            
                             NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
                         }];
                         
@@ -749,18 +532,9 @@ static  SRLoginVC *thisController=nil;
                             
                             [[NSUserDefaults standardUserDefaults] setObject:snsAccount.userName forKey:@"userName"];
                             [[NSUserDefaults standardUserDefaults] synchronize];
-                            int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
-                            if (type == 1)
-                            {
-                                
-                                MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
-                                [self.navigationController pushViewController:tabbar1 animated:YES];
-                            }
-                            else if (type == 2)
-                            {
-                                MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
-                                [self.navigationController pushViewController:tabbar animated:YES];
-                            }
+                            MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
+                            [self.navigationController pushViewController:tabbar1 animated:YES];
+
                             NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
                         }];
                         
@@ -849,18 +623,8 @@ static  SRLoginVC *thisController=nil;
                             
                             [[NSUserDefaults standardUserDefaults] setObject:snsAccount.userName forKey:@"userName"];
                             [[NSUserDefaults standardUserDefaults] synchronize];
-                            int type = [[[NSUserDefaults standardUserDefaults] objectForKey:@"type"] intValue];
-                            if (type == 1)
-                            {
-                                
                                 MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
                                 [self.navigationController pushViewController:tabbar1 animated:YES];
-                            }
-                            else if (type == 2)
-                            {
-                                MLTabbarVC *tabbar=[MLTabbarVC shareInstance];
-                                [self.navigationController pushViewController:tabbar animated:YES];
-                            }
                             NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
                         }];
                         
