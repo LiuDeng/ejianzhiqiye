@@ -193,7 +193,7 @@
     [self creatHeadView];
     [self creatTitleLabel];
     [self creatLocationButton];
-    
+    [self creatRightButtonItem];
     
     
     self.viewModel=[[MLMainPageViewModel alloc]init];
