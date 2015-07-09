@@ -9,7 +9,7 @@
 
 #import "SRLoginBusiness.h"
 #import "MLLoginManger.h"
-
+#import "EaseMob.h"
 @implementation SRLoginBusiness
 -(instancetype)init
 {
@@ -37,7 +37,19 @@
             }
                 AVFile *avatarFile=[user objectForKey:@"avatar"];
                 [self saveUserInfoLocally:avatarFile.url userType:[NSString stringWithFormat:@"%lu",(unsigned long)type]];
-                self.feedback=@"登录成功";
+            
+ //环信登录
+            // ///////////////////////////////////////
+            
+            [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:user.objectId password:pwd completion:^(NSDictionary *loginInfo, EMError *error) {
+                                if (!error && loginInfo) {
+                                    NSLog(@"%@",user.objectId);
+                                    NSLog(@"登陆成功");
+                                }
+                            } onQueue:nil];
+            
+            
+            self.feedback=@"登录成功";
                 NSUserDefaults *mySettingData = [NSUserDefaults standardUserDefaults];
                 if([user objectForKey:@"mobilePhoneNumber"]){
                     [mySettingData setObject:[user objectForKey:@"mobilePhoneNumber"]forKey:@"userPhone"];

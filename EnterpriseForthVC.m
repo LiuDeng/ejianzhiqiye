@@ -188,7 +188,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
 
     if (buttonIndex==1) {
-        NSString *telUrl = @"tel://010-62416324";
+        NSString *telUrl = @"tel://010-53518902";
         
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telUrl]]; //拨号
 

@@ -74,12 +74,12 @@ static  MLTabbar1 *thisController=nil;
     
     UIViewController *pageOneVC=[self makeRootByNavigationController:self.firstVC];
     pageOneVC.title=@"我发布的兼职";
-//    UIViewController *pageTwoVC=[self makeRootByNavigationController:self.chatVC];
-//    pageTwoVC.title=@"消息";
+    UIViewController *pageTwoVC=[self makeRootByNavigationController:self.chatVC];
+    pageTwoVC.title=@"消息";
     UIViewController *pageThreeVC=[self makeRootByNavigationController:self.forthVC];
     pageThreeVC.title=@"我的";
     
-    self.viewControllers=@[pageOneVC,pageThreeVC];
+    self.viewControllers=@[pageOneVC,pageTwoVC,pageThreeVC];
     
     [self changeTabbarStyle];
 }
@@ -93,12 +93,12 @@ static  MLTabbar1 *thisController=nil;
     UITabBar *tabBar=self.tabBar;
     
     UITabBarItem *tabBarItem1=[tabBar.items objectAtIndex:0];
-    //UITabBarItem *tabBarItem2=[tabBar.items objectAtIndex:1];
-    UITabBarItem *tabBarItem3=[tabBar.items objectAtIndex:1];
+    UITabBarItem *tabBarItem2=[tabBar.items objectAtIndex:1];
+    UITabBarItem *tabBarItem3=[tabBar.items objectAtIndex:2];
     
     tabBarItem1.title=@"兼职";
     
-    //tabBarItem2.title=@"消息";
+    tabBarItem2.title=@"消息";
     
     tabBarItem3.title=@"我的";
 
@@ -107,7 +107,7 @@ static  MLTabbar1 *thisController=nil;
     
     [[self.tabBar.items objectAtIndex:1] setFinishedSelectedImage:[[UIImage imageNamed:@"explore1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] withFinishedUnselectedImage:[[UIImage imageNamed:@"explore"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
-//    [[self.tabBar.items objectAtIndex:2] setFinishedSelectedImage:[[UIImage imageNamed:@"message1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] withFinishedUnselectedImage:[[UIImage imageNamed:@"message"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [[self.tabBar.items objectAtIndex:2] setFinishedSelectedImage:[[UIImage imageNamed:@"message1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] withFinishedUnselectedImage:[[UIImage imageNamed:@"message"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
 }
 

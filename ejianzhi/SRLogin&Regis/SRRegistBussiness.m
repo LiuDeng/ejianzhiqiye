@@ -7,7 +7,7 @@
 //
 
 #import "SRRegistBussiness.h"
-
+#import "EaseMob.h"
 @implementation SRRegistBussiness
 @synthesize feedback;
 @synthesize username;
@@ -28,14 +28,42 @@
         if (succeeded) {
             [self RegistHasSucceed];
             //注册成功保存用户数据
+            
             NSUserDefaults *mySettingData = [NSUserDefaults standardUserDefaults];
             [mySettingData setObject:_username forKey:@"currentUserName"];
             [mySettingData synchronize];
             
             [user setObject:[NSNumber numberWithInteger:self.registerType] forKey:@"userType"];
             [user saveEventually];
+            //环信号注册
+            /////////////////////////////
+            [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:user.objectId password:_password withCompletion:^(NSString *username, NSString *password, EMError *error) {
+                NSLog(@"%@",user.objectId);
+                NSLog(@"环信号注册成功");
+            } onQueue:nil];
+        }
+        
+//            [EaseMob  sharedInstance].chatManager asyncRegisterNewAccount:@"8005" password:@"111111" withCompletion:^(NSString *username, NSString *password, EMError *error) {
+//                if (!error) {
+//                    NSLog(@"注册成功");
+//                    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"8005" password:@"111111" completion:^(NSDictionary *loginInfo, EMError *error) {
+//                        if (!error && loginInfo) {
+//                            NSLog(@"登陆成功");
+//                        }
+//                    } onQueue:nil];
+//                }
+// 
+//            
             
-        } else {
+            
+            
+            
+            
+            
+            
+            
+/////////////////////////////
+         else {
             [self RegistHasFailed:error];
         }
     }];

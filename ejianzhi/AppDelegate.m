@@ -37,7 +37,7 @@
 {
     UINavigationController *nav;
 }
-
+//qiyeban
 
 @property (strong,nonatomic)MLLoginManger *loginManager;
 @end
@@ -60,7 +60,34 @@
     [JianZhi registerSubclass];
     [User registerSubclass];
     [UserDetail registerSubclass];
-
+//环信注册
+    
+    
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"jiaxiaotong#edutohome" apnsCertName:@"ejianzhidev"];
+    [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+//    [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:@"8005" password:@"111111" withCompletion:^(NSString *username, NSString *password, EMError *error) {
+//        if (!error) {
+//            NSLog(@"注册成功");
+//            [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"8005" password:@"111111" completion:^(NSDictionary *loginInfo, EMError *error) {
+//                if (!error && loginInfo) {
+//                    NSLog(@"登陆成功");
+//                }
+//            } onQueue:nil];
+//        }
+//        else
+//        {
+//            [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"8005" password:@"111111" completion:^(NSDictionary *loginInfo, EMError *error) {
+//                if (!error && loginInfo) {
+//                    NSLog(@"登陆成功");
+//                }
+//            } onQueue:nil];
+//        }
+// } onQueue:nil];
+    
+    
+    
+    
+    
 //AVOS Regist App Key origin
     [AVOSCloud setApplicationId:@"owqomw6mc9jlqcj7xc2p3mdk7h4hqe2at944fzt0zb8jholj"
                       clientKey:@"q9bmfdqt5926m2vgm54lu8ydwxz349448oo1fyu154b0izuw"];

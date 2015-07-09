@@ -19,7 +19,7 @@
 #import "MLNavi.h"
 #import "POIDataModel.h"
 #import "MapSelectedViewController.h"
-
+#import "ChatViewController.h"
 #define  PIC_WIDTH 64
 #define  PIC_HEIGHT 64
 #define  INSETS 10
@@ -81,6 +81,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self creatChatButton];
     // Do any additional setup after loading the view from its nib.
     self.title = @"发布职位";
     if (!self.jianzhiModel) {
@@ -184,6 +185,21 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     self.jobDutyTextView.layer.cornerRadius = 8.0f;
     
     [self.jobDutyTextView.layer setMasksToBounds:YES];
+}
+
+-(void)creatChatButton{
+
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame=CGRectMake(100, 100, 100, 100);
+    [button setTitle:@"聊天" forState:UIControlStateNormal];
+    button.backgroundColor=[UIColor redColor];
+    [button addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+
+}
+- (void)btnClick{
+    ChatViewController *chat=[[ChatViewController alloc]init];
+    [self.navigationController pushViewController:chat animated:YES];
 }
 
 - (void)switcherInit{
