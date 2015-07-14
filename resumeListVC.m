@@ -16,6 +16,7 @@
 #import "DateUtil.h"
 #import "MLResumePreviewVC.h"
 #import "UIImageView+EMWebCache.h"
+#import"ChatViewController.h"
 
 @interface resumeListVC ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -36,6 +37,19 @@
     self.title=@"简历列表";
     
     [self tableViewInit];
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame=CGRectMake(10, 10, 100, 100);
+    button.backgroundColor=[UIColor redColor];
+    [self.view addSubview:button];
+    [button addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
+
+}
+
+- (void)btnClick{
+    ChatViewController *chat=[[ChatViewController alloc]init];
+//chat.objectId=[]
+    [self.navigationController pushViewController:chat animated:YES];
+    
 
 }
 

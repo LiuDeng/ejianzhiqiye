@@ -19,6 +19,9 @@
 #import "ChatViewController.h"
 #import "EMSearchDisplayController.h"
 #import "ConvertToCommonEmoticonsHelper.h"
+#import "User.h"
+#import "UIImageView+EMWebCache.h"
+#import "UIImage+EMWebP.h"
 
 @interface ChatListViewController ()<UITableViewDelegate,UITableViewDataSource, UISearchDisplayDelegate,SRRefreshDelegate, UISearchBarDelegate, IChatManagerDelegate,ChatViewControllerDelegate>
 
@@ -30,7 +33,8 @@
 @property (nonatomic, strong) UIView                *networkStateView;
 
 @property (strong, nonatomic) EMSearchDisplayController *searchController;
-
+@property (strong,nonatomic)NSString *userRealName;
+@property (strong, nonatomic)NSString *usergender;
 @end
 
 @implementation ChatListViewController
@@ -49,8 +53,8 @@
     [super viewDidLoad];
     [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:NO];
     [self removeEmptyConversationsFromDB];
-
-    [self.view addSubview:self.searchBar];
+    self.title=@"消息";
+    //[self.view addSubview:self.searchBar];
     [self.view addSubview:self.tableView];
     [self.tableView addSubview:self.slimeView];
     [self networkStateView];
@@ -154,7 +158,8 @@
 - (UITableView *)tableView
 {
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.searchBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - self.searchBar.frame.size.height) style:UITableViewStylePlain];
+        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+        //_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.searchBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - self.searchBar.frame.size.height) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         _tableView.delegate = self;
@@ -167,6 +172,7 @@
     return _tableView;
 }
 
+
 - (EMSearchDisplayController *)searchController
 {
     if (_searchController == nil) {
@@ -175,42 +181,44 @@
         _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         __weak ChatListViewController *weakSelf = self;
-        [_searchController setCellForRowAtIndexPathCompletion:^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPath) {
-            static NSString *CellIdentifier = @"ChatListCell";
-            ChatListCell *cell = (ChatListCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
-            // Configure the cell...
-            if (cell == nil) {
-                cell = [[ChatListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            }
-            
-            EMConversation *conversation = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
-            cell.name = conversation.chatter;
-            if (conversation.conversationType != eConversationTypeChat) {
-                cell.placeholderImage = [UIImage imageNamed:@"chatListCellHead.png"];
-            }
-            else{
-                NSString *imageName = @"groupPublicHeader";
-                NSArray *groupArray = [[EaseMob sharedInstance].chatManager groupList];
-                for (EMGroup *group in groupArray) {
-                    if ([group.groupId isEqualToString:conversation.chatter]) {
-                        cell.name = group.groupSubject;
-                        imageName = group.isPublic ? @"groupPublicHeader" : @"groupPrivateHeader";
-                        break;
-                    }
-                }
-                cell.placeholderImage = [UIImage imageNamed:imageName];
-            }
-            cell.detailMsg = [weakSelf subTitleMessageByConversation:conversation];
-            cell.time = [weakSelf lastMessageTimeByConversation:conversation];
-            cell.unreadCount = [weakSelf unreadMessageCountByConversation:conversation];
-            if (indexPath.row % 2 == 1) {
-                cell.contentView.backgroundColor = RGBACOLOR(246, 246, 246, 1);
-            }else{
-                cell.contentView.backgroundColor = [UIColor whiteColor];
-            }
-            return cell;
-        }];
+ //       [_searchController setCellForRowAtIndexPathCompletion:^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPath) {
+//            static NSString *CellIdentifier = @"ChatListCell";
+//            ChatListCell *cell = (ChatListCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//            
+//            // Configure the cell...
+//            if (cell == nil) {
+//                cell = [[ChatListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//            }
+//            
+//            EMConversation *conversation = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
+//            
+//                  //cell.name = conversation.chatter;
+//            if (conversation.conversationType != eConversationTypeChat) {//会话类型
+//                cell.placeholderImage = [UIImage imageNamed:@"chatListCellHead.png"];
+//            }
+//            else{
+//                NSString *imageName = @"groupPublicHeader";
+//                NSArray *groupArray = [[EaseMob sharedInstance].chatManager groupList];
+//                for (EMGroup *group in groupArray) {
+//                    if ([group.groupId isEqualToString:conversation.chatter]) {
+//                       // cell.name = group.groupSubject;
+//                        imageName = group.isPublic ? @"groupPublicHeader" : @"groupPrivateHeader";
+//                        break;
+//                    }
+//                }
+//                cell.placeholderImage = [UIImage imageNamed:imageName];
+//            }
+//            cell.detailMsg = [weakSelf subTitleMessageByConversation:conversation];
+//            cell.time = [weakSelf lastMessageTimeByConversation:conversation];
+//            cell.unreadCount = [weakSelf unreadMessageCountByConversation:conversation];
+//            if (indexPath.row % 2 == 1) {
+//                cell.contentView.backgroundColor = RGBACOLOR(246, 246, 246, 1);
+//            }else{
+//                cell.contentView.backgroundColor = [UIColor whiteColor];
+//            }
+//        
+//            return cell;
+//        }];
         
         [_searchController setHeightForRowAtIndexPathCompletion:^CGFloat(UITableView *tableView, NSIndexPath *indexPath) {
             return [ChatListCell tableView:tableView heightForRowAtIndexPath:indexPath];
@@ -340,7 +348,27 @@
         cell = [[ChatListCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identify];
     }
     EMConversation *conversation = [self.dataSource objectAtIndex:indexPath.row];
-    cell.name = conversation.chatter;
+    NSString *string=conversation.chatter;
+    AVQuery *query=[AVQuery queryWithClassName:@"UserDetail"];
+    [query whereKey:@"userObjectId" equalTo:string];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(!error){
+            if(objects.count>0){
+                AVObject *userObject=[objects objectAtIndex:0];
+                cell.name=[userObject objectForKey:@"userRealName"];
+                NSString *imageUrl=[[userObject objectForKey:@"userImageArray"] objectAtIndex:0];
+                [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        
+                //cell.placeholderImage =[userObject objectForKey:@"userImageArray"];
+                NSLog(@"%@",cell.name);
+                
+            }
+        }else
+        {
+        NSLog(@"Error: %@ %@", error, [error userInfo]);        }
+    }];
+
+   // cell.name = conversation.chatter;
     if (conversation.conversationType == eConversationTypeChat) {
         cell.placeholderImage = [UIImage imageNamed:@"chatListCellHead.png"];
     }
@@ -411,13 +439,36 @@
             }
         }
     }
-    
-    NSString *chatter = conversation.chatter;
-    chatController = [[ChatViewController alloc] initWithChatter:chatter conversationType:conversation.conversationType];
-    chatController.delelgate = self;
-    chatController.title = title;
+    chatController=[[ChatViewController alloc]init];
     [self.navigationController pushViewController:chatController animated:YES];
-}
+//    NSString *chatter = conversation.chatter;
+//    AVQuery *query=[AVQuery queryWithClassName:@"UserDetail"];
+//    [query whereKey:@"userObjectId" equalTo:chatter];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if(!error){
+//            NSLog(@"找到了");
+//            if(objects.count>0){
+//                AVObject *object=[objects objectAtIndex:0];
+//                _userRealName=[object objectForKey:@"userRealName"];
+//                
+//                _usergender=[object objectForKey:@"userGender"];
+//                NSLog(@"%@",_userRealName);
+//                NSLog(@"%@",_usergender);
+//              ChatViewController *chatController = [[ChatViewController alloc] initWithChatter:chatter conversationType:conversation.conversationType];
+//                chatController.delelgate = self;
+//                chatController.title=_userRealName;
+//               // chatController.title = title;
+//                chatController.userName=_userRealName;
+//                chatController.userGender=_usergender;
+// [self.navigationController pushViewController:chatController animated:YES];
+//            }else{
+//                NSLog(@"Error: %@ %@", error, [error userInfo]);
+//            }
+//        }
+//    }];
+
+    
+   }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;

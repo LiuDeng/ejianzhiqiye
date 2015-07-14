@@ -16,6 +16,7 @@
 #import "ResumeVC.h"
 #import "imageWithUrlObject.h"
 #import "SDPhotoBrowser.h"
+#import"ChatViewController.h"
 
 #define  PIC_WIDTH 80
 #define  PIC_HEIGHT 80
@@ -488,7 +489,26 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 
 - (void)contactUser{
 
-   
+    ChatViewController *chat=[[ChatViewController alloc]init];
+    chat.objectId=self.userObjectId;
+    chat.userName=self.userDetailModel.userRealName;
+    chat.userGender=self.userDetailModel.userGender;
+    chat.userSchool=self.userDetailModel.userSchool;
+    chat.userAge=[DateUtil ageFromBirthToNow:self.userDetailModel.userBirthYear];
+    chat.userMajor=self.userDetailModel.userProfesssion;
+    chat.userHeight=self.userDetailModel.userHeight;
+    chat.title=self.userDetailModel.userRealName;
+    chat.expectJob=self.userDetailModel.userJobIntention;
+    
+    NSUserDefaults *defaultData=[NSUserDefaults standardUserDefaults];
+   NSString *leftImage=[defaultData objectForKey:@"userAvatar"];
+    chat.imageUrl=leftImage;
+ //   chat.userAge=[self.userDetailModel.userBirthYear stringValue];
+     // NSString *detailInfo=[self.userDetailModel.userRealName stringByAppendingString:self.userDetailModel.userGender];
+    
+   // chat.jianzhiTypeLabel=self.
+    NSLog(@"%@",self.userObjectId);
+    [self.navigationController pushViewController:chat animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

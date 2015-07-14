@@ -11,11 +11,15 @@
 #import "myJobListVC.h"
 #import "EnterpriseForthVC.h"
 #import "MLChatVC.h"
+#import "ChatListViewController.h"
 
 @interface MLTabbar1 ()
 @property (strong,nonatomic)myJobListVC *firstVC;
 @property (strong,nonatomic)EnterpriseForthVC *forthVC;
 @property (strong,nonatomic)MLChatVC *chatVC;
+
+
+@property (strong,nonatomic)ChatListViewController *chatList;
 @end
 
 @implementation MLTabbar1
@@ -45,7 +49,15 @@ static  MLTabbar1 *thisController=nil;
     }
     return  _forthVC;
 }
-
+//消息聊天界面
+-(ChatListViewController*)chatList
+{
+    if(_chatList==nil)
+    {
+        _chatList=[[ChatListViewController alloc]init];
+    }
+    return _chatList;
+}
 -(MLChatVC*)chatVC
 {
     if(_chatVC==nil)
@@ -54,6 +66,7 @@ static  MLTabbar1 *thisController=nil;
     }
     return _chatVC;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,7 +87,7 @@ static  MLTabbar1 *thisController=nil;
     
     UIViewController *pageOneVC=[self makeRootByNavigationController:self.firstVC];
     pageOneVC.title=@"我发布的兼职";
-    UIViewController *pageTwoVC=[self makeRootByNavigationController:self.chatVC];
+    UIViewController *pageTwoVC=[self makeRootByNavigationController:self.chatList];
     pageTwoVC.title=@"消息";
     UIViewController *pageThreeVC=[self makeRootByNavigationController:self.forthVC];
     pageThreeVC.title=@"我的";
@@ -82,6 +95,7 @@ static  MLTabbar1 *thisController=nil;
     self.viewControllers=@[pageOneVC,pageTwoVC,pageThreeVC];
     
     [self changeTabbarStyle];
+
 }
 
 -(void)changeTabbarStyle
@@ -107,7 +121,7 @@ static  MLTabbar1 *thisController=nil;
     
     [[self.tabBar.items objectAtIndex:1] setFinishedSelectedImage:[[UIImage imageNamed:@"explore1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] withFinishedUnselectedImage:[[UIImage imageNamed:@"explore"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
-    [[self.tabBar.items objectAtIndex:2] setFinishedSelectedImage:[[UIImage imageNamed:@"message1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] withFinishedUnselectedImage:[[UIImage imageNamed:@"message"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [[self.tabBar.items objectAtIndex:2] setFinishedSelectedImage:[[UIImage imageNamed:@"我icon(高亮)"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] withFinishedUnselectedImage:[[UIImage imageNamed:@"我icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
 }
 

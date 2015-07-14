@@ -119,11 +119,8 @@
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             
             if (!error&&[objects count]>0) {
-                
                 PublishJobVC *addJobVC=[[PublishJobVC alloc]init];
-                
                 addJobVC.curUsr=[objects objectAtIndex:0];
-                
                 UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
                 backItem.title = @"";
                 self.navigationItem.backBarButtonItem = backItem;
@@ -132,6 +129,7 @@
                 
                 [self.navigationController pushViewController:addJobVC animated:YES];
             }
+           
         }];
 //    }
 //    else

@@ -15,6 +15,7 @@
 #import "ResetPwdViewController.h"
 #import "UMSocial.h"
 #import "UserDetail.h"
+#import "EaseMob.h"
 
 @interface SRLoginVC ()<successRegistered,UIAlertViewDelegate>
 {
@@ -286,13 +287,26 @@ static  SRLoginVC *thisController=nil;
                     }
                 }];
                 [self loadCompanyInfo];
+                
+                //环信登录
+                // ///////////////////////////////////////
+                
+              NSString *objectId=[[NSUserDefaults standardUserDefaults] objectForKey:@"userObjectId"];
+                [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:objectId password:loginer.pwd completion:^(NSDictionary *loginInfo, EMError *error) {
+                    if (!error && loginInfo) {
+                        NSLog(@"%@",objectId);
+                        NSLog(@"环信登陆成功");
+                    }else{
+                     NSLog(@"%环信登录失败%@",error);
+                    }
+                   
+                } onQueue:nil];
+
                 AVUser *user = [AVUser currentUser];
                 [user setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"] forKey:@"installationId"];
                 [user saveEventually];
-                
                 MLTabbar1 *tabbar1=[MLTabbar1 shareInstance];
                 [self.navigationController pushViewController:tabbar1 animated:YES];
-                
             }else{
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:loginer.feedback message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [alert show];

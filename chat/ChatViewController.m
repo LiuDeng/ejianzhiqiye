@@ -31,6 +31,8 @@
 #import "ChatViewController+Category.h"
 #import "EMCDDeviceManager.h"
 #import "EMCDDeviceManagerDelegate.h"
+#import "chatHeadView.h"
+#import "UIImageView+EMWebCache.h"
 #define KPageCount 20
 #define KHintAdjustY    50
 
@@ -63,11 +65,15 @@
 @property (strong, nonatomic) MessageReadManager *messageReadManager;//message阅读的管理者
 @property (strong, nonatomic) EMConversation *conversation;//会话管理者
 @property (strong, nonatomic) NSDate *chatTagDate;
-
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (nonatomic) BOOL isScrollToBottom;
 @property (nonatomic) BOOL isPlayingAudio;
 @property (nonatomic) BOOL isKicked;
+
+
+
+
+
 @end
 
 @implementation ChatViewController
@@ -152,7 +158,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self registerBecomeActive]; // 当程序从后台到前台时，刷新聊天列表
+    
+    //    [self registerBecomeActive]; // 当程序从后台到前台时，刷新聊天列表
     // Do any additional setup after loading the view.
     self.view.backgroundColor = RGBACOLOR(248, 248, 248, 1);
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -164,8 +171,11 @@
     [[EaseMob sharedInstance].chatManager removeDelegate:self];
     //注册为SDK的ChatManager的delegate
     [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
+    //[self loadMessageFormLocal];
+    // [[EaseMob sharedInstance].callManager removeDelegate:self];
+    // 注册为Call的Delegate
+    //[[EaseMob sharedInstance].callManager addDelegate:self delegateQueue:nil];
     
-    [self loadMessageFormLocal];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeAllMessages:) name:@"RemoveAllMessages" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exitGroup) name:@"ExitGroup" object:nil];
@@ -199,11 +209,12 @@
     {
         [self joinChatroom:_chatter];
     }
+    [self creatImageView];
 }
 
 - (void)loadMessageFormLocal
 {
-    EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:@"8001" conversationType:eConversationTypeChat];
+    EMConversation *conversation = [[EaseMob sharedInstance].chatManager conversationForChatter:self.objectId conversationType:eConversationTypeChat];
     __weak ChatViewController *weakSelf = self;
     NSArray *array = [conversation loadAllMessages];
     if (array.count > 0)
@@ -303,7 +314,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 #warning 以下第一行代码必须写，将self从ChatManager的代理中移除
     [[EaseMob sharedInstance].chatManager removeDelegate:self];
-    //[[EaseMob sharedInstance].callManager removeDelegate:self];
+    // [[EaseMob sharedInstance].callManager removeDelegate:self];
     if (_conversation.conversationType == eConversationTypeChatRoom && !_isKicked)
     {
         //退出聊天室，删除会话
@@ -429,7 +440,7 @@
 - (UITableView *)tableView
 {
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.chatToolBar.frame.size.height) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,150, self.view.frame.size.width, self.view.frame.size.height - self.chatToolBar.frame.size.height) style:UITableViewStylePlain];
         _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -707,7 +718,7 @@
             __weak ChatViewController *weakSelf = self;
             [[EMCDDeviceManager sharedInstance] enableProximitySensor];
             [[EMCDDeviceManager sharedInstance] asyncPlayingWithPath:model.chatVoice.localPath completion:^(NSError *error) {
-//                [weakSelf.messageReadManager stopMessageAudioModel];
+                //                [weakSelf.messageReadManager stopMessageAudioModel];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.tableView reloadData];
                     weakSelf.isPlayingAudio = NO;
@@ -725,8 +736,8 @@
 -(void)chatLocationCellBubblePressed:(MessageModel *)model
 {
     _isScrollToBottom = NO;
-//    LocationViewController *locationController = [[LocationViewController alloc] initWithLocation:CLLocationCoordinate2DMake(model.latitude, model.longitude)];
-//    [self.navigationController pushViewController:locationController animated:YES];
+    //    LocationViewController *locationController = [[LocationViewController alloc] initWithLocation:CLLocationCoordinate2DMake(model.latitude, model.longitude)];
+    //    [self.navigationController pushViewController:locationController animated:YES];
 }
 
 - (void)chatVideoCellPressed:(MessageModel *)model{
@@ -859,6 +870,58 @@
     }
 }
 
+
+- (void)creatImageView{
+    
+    //    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
+    //    button.backgroundColor=[UIColor lightGrayColor];
+    //    [button addTarget:self action:@selector(goToSee) forControlEvents:UIControlEventTouchUpInside];
+    //    [self.view addSubview:button];
+    UIImageView *headView=[[UIImageView alloc]initWithFrame:CGRectMake(20, 20, SCREENWIDTH-40, 80)];
+    //headView.backgroundColor=[UIColor lightGrayColor];
+    headView.image=[UIImage imageNamed:@"背景框"];
+    
+    _leftImageView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 60, 60)];
+    _leftImageView.layer.masksToBounds=YES;
+    _leftImageView.layer.cornerRadius=30;
+    _leftImageView.backgroundColor=[UIColor yellowColor];
+    [_leftImageView sd_setImageWithURL:[NSURL URLWithString:self.imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    
+    //姓名
+    _userNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 10,60, 25)];
+    // _userNameLabel.backgroundColor=[UIColor grayColor];
+    _userNameLabel.font=[UIFont fontWithName:nil size:15];
+    _userNameLabel.textColor=RGBACOLOR(20, 20, 20, 1);
+    _userNameLabel.text =self.userName;
+    
+    //年龄
+    _userAgeLabel=[[UILabel alloc]initWithFrame:CGRectMake(140, 10, 40, 25)];
+    //    _userAgeLabel.backgroundColor=[UIColor greenColor];
+    _userAgeLabel.font=[UIFont fontWithName:nil size:12];
+    _userAgeLabel.textColor=RGBACOLOR(81, 81, 81, 1);
+    _userAgeLabel.text=self.userAge;
+    
+    //学校
+    _userSchoolLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 35, 200, 15)];
+    _userSchoolLabel.text= [@"就读于"stringByAppendingString: self.userSchool];
+    _userSchoolLabel.font=[UIFont fontWithName:nil size:12];
+    _userSchoolLabel.textColor=RGBACOLOR(81, 81, 81, 1);
+    
+    UILabel *jobLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 55, 200, 15)];
+    jobLabel.textColor=RGBACOLOR(81, 81, 81, 1);
+    jobLabel.font=[UIFont fontWithName:nil size:12];
+    jobLabel.text=[@"期望工作:"stringByAppendingString: self.expectJob];
+    
+    [headView addSubview:jobLabel];
+    [headView addSubview:_leftImageView];
+    [headView addSubview:_userNameLabel];
+    [headView addSubview:_userSchoolLabel];
+    [headView addSubview:_userAgeLabel];
+    [self.view addSubview:headView];
+    
+}
+
+
 #pragma mark - IChatManagerDelegate
 
 -(void)didSendMessage:(EMMessage *)message error:(EMError *)error
@@ -963,17 +1026,17 @@
 
 -(void)didReceiveMessage:(EMMessage *)message
 {
-//    if ([_conversation.chatter isEqualToString:message.conversationChatter]) {
-        [self addMessage:message];
-        if ([self shouldAckMessage:message read:NO])
-        {
-            [self sendHasReadResponseForMessages:@[message]];
-        }
-        if ([self shouldMarkMessageAsRead])
-        {
-            [self markMessagesAsRead:@[message]];
-        }
-//    }
+    //    if ([_conversation.chatter isEqualToString:message.conversationChatter]) {
+    [self addMessage:message];
+    if ([self shouldAckMessage:message read:NO])
+    {
+        [self sendHasReadResponseForMessages:@[message]];
+    }
+    if ([self shouldMarkMessageAsRead])
+    {
+        [self markMessagesAsRead:@[message]];
+    }
+    //    }
 }
 
 -(void)didReceiveCmdMessage:(EMMessage *)message
@@ -1125,9 +1188,9 @@
     // 隐藏键盘
     [self keyBoardHidden];
     
-//    LocationViewController *locationController = [[LocationViewController alloc] initWithNibName:nil bundle:nil];
-//    locationController.delegate = self;
-//    [self.navigationController pushViewController:locationController animated:YES];
+    //    LocationViewController *locationController = [[LocationViewController alloc] initWithNibName:nil bundle:nil];
+    //    locationController.delegate = self;
+    //    [self.navigationController pushViewController:locationController animated:YES];
 }
 
 - (void)moreViewAudioCallAction:(DXChatBarMoreView *)moreView
@@ -1161,7 +1224,7 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rect = self.tableView.frame;
-        rect.origin.y = 0;
+        rect.origin.y =80;
         rect.size.height = self.view.frame.size.height - toHeight;
         self.tableView.frame = rect;
     }];
@@ -1188,7 +1251,7 @@
         int x = arc4random() % 100000;
         NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
         NSString *fileName = [NSString stringWithFormat:@"%d%d",(int)time,x];
-
+        
         [[EMCDDeviceManager sharedInstance] asyncStartRecordingWithFileName:fileName
                                                                  completion:^(NSError *error)
          {
@@ -1513,7 +1576,7 @@
     if ([_delelgate respondsToSelector:@selector(avatarWithChatter:)]) {
         model.headImageURL = [NSURL URLWithString:[_delelgate avatarWithChatter:model.username]];
     }
-
+    
     if (model) {
         [ret addObject:model];
     }
@@ -1548,15 +1611,15 @@
 - (void)showRoomContact:(id)sender
 {
     [self.view endEditing:YES];
-//    if (self.conversationType == eConversationTypeGroupChat) {
-//        ChatGroupDetailViewController *detailController = [[ChatGroupDetailViewController alloc] initWithGroupId:_chatter];
-//        [self.navigationController pushViewController:detailController animated:YES];
-//    }
-//    else if (self.conversationType == eConversationTypeChatRoom)
-//    {
-//        ChatroomDetailViewController *detailController = [[ChatroomDetailViewController alloc] initWithChatroomId:_chatter];
-//        [self.navigationController pushViewController:detailController animated:YES];
-//    }
+    //    if (self.conversationType == eConversationTypeGroupChat) {
+    //        ChatGroupDetailViewController *detailController = [[ChatGroupDetailViewController alloc] initWithGroupId:_chatter];
+    //        [self.navigationController pushViewController:detailController animated:YES];
+    //    }
+    //    else if (self.conversationType == eConversationTypeChatRoom)
+    //    {
+    //        ChatroomDetailViewController *detailController = [[ChatroomDetailViewController alloc] initWithChatroomId:_chatter];
+    //        [self.navigationController pushViewController:detailController animated:YES];
+    //    }
 }
 
 - (void)removeAllMessages:(id)sender
@@ -1639,7 +1702,7 @@
     [_chatToolBar cancelTouchRecord];
     
     // 设置当前conversation的所有message为已读
-//    [_conversation markAllMessagesAsRead:YES];
+    //    [_conversation markAllMessagesAsRead:YES];
 }
 
 - (BOOL)shouldAckMessage:(EMMessage *)message read:(BOOL)read
@@ -1706,7 +1769,7 @@
 -(void)sendTextMessage:(NSString *)textMessage
 {
     EMMessage *tempMessage = [ChatSendHelper sendTextMessageWithString:textMessage
-                                                            toUsername:@"18317893541"
+                                                            toUsername:self.objectId
                                                            messageType:[self messageType]
                                                      requireEncryption:NO
                                                                    ext:nil];
@@ -1716,7 +1779,7 @@
 -(void)sendImageMessage:(UIImage *)image
 {
     EMMessage *tempMessage = [ChatSendHelper sendImageMessageWithImage:image
-                                                            toUsername:@"18317893541"
+                                                            toUsername:self.objectId
                                                            messageType:[self messageType]
                                                      requireEncryption:NO
                                                                    ext:nil];
@@ -1726,7 +1789,7 @@
 -(void)sendAudioMessage:(EMChatVoice *)voice
 {
     EMMessage *tempMessage = [ChatSendHelper sendVoice:voice
-                                            toUsername:@"18317893541"
+                                            toUsername:self.objectId
                                            messageType:[self messageType]
                                      requireEncryption:NO ext:nil];
     [self addMessage:tempMessage];
@@ -1735,7 +1798,7 @@
 -(void)sendVideoMessage:(EMChatVideo *)video
 {
     EMMessage *tempMessage = [ChatSendHelper sendVideo:video
-                                            toUsername:_conversation.chatter
+                                            toUsername:self.objectId
                                            messageType:[self messageType]
                                      requireEncryption:NO ext:nil];
     [self addMessage:tempMessage];
