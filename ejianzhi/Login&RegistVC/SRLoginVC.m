@@ -297,7 +297,7 @@ static  SRLoginVC *thisController=nil;
                         NSLog(@"%@",objectId);
                         NSLog(@"环信登陆成功");
                     }else{
-                     NSLog(@"%环信登录失败%@",error);
+                     NSLog(@"环信登录失败%@",error);
                     }
                    
                 } onQueue:nil];
