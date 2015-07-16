@@ -893,6 +893,8 @@
 		605E5AD71B3BFCE400FD9AB2 /* message1.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5ACB1B3BFCE400FD9AB2 /* message1.png */; };
 		605E5AD81B3BFCE400FD9AB2 /* message1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5ACC1B3BFCE400FD9AB2 /* message1@2x.png */; };
 		605E5AD91B3BFCE400FD9AB2 /* message1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605E5ACD1B3BFCE400FD9AB2 /* message1@3x.png */; };
+		60616FCD1B57A54900408C09 /* EvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60616FCC1B57A54900408C09 /* EvaluateViewController.m */; };
+		60616FD11B57A58800408C09 /* RatingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 60616FD01B57A58800408C09 /* RatingBar.m */; };
 		607997F31B302CA200408A1F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 607997F21B302CA200408A1F /* ImageIO.framework */; };
 		607997F51B302CAF00408A1F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 607997F41B302CAF00408A1F /* libz.dylib */; };
 		607997F71B302CC200408A1F /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 607997F61B302CC200408A1F /* libstdc++.dylib */; };
@@ -2180,6 +2182,10 @@
 		605E5ACB1B3BFCE400FD9AB2 /* message1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message1.png; sourceTree = "<group>"; };
 		605E5ACC1B3BFCE400FD9AB2 /* message1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message1@2x.png"; sourceTree = "<group>"; };
 		605E5ACD1B3BFCE400FD9AB2 /* message1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message1@3x.png"; sourceTree = "<group>"; };
+		60616FCB1B57A54900408C09 /* EvaluateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluateViewController.h; sourceTree = "<group>"; };
+		60616FCC1B57A54900408C09 /* EvaluateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluateViewController.m; sourceTree = "<group>"; };
+		60616FCF1B57A58800408C09 /* RatingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingBar.h; sourceTree = "<group>"; };
+		60616FD01B57A58800408C09 /* RatingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingBar.m; sourceTree = "<group>"; };
 		607997F21B302CA200408A1F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		607997F41B302CAF00408A1F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		607997F61B302CC200408A1F /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
@@ -3647,6 +3653,7 @@
 		0443C20A1AD5560F004F29A5 /* jobDetail */ = {
 			isa = PBXGroup;
 			children = (
+				60616FCE1B57A58800408C09 /* RatingBar */,
 				0443C20B1AD5560F004F29A5 /* CommonUtility.h */,
 				0443C20C1AD5560F004F29A5 /* CommonUtility.m */,
 				0443C20D1AD5560F004F29A5 /* JobDetail */,
@@ -3666,6 +3673,8 @@
 				0443C2201AD5560F004F29A5 /* SRShowRouteVC.h */,
 				0443C2211AD5560F004F29A5 /* SRShowRouteVC.m */,
 				0443C2221AD5560F004F29A5 /* SRShowRouteVC.xib */,
+				60616FCB1B57A54900408C09 /* EvaluateViewController.h */,
+				60616FCC1B57A54900408C09 /* EvaluateViewController.m */,
 			);
 			path = jobDetail;
 			sourceTree = "<group>";
@@ -5187,6 +5196,15 @@
 			path = UMSocial_Sdk_Instructions;
 			sourceTree = "<group>";
 		};
+		60616FCE1B57A58800408C09 /* RatingBar */ = {
+			isa = PBXGroup;
+			children = (
+				60616FCF1B57A58800408C09 /* RatingBar.h */,
+				60616FD01B57A58800408C09 /* RatingBar.m */,
+			);
+			path = RatingBar;
+			sourceTree = "<group>";
+		};
 		AEECAB4102EFBDB4F800C5C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -6080,6 +6098,7 @@
 				0439DE6B1B4E0466004BCB26 /* MessageReadManager.m in Sources */,
 				0443C2291AD5560F004F29A5 /* SRMapViewVC.m in Sources */,
 				0439DE5D1B4E0466004BCB26 /* FacialView.m in Sources */,
+				60616FCD1B57A54900408C09 /* EvaluateViewController.m in Sources */,
 				045626471AD6214D006E159C /* AsyncImageView.m in Sources */,
 				605E59261B354C7800FD9AB2 /* AuthenticationViewController.m in Sources */,
 				3B8D4AAB1AE20533001F5E7F /* QiYeInfo.m in Sources */,
@@ -6179,6 +6198,7 @@
 				04B346871AEA785A00A8A180 /* UIColor+ColorFromArray.m in Sources */,
 				3BBF6F5C1AD6D0E800A33F5A /* imageWithUrlObject.m in Sources */,
 				0443C2081AD5559E004F29A5 /* UserDetail.m in Sources */,
+				60616FD11B57A58800408C09 /* RatingBar.m in Sources */,
 				0439DE4D1B4E0466004BCB26 /* EMVoiceConverter.mm in Sources */,
 				0439DE491B4E0466004BCB26 /* THProgressView.m in Sources */,
 				045623251AD61B4B006E159C /* MLCustomjobListViewController.m in Sources */,

@@ -12,4 +12,7 @@
 +(NSString*)formatMyString:(NSString *)getString;
 +(BOOL)isEmpty:(NSString *)string;
 +(NSUInteger) lenghtWithString:(NSString *)string;
+
+// //格式话小数 四舍五入类型
++ (NSString *) decimalwithFormat:(NSString *)format  floatV:(float)floatV;
 @end
