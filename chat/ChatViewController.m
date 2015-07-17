@@ -459,7 +459,7 @@
 - (DXMessageToolBar *)chatToolBar
 {
     if (_chatToolBar == nil) {
-        _chatToolBar = [[DXMessageToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - [DXMessageToolBar defaultHeight], self.view.frame.size.width, [DXMessageToolBar defaultHeight])];
+        _chatToolBar = [[DXMessageToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height -[DXMessageToolBar defaultHeight], self.view.frame.size.width, [DXMessageToolBar defaultHeight])];
         _chatToolBar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
         _chatToolBar.delegate = self;
         
@@ -889,7 +889,7 @@
     
     //姓名
     _userNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 10,60, 25)];
-    // _userNameLabel.backgroundColor=[UIColor grayColor];
+    // _userNameLabel.backgroundColor=[UIColor grayColor];tab
     _userNameLabel.font=[UIFont fontWithName:nil size:15];
     _userNameLabel.textColor=RGBACOLOR(20, 20, 20, 1);
     _userNameLabel.text =self.userName;
@@ -903,14 +903,14 @@
     
     //学校
     _userSchoolLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 35, 200, 15)];
-    _userSchoolLabel.text= [@"就读于"stringByAppendingString: self.userSchool];
+   // _userSchoolLabel.text= [@"就读于"stringByAppendingString: self.userSchool];
     _userSchoolLabel.font=[UIFont fontWithName:nil size:12];
     _userSchoolLabel.textColor=RGBACOLOR(81, 81, 81, 1);
     
     UILabel *jobLabel=[[UILabel alloc]initWithFrame:CGRectMake(80, 55, 200, 15)];
     jobLabel.textColor=RGBACOLOR(81, 81, 81, 1);
     jobLabel.font=[UIFont fontWithName:nil size:12];
-    jobLabel.text=[@"期望工作:"stringByAppendingString: self.expectJob];
+   // jobLabel.text=[@"期望工作:"stringByAppendingString: self.expectJob];
     
     [headView addSubview:jobLabel];
     [headView addSubview:_leftImageView];

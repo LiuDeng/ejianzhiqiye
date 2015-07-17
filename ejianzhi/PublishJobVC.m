@@ -81,7 +81,6 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self creatChatButton];
     // Do any additional setup after loading the view from its nib.
     self.title = @"发布职位";
     if (!self.jianzhiModel) {
@@ -102,7 +101,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     
     [self.view2 setFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-108)];
     [self.mainScrollView addSubview:self.view2];
-
+    
     [self.view3 setFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width*2,0,[[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-108)];
     [self.mainScrollView addSubview:self.view3];
     //地点选择
@@ -138,10 +137,10 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     [self.view1 addSubview:_check2];
     [_check2 setChecked:YES];
     _check2.index=2;
-
+    
     //view2
     [self timeCollectionViewInit];
-
+    
     UITapGestureRecognizer *tapgesture2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(chooseSalaryType)];
     tapgesture2.delegate=self;
     self.selectSalaryTypeLabel.userInteractionEnabled=YES;
@@ -165,7 +164,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     if (!datePickerView) {
         datePickerView=[[MLDatePickerView alloc]initWithStyle:UIDatePickerModeDate delegate:self];
     }
-
+    
     //view3
     
     self.jobContentTextView.layer.backgroundColor = [[UIColor clearColor] CGColor];
@@ -187,16 +186,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     [self.jobDutyTextView.layer setMasksToBounds:YES];
 }
 
--(void)creatChatButton{
 
-    UIButton *button=[UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame=CGRectMake(100, 100, 100, 100);
-    [button setTitle:@"聊天" forState:UIControlStateNormal];
-    button.backgroundColor=[UIColor redColor];
-    [button addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-
-}
 - (void)btnClick{
     ChatViewController *chat=[[ChatViewController alloc]init];
     [self.navigationController pushViewController:chat animated:YES];
@@ -388,15 +378,15 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     [self.phoneTextView.rac_textSignal subscribeNext:^(NSString *text) {
         self.jianzhiModel.jianZhiContactPhone=text;
     }];
-
+    
     [self.jobTitleTextView.rac_textSignal subscribeNext:^(NSString *text) {
         self.jianzhiModel.jianZhiTitle=text;
     }];
-
+    
     [self.salaryTextView.rac_textSignal subscribeNext:^(NSString *text) {
         self.jianzhiModel.jianZhiWage=[NSNumber numberWithFloat:[text floatValue]];
     }];
-
+    
     [self.jobNumbersTextView.rac_textSignal subscribeNext:^(NSString *text) {
         self.jianzhiModel.jianZhiRecruitment=[NSNumber numberWithFloat:[text intValue]];
     }];
@@ -423,9 +413,9 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 
 #pragma mark - HZAreaPicker delegate
 -(void)pickerDidChaneStatus:(HZAreaPickerView *)picker{
-//    self.userDetailModel.userProvince=picker.locate.state;
-//    self.userDetailModel.userCity=picker.locate.city;
-//    self.userDetailModel.userDistrict=picker.locate.district;
+    //    self.userDetailModel.userProvince=picker.locate.state;
+    //    self.userDetailModel.userCity=picker.locate.city;
+    //    self.userDetailModel.userDistrict=picker.locate.district;
     NSString *addr=[NSString stringWithFormat:@"%@%@%@",picker.locate.state,picker.locate.city,picker.locate.district];
     self.selectAreaLabel.text=addr;
     [coverView removeFromSuperview];
@@ -448,7 +438,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     
     self.filterVC.datasource=array;
     self.filterVC.viewType=FliterViewTypeSettlement;
-        
+    
     self.filterVC.row=0;
     
     self.filterVC.hidesBottomBarWhenPushed=YES;
@@ -462,13 +452,13 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
             
             self.selectSalaryTypeLabel.text=result;
             self.jianzhiModel.jianZhiWageType=result;
-
+            
             break;
         case FliterViewTypeType:
             
             self.selectJobTypeLabel.text=result;
             self.jianzhiModel.jianZhiType=result;
-
+            
             break;
         case FliterViewTypeArea:
             
@@ -494,7 +484,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     datePickerView.index=1;
     [self.view addSubview:coverView];
     [datePickerView showInView:self.view];
-
+    
 }
 
 - (void)chooseDate2{
@@ -539,10 +529,10 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     jobDetailVC.fromEnterprise=YES;
     jobDetailVC.isPreview=YES;
     jobDetailVC.saveDelegate=self;
-
     
     
-     [self presentViewController:[[MLNavi alloc] initWithRootViewController:jobDetailVC] animated:YES completion:nil];
+    
+    [self presentViewController:[[MLNavi alloc] initWithRootViewController:jobDetailVC] animated:YES completion:nil];
 }
 
 - (void)finishSave{
@@ -555,7 +545,7 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
 }
 
 - (IBAction)selectPOIAction:(id)sender {
-   //
+    //
     MapSelectedViewController *mapSelect=[[MapSelectedViewController alloc]init];
     mapSelect.resultsDelegate=self;
     [self.navigationController pushViewController:mapSelect animated:YES];
@@ -566,19 +556,19 @@ static NSString *selectFreecellIdentifier = @"freeselectViewCell";
     
     self.addressTextView.text=poiData.address;
     
-   self.jianzhiModel.jianZhiPoint=[AVGeoPoint geoPointWithLatitude:poiData.position.latitude   longitude:poiData.position.longitude];
-
-
+    self.jianzhiModel.jianZhiPoint=[AVGeoPoint geoPointWithLatitude:poiData.position.latitude   longitude:poiData.position.longitude];
+    
+    
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

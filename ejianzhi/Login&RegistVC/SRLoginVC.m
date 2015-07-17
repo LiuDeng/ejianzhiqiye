@@ -62,8 +62,6 @@ static  SRLoginVC *thisController=nil;
 
 - (void)creatThirdLoginView{
     
-    //self.weixinButton.hidden=YES;
-    
     if(SCREENHEIGHT==480){
         self.weixinButton.hidden=YES;
         self.weixinLabel.hidden=YES;
@@ -72,7 +70,6 @@ static  SRLoginVC *thisController=nil;
         self.qqButton.hidden=YES;
         self.qqLabel.hidden=YES;
     _thirdLoginView=[[UIView alloc]initWithFrame:CGRectMake(0, self.loginButton.frame.origin.y+80, SCREENWIDTH, 80)];
-    //_thirdLoginView.backgroundColor=[UIColor redColor];
     [self.view addSubview:_thirdLoginView];
     }
     NSArray *imageArray=@[@"微信",@"微博",@"qq"];
@@ -126,20 +123,17 @@ static  SRLoginVC *thisController=nil;
     self.loginButton.tag=101;
     [self creatThirdLoginView];
     
-    
     self.titleLabel.text=@"企业登录";
     self.userAccount.placeholder=@"请输入企业登录账户";
-    [self.otherLoginBtn setTitle:@"求职者登录" forState:UIControlStateNormal];
+   // [self.otherLoginBtn setTitle:@"求职者登录" forState:UIControlStateNormal];
     self.view.backgroundColor = COLOR(53, 156, 108);
     [self.otherLoginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _loginButton.backgroundColor = [UIColor whiteColor];
     [_loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
     _weixinLabel.textColor = COLOR(48, 48, 48);
-    
     _loginButton.layer.cornerRadius = 5.0f;
     _loginButton.layer.masksToBounds = YES;
-    
+
     self.sinaLoginButton.tag = 1001;
     
     
@@ -297,7 +291,7 @@ static  SRLoginVC *thisController=nil;
                         NSLog(@"%@",objectId);
                         NSLog(@"环信登陆成功");
                     }else{
-                     NSLog(@"%环信登录失败%@",error);
+                     NSLog(@"环信登录失败%@",error);
                     }
                    
                 } onQueue:nil];

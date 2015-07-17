@@ -9,7 +9,6 @@
             <connections>
                 <outlet property="floatView2" destination="1vU-6Q-aDc" id="ZHY-Lw-upQ"/>
                 <outlet property="loginButton" destination="fhv-w2-Wmf" id="Pfp-NK-d1A"/>
-                <outlet property="otherLoginBtn" destination="gtx-wV-vNx" id="gPr-gp-XRB"/>
                 <outlet property="qqButton" destination="9H4-Tn-tAe" id="CqO-sS-iAZ"/>
                 <outlet property="qqLabel" destination="32F-is-lFE" id="Rgh-Ge-da4"/>
                 <outlet property="resetPassword" destination="8Mw-yD-3as" id="JuI-FW-JoH"/>
@@ -113,18 +112,6 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gtx-wV-vNx">
-                    <rect key="frame" x="92" y="448" width="137" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="企业登录">
-                        <color key="titleColor" red="0.22352941176470587" green="0.72549019607843135" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="otherLogin:" destination="-1" eventType="touchUpInside" id="OGu-VN-fbA"/>
-                    </connections>
-                </button>
                 <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fhv-w2-Wmf">
                     <rect key="frame" x="20" y="264" width="280" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
