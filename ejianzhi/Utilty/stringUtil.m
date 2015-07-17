@@ -50,4 +50,15 @@
     NSInteger numMatch = [regex numberOfMatchesInString:string options:NSMatchingReportProgress range:NSMakeRange(0, len)];
     return len + numMatch;
 }
+
+//格式话小数 四舍五入类型
++(NSString *) decimalwithFormat:(NSString *)format  floatV:(float)floatV
+{
+    //  NSLog(@"----%@---",[self decimalwithFormat:@"0.0000" floatV:0.334569]);
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    
+    [numberFormatter setPositiveFormat:format];
+    
+    return  [numberFormatter stringFromNumber:[NSNumber numberWithFloat:floatV]];
+}
 @end
